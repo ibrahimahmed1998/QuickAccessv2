@@ -1,4 +1,4 @@
-const links = ['English','Marketing','007','Programming','Jobs','General'] ; 
+const links = ['ENGLISH','MARKETING','007','HELO_WRLD','JOBS','GENERAL'] ; 
 /*******************************/
 const anc = document.createElement("a");
 anc.setAttribute("class","navbar-brand");

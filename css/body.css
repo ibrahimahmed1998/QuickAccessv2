@@ -20,7 +20,7 @@ div.inline{   margin-left: 11%; margin-top: 6%; margin-bottom:0% ; }
 div.div2{   margin-left: 22%; margin-top: 2%; margin-bottom:0% ;  }
 
 .up{   margin-top: 3%;  margin-bottom:0% ;  }
-.down{   margin-top: 20%;  margin-bottom:0% ;  }
+.down{   margin-top: 30%;  margin-bottom:0% ;  }
 
 .nav-link{
      /* font-style: oblique; */
@@ -28,7 +28,7 @@ div.div2{   margin-left: 22%; margin-top: 2%; margin-bottom:0% ;  }
 }
 .sidebar {
      height: 140%;
-     width: 114px;
+     width: 116px;
      position: absolute;
      left: 0;
      top: 0;
@@ -38,15 +38,27 @@ div.div2{   margin-left: 22%; margin-top: 2%; margin-bottom:0% ;  }
      
      .sidebar div a{
      padding: 8px;
-     font-size: 24px;
+     font-size: 18px;
      display: block;
      color: white;
      text-decoration: none;
+     font-weight: bold;
 
      }
      
      .body-text {
      margin-left: 150px;
      font-size: 18px;
+     }
+     
+
+     .youtube{
+
+          display: inline-block;
+          margin-left: 10px;
+          margin-right: 20px;
+          padding: 2px;
+          padding-top: 20px;
+
      }
      
