@@ -22,10 +22,8 @@ div.inline img {margin-left: 15px;}
 .up{   margin-top: 3%;  margin-bottom:0% ;  }
 .down{   margin-top: 30%;  margin-bottom:0% ;  }
 
-.nav-link{
-     /* font-style: oblique; */
-     font-weight: bold;
-}
+.nav-link{  font-weight: bold; }
+
 .sidebar {
      height: 96.6%;
      width: 116px;
@@ -46,19 +44,17 @@ div.inline img {margin-left: 15px;}
 
      }
      
-     .body-text {
-     margin-left: 150px;
-     font-size: 18px;
-     }
+     .body-text { margin-left: 150px; font-size: 18px; }
      
-
      .youtube{
-
           display: inline-block;
-          margin-left: 10px;
+          margin-left: 2%;
           margin-right: 20px;
           padding: 2px;
-          padding-top: 20px;
-
+          padding-top: 2%;
      }
-     
+
+     .spacelast {position: relative;  left: 59%; }
+     .space{margin-left: 81.5%;}
+
+     .x{text-decoration: none;}
