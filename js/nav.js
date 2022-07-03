@@ -20,7 +20,8 @@ ul.setAttribute('class','navbar-nav ms-auto');
 ul.setAttribute('id','ul1');
 const element4 = document.getElementById("navbarResponsive").appendChild(ul);
 /*******************************/
-const li = []; for (let i=0;i<links.length;i++){
+const li = [];  
+ for (let i=0;i<links.length;i++){
     li[i] = document.createElement('li');
     li[i].setAttribute('class','nav-item');
     li[i].setAttribute('id','li'+i);
