@@ -1,42 +1,26 @@
 const links = ['ENGLISH','MARKETING','007','HELO_WRLD','JOBS','GENERAL'] ; 
-/*******************************/
-const anc = document.createElement("a");
-anc.setAttribute("class","navbar-brand");
-anc.setAttribute("href","index.html");
-const div9 = document.getElementById("div9").appendChild(anc);
-const div1 = document.getElementById("div1");
-/*******************************/
-const b = document.createElement("b");
-b.innerHTML="Quick Access"; 
-div9.appendChild(b);
-/*******************************/
-const div2 = document.createElement("div");
-div2.setAttribute("class","collapse navbar-collapse");
-div2.setAttribute("id","navbarResponsive");
-const element3 = document.getElementById("div1").appendChild(div2);
-/*******************************/
-const ul = document.createElement('ul');
-ul.setAttribute('class','navbar-nav ms-auto');
-ul.setAttribute('id','ul1');
-const element4 = document.getElementById("navbarResponsive").appendChild(ul);
-/*******************************/
-const li = [];  
- for (let i=0;i<links.length;i++){
-    li[i] = document.createElement('li');
-    li[i].setAttribute('class','nav-item');
-    li[i].setAttribute('id','li'+i);
-    document.getElementById("ul1").appendChild(li[i]);}
-/*******************************/         
-const L = []; for (let i=0;i<links.length;i++){
-    L[i] = document.createElement('a');
-    L[i].setAttribute('class','nav-link');
-    L[i].setAttribute('href',links[i]+".html");
-    L[i].innerHTML=links[i];
-    document.getElementById("li"+i).appendChild(L[i]);}
-/*******************************/            
-const linker = document.createElement("link");
-linker.setAttribute("rel","icon");
-linker.setAttribute("type","image/x-icon");
-linker.setAttribute("href","../IMG/icon1.jpg");
-document.getElementById("head").appendChild(linker);
-/*******************************/
+
+const create_e = (parent,tag,className,text,attr)=>{
+    const ele = document.createElement(tag);
+    parent.appendChild(ele);
+    if(className){ele.className = className;}
+    if(text) {ele.textContent = text;}
+    if(attr) {ele.setAttribute(attr.name,attr.val); }
+    return ele;}
+
+const head = document.querySelector("#head");
+const div1 = document.querySelector("#div1");
+const div9 = document.querySelector("#div9");
+
+create_e(head,'link',null,null,{rel:"icon",href:"../IMG/icon1.jpg",type:"image/x-icon"});
+
+const a = create_e(div9,'a','navbar-brand',null,{name:"href" ,val:'index.html'} );
+create_e(a,'b',null,'Quick Access',null);
+create_e(div1,'div','collapse navbar-collapse',null,{name:"id" ,val:"navbarResponsive"});
+const element4 = document.querySelector("#navbarResponsive");
+const ul = create_e(element4,'ul','navbar-nav ms-auto',null,{name:"id",val:"ul1"});
+
+links.forEach( (e,ind) => {
+    const x =  e[ind] = create_e(ul,'li','nav-item',null,{name:"id",val:`li`+ind})
+    create_e(x,'a','nav-link',links[ind],{name:"href", val:`${links[ind]}.html`});
+ }); // thanks to dr\ marwa for code inhance 
