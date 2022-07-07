@@ -7,4 +7,3 @@
  <a href="URL" <img src="../IMG/IMG.Type title="title" ></a>
  
 ![alt text](https://github.com/ibrahimahmed1998/QuickAccess/blob/main/main_.png)
-<img src="main2.png">
