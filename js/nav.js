@@ -1,4 +1,4 @@
-const links = ['ENGLISH','MARKETING','007','HELO_WRLD','JOBS','GENERAL'] ; 
+const links = ['ENGLISH','MARKETING','PROGRAMMING','JOBS','GENERAL'] ; 
 
 const create_e = (parent,tag,className,text,attr)=>{
     const ele = document.createElement(tag);
