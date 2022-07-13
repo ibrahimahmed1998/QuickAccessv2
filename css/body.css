@@ -10,7 +10,8 @@ div.inline img{margin-left:15px}.up{margin-top:3%}
 .down{margin-top:30%}.sidebar{height:96.6%;width:116px;position:absolute;left:0;top:0;padding-top:40px;background-color:#002143}
 .sidebar div a{padding:8px;font-size:18px;display:block;color:#fff}
 .body-text{margin-left:150px;font-size:18px}
-.youtube{display:inline-block;margin-left:2%;margin-right:20px;padding:2% 2px 2px}
+.youtube{display:inline-block;margin-left:2%;margin-right:20px;padding:2% 2px 2px;font-weight:bold;}
 .spacelast{position:absolute;left:90.0%}.space{margin-left:81.5%}
 h2 a{text-decoration:none; color: black;}
 div .card {     display:inline-block;      max-width: 22rem; }
+ 
