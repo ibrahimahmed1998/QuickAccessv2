@@ -1,6 +1,5 @@
 prog = [
-{name: "001", val: "../HTML/Prog/001.html"}
-,{name: "Database", val: "../HTML/Prog/database.html"}
+ {name: "Database", val: "../HTML/Prog/database.html"}
 ,{name: "Mobile", val: "../HTML/Prog/mobile.html"}
 ,{name: "Security", val: "../HTML/Prog/Security.html"}
 ,{name: "EN-CS", val: "../HTML/Prog/en_cs.html"}
