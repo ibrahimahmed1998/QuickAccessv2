@@ -1,4 +1,4 @@
 youtube = document.querySelectorAll('.y');
-youtube.forEach( channel => {
-    channel.innerHTML=`<img src="../../IMG/youbtube.png">`;
-});
+yy = document.querySelectorAll('.yy');
+if(yy.length > 0){ yy.forEach( channel => { channel.innerHTML=`<img src="../IMG/youbtube.png">`;}); }
+else{ youtube.forEach( channel => { channel.innerHTML=`<img src="../../IMG/youbtube.png">`; }); }
