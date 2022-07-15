@@ -23,7 +23,6 @@ general = [
 ,{name: "Maintenance", val: "../HTML/General/class_b.html"}
 ,{name: "Stores", val: "../HTML/General/MARKETS.html"}
 ,{name: "Ecomony Yutub", val: "../HTML/General/eco_yutub.html"}
-,{name: "Etisalat & Networking", val: "../HTML/General/Etisalat.html"}
 ,{name: "egy_comp", val: "../HTML/General/egy_comp.html"}
 ,{name: "Libraries", val: "../HTML/General/Library.html"}
 ,{name: "Medicine & Care ", val: "../HTML/General/teb.html"}]
