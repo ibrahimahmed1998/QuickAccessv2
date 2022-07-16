@@ -1,0 +1,16 @@
+ .yo{
+    display: inline-table;
+    margin: 1% 1% 0.5% 2%;
+    padding-bottom: 0.5%;
+
+ } 
+
+.yo img{
+    height: 6rem;
+    width: 85%; 
+}
+
+ .yo:hover img{
+     opacity: 0.6;
+  }
+ 

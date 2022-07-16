@@ -4,7 +4,7 @@ prog = [
 ,{name: "Security", val: "../HTML/Prog/Security.html"}
 ,{name: "EN-CS", val: "../HTML/Prog/en_cs.html"}
 ,{name: "AR-CS", val: "../HTML/Prog/ar_cs.html"}
-,{name: "AR MATH", val: "../HTML/Prog/armath.html"}
+,{name: "AR-MATH", val: "../HTML/Prog/ar_math.html"}
 ,{name: "TIPS", val: "../HTML/Prog/tips.html"}
 ,{name: "3D Printing", val: "../HTML/Prog/3d_printing.html"}
 ,{name: "Challenge", val: "../HTML/Prog/Challenge.html"}
