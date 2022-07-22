@@ -1,14 +1,28 @@
 .down,.up,div.div2,div.inline{margin-bottom:0}
-body,html{ min-height: 100vh;    height:90%;margin:0;background:#005aa7;background:-webkit-linear-gradient(to right,#fffde4,#005aa7);background:linear-gradient(to right,#fffde4,#005aa7)}
-img{border-style:none;width:65px;height:65px;-webkit-transition:width 2s,height 2s,-webkit-transform 2s;transition:width 2s,height 2s,transform .1s;margin-bottom:2%;margin-right:1.5%;border-radius:10px}
-img:hover{width:120px;height:120px;-webkit-transform:rotate(360deg);transform:rotate(360deg)}
-div.inline{margin-left:11%;margin-top:6%}
+
+body,html{ 
+    min-height: 100vh;
+    height:90%;margin:0;
+    background:#005aa7;
+    background:-webkit-linear-gradient(to right,#fffde4,#005aa7);
+    background:linear-gradient(to right,#fffde4,#005aa7)}
+h2 a{text-decoration:none; color: black;}
+.body-text{margin-left:150px;font-size:18px}
+img{
+    border-style:none;
+    width:55px;height:55px;
+    -webkit-transition:width 2s,height 2s,-webkit-transform 2s;
+    transition:width 2s,height 2s,transform .1s;
+    margin-bottom:2%;
+    margin-right:1.5%;
+    border-radius:10px}
+img:hover{
+    width:120px;
+    height:120px;
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg)}
 div.div2{margin-left:22%;margin-top:2%}
-div.inline img{margin-left:15px}.up{margin-top:3%}
 .down{margin-top:30%}
 .nav-link{font-weight:700}
-.body-text{margin-left:150px;font-size:18px}
-.spacelast{position:absolute;left:90.0%}.space{margin-left:81.5%}
-h2 a{text-decoration:none; color: black;}
-div .card {     display:inline-block;      max-width: 22rem; }
+div .card {display:inline-block;      max-width: 22rem; }
  

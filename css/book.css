@@ -1,16 +1,9 @@
 .book{
     display: inline-table;
     margin: 3% 1% 0.5% 3%;
-    padding-bottom: 0.5%;
-
- } 
-
+    padding-bottom: 0.5%; } 
 .book img{
     height: 6rem;
-    width: 85%; 
-}
-
+    width: 85%; }
  .book:hover img{
-     opacity: 0.6;
-  }
- 
+     opacity: 0.6;}
