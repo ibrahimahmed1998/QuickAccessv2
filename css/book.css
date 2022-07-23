@@ -1,5 +1,5 @@
 .book{
-    display: inline-table;
+    display: inline-block;
     margin: 3% 1% 0.5% 3%;
     padding-bottom: 0.5%; } 
 .book img{
