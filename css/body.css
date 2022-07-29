@@ -3,7 +3,7 @@ body {background: linear-gradient(to right, #fffde4, #005aa7)}
 :root {--top:5% ; --left:15%}
 .top  { margin:var(--top) 0% 0% 15% ;  display:inline-block; width: 110vh;  }
 .right{ margin:0% 0% 0% 0% ;           display:inline-block;}
-.left { margin:0% 59% 1% var(--left);display:inline-block; }
+.left { margin:0% 58.7% 1% var(--left);display:inline-block; }
 .down { margin:0% 0% 0% var(--left);   display:inline-block; width: 110vh;}
 
 img {
