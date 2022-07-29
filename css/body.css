@@ -80,7 +80,7 @@ img:hover { width: 100px;height: 100px;  -webkit-transform: rotate(360deg);  tra
     padding: 15px;
 }
 .links{margin: -63.5% 2% -3% 9%;display: table;}
-.label{margin: 1% 83% 1% 0%;display: block;}
+.label{margin: 1% 83% 1% 0%;display: block; width: max-content;}
 .underlabel{margin:0% 0% 0% 1%}
 
 /* GENERAAAAAAAAAAL #########################  */

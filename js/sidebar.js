@@ -15,7 +15,7 @@ job = [ {name: "Advise", val: "../HTML/Jobs/job_links.html"}
 ,{name: "Cheat", val: "../HTML/Jobs/job_links.html"}
 ,{name: "Companies", val: "../HTML/General/egy_comp.html"}]
 
-general = [ {name: "Cycle App", val: "../HTML/General/cycle.html"}
+general = [ {name: "Cycle App", val: "../HTML/General/0cycle.html"}
 ,{name: "ABC", val: "../HTML/General/abc.html"}
 ,{name: "Maintenance", val: "../HTML/General/class_b.html"}
 ,{name: "Stores", val: "../HTML/General/MARKETS.html"}
