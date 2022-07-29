@@ -1,9 +1,0 @@
-.book{
-    display: inline-block;
-    margin: 3% 1% 0.5% 3%;
-    padding-bottom: 0.5%; } 
-.book img{
-    height: 6rem;
-    width: 85%; }
- .book:hover img{
-     opacity: 0.6;}

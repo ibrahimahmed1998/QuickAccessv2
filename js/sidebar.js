@@ -1,15 +1,15 @@
-prog = [ {name: "Database", val: "../HTML/Prog/database.html"}
-,{name: "UI-UX", val: "../HTML/Prog/UI-UX.html"}
-,{name: "Mobile", val: "../HTML/Prog/mobile.html"}
-,{name: "Security", val: "../HTML/Prog/Security.html"}
-,{name: "EN-CS", val: "../HTML/Prog/en_cs.html"}
-,{name: "AR-CS", val: "../HTML/Prog/ar_cs.html"}
-,{name: "AR-MATH", val: "../HTML/Prog/ar_math.html"}
+prog = [ {name: "database", val: "../HTML/Prog/1database.html"}
+,{name: "UI-UX", val: "../HTML/Prog/2UI-UX.html"}
+,{name: "Mobile", val: "../HTML/Prog/3mobile.html"}
+,{name: "Security", val: "../HTML/Prog/4security.html"}
+,{name: "EN-CS", val: "../HTML/Prog/5en_cs.html"}
+,{name: "AR-CS", val: "../HTML/Prog/6ar_cs.html"}
+,{name: "AR-MATH", val: "../HTML/Prog/7ar_math.html"}
 ,{name: "TIPS", val: "../HTML/Prog/tips.html"}
 ,{name: "3D Printing", val: "../HTML/Prog/3d_printing.html"}
 ,{name: "Challenge", val: "../HTML/Prog/Challenge.html"}
 ,{name: "Programs", val: "../HTML/Prog/software_programs.html"}
-,{name: "Graphics", val: "../HTML/Prog/Graphics.html"}]
+,{name: "Graphics", val: "../HTML/Prog/graphics.html"}]
 
 job = [ {name: "Advise", val: "../HTML/Jobs/job_links.html"}
 ,{name: "Cheat", val: "../HTML/Jobs/job_links.html"}
@@ -25,7 +25,7 @@ general = [ {name: "Cycle App", val: "../HTML/General/cycle.html"}
 ,{name: "Medicine & Care ", val: "../HTML/General/teb.general.html"}]
 
 arr=[];
-
+///////////////////////////////////////////  //////////////////////////////////////////////////////
 const sidebar = document.querySelector('.sidebar');
 
 switch (sidebar.id){
@@ -34,11 +34,7 @@ case 'jobs':arr = job; break;
 case 'general':arr = general; break;
 default: alert("404"); break;}
 
-// console.log(sidebar.id);
-
 const create = (f, g, d, e, c) => { let b = document.createElement(g); return f.appendChild(b), d && (b.className = d),e && (b.textContent = e), c && b.setAttribute(c.name, c.val), b }
 
-const div =  create(sidebar,'div',null,null,null);
-
 arr.forEach(element => {
-create(div,'a',null,element.name,{name:"href",val:element.val}); });
+create(sidebar,'a',null,element.name,{name:"href",val:element.val}); });
