@@ -24,6 +24,8 @@ general = [ {name: "Cycle App", val: "../HTML/General/0cycle.html"}
 ,{name: "Libraries", val: "../HTML/General/Library.html"}
 ,{name: "Medicine & Care ", val: "../HTML/General/teb.general.html"}
 ,{name: "Udemy Profiles", val: "../HTML/General/udemy.general.html"}
+,{name: "$$$", val: "../HTML/General/economy.general..html"}
+
 ]
 
 arr=[];
