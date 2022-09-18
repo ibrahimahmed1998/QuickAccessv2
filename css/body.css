@@ -6,6 +6,17 @@ body {background: linear-gradient(to right, #fffde4, #005aa7)}
 .left { margin:0% 58.7% 1% var(--left);display:inline-block; }
 .down { margin:0% 0% 0% var(--left);   display:inline-block; width: 110vh;}
 
+.gmail{
+    /* width: 100px;
+    min-height: 100px; */
+    display: inline-flex;
+    margin: 1% 0% -2% 2%;
+}
+.gmail img{
+    width: 35px;
+    height: 35px;
+    border-radius:4px;
+}
 img {
     width: 55px;
     height: 55px;
@@ -94,3 +105,7 @@ h2 a { text-decoration: none; color: black;  }
     justify-self: center;
   
  }
+
+ .sidebar a:hover {
+    background-color: red;
+}
