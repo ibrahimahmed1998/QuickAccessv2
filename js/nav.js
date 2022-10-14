@@ -1,4 +1,4 @@
-const links = ["ENGLISH", "MARKETING", "PROGRAMMING", "JOBS", "GENERAL"], 
+const links = ["EN_CS","AR_CS","PROGRAMMING","ENGLISH","MARKETING","JOBS","GENERAL"], 
 create_e = (f, g, d, e, c) => { let b = document.createElement(g); return f.appendChild(b), d && (b.className = d),e && (b.textContent = e), c && b.setAttribute(c.name, c.val), b }
 
 const body = document.querySelector("body");
