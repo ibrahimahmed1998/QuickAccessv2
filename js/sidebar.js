@@ -1,12 +1,9 @@
 prog = [ {name: "database", val: "../HTML/Prog/1database.html"}
 ,{name: "Mobile", val: "../HTML/Prog/3mobile.html"}
 ,{name: "Security", val: "../HTML/Prog/4security.html"}
-,{name: "EN-CS", val: "../HTML/Prog/5en_cs.html"}
-,{name: "AR-CS", val: "../HTML/Prog/6ar_cs.html"}
 ,{name: "AR-MATH", val: "../HTML/Prog/7ar_math.html"}
 ,{name: "TIPS", val: "../HTML/Prog/tips.html"}
 ,{name: "3D Printing", val: "../HTML/Prog/93d_printing.html"}
-,{name: "Challenge", val: "../HTML/Prog/challenge.html"}
 ,{name: "Programs", val: "../HTML/Prog/software_programs.html"}
 ,{name: "Graphics", val: "../HTML/Prog/graphics.html"}]
 
