@@ -5,7 +5,7 @@ const subnav = create_e(body,'nav','navbar navbar-expand-lg navbar-dark bg-dark'
 const div1 = create_e(subnav,"div","container px-4",null,{name:'id',val:'div1'});
 if(start=1)
 {
-    create_e(div1,'a','navbar-brand js-scroll-trigger',"Back",{name:'href',val:'index.html'});
+    create_e(div1,'a','navbar-brand js-scroll-trigger',"Back",{name:'href',val:'../index.html'});
 }
 else{
     create_e(div1,'a','navbar-brand js-scroll-trigger',"Back",{name:'href',val:'../index.html'});

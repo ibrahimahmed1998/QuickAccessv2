@@ -11,21 +11,17 @@ job = [ {name: "Advise", val: "../HTML/Jobs/job_links.html"}
 ,{name: "Cheat", val: "../HTML/Jobs/job_links.html"}
 ,{name: "Companies", val: "../HTML/General/egy_comp.html"}]
 
-general = [ {name: "Cycle App", val: "../HTML/General/0cycle.html"}
-,{name: "ABC", val: "../HTML/General/abc.html"}
-,{name: "Maintenance", val: "../HTML/General/class_b.html"}
+general = [  
+ {name: "ABC", val: "../HTML/General/abc.html"}
 ,{name: "Stores", val: "../HTML/General/MARKETS.html"}
-,{name: "Ecomony Yutub", val: "../HTML/General/eco_yutub.html"}
-,{name: "egy_comp", val: "../HTML/General/egy_comp.html"}
-,{name: "Libraries", val: "../HTML/General/Library.html"}
+ ,{name: "egy_comp", val: "../HTML/General/egy_comp.html"}
 ,{name: "Medicine & Care ", val: "../HTML/General/teb.general.html"}
-,{name: "Udemy Profiles", val: "../HTML/General/udemy.general.html"}
 ,{name: "$$$", val: "../HTML/General/economy.general..html"}
 
 ]
 
 arr=[];
-///////////////////////////////////////////  //////////////////////////////////////////////////////
+
 const sidebar = document.querySelector('.sidebar');
 
 switch (sidebar.id){
