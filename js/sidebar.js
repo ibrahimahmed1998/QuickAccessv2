@@ -12,12 +12,7 @@ job = [ {name: "Advise", val: "../HTML/Jobs/job_links.html"}
 ,{name: "Companies", val: "../HTML/General/egy_comp.html"}]
 
 general = [  
- {name: "ABC", val: "../HTML/General/abc.html"}
-,{name: "Stores", val: "../HTML/General/MARKETS.html"}
  ,{name: "egy_comp", val: "../HTML/General/egy_comp.html"}
-,{name: "Medicine & Care ", val: "../HTML/General/teb.general.html"}
-,{name: "$$$", val: "../HTML/General/economy.general..html"}
-
 ]
 
 arr=[];
