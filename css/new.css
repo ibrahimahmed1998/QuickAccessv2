@@ -198,3 +198,10 @@ h2 a {
     color: black;
     margin: 0.5% 2.5% 1% 3%;
  }
+
+ 
+ sub{
+    vertical-align: sub  ;
+    font-size: small  ;
+    /* color: red; */
+}
