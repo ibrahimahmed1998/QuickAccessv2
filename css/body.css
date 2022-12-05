@@ -32,7 +32,7 @@ img:hover { width: 100px;height: 100px;  -webkit-transform: rotate(360deg);  tra
 .navbar.navbar-expand-lg.navbar-dark.bg-dark,.fixed-top{ 
     background-color: #002143 !important;  display: block; position: relative;}
  
-.navbar-brand {margin: 0% 65% 0% -20%;}
+.navbar-brand {margin: 0% 50% 0% -20%;}
 .nav-link {color: white !important;}
 .nav-link:hover,.navbar-brand:hover {color: #a71ea7 !important;}
  
