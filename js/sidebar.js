@@ -5,15 +5,7 @@ prog = [ {name: "database", val: "../HTML/Prog/1database.html"}
 ,{name: "TIPS", val: "../HTML/Prog/tips.html"}
 ,{name: "3D Printing", val: "../HTML/Prog/93d_printing.html"}
 ,{name: "Programs", val: "../HTML/Prog/software_programs.html"}
-,{name: "Graphics", val: "../HTML/Prog/graphics.html"}]
-
-job = [ {name: "Advise", val: "../HTML/Jobs/job_links.html"}
-,{name: "Cheat", val: "../HTML/Jobs/job_links.html"}
-,{name: "Companies", val: "../HTML/General/egy_comp.html"}]
-
-general = [  
- ,{name: "egy_comp", val: "../HTML/General/egy_comp.html"}
-]
+,{name: "Graphics", val: "../HTML/Prog/graphics.html"}] 
 
 arr=[];
 
