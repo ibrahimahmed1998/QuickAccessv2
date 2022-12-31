@@ -17,8 +17,8 @@ const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https
 const git = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://github.com/ibrahimahmed1998" }); 
 
 create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/in.png"}), 
-create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/github-min.png"}), 
+create_e(yu,"img", "imgheader", null, {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(git,"img", "imgheader", null, {name:"src",val:"../IMG/github-min.png"}), 
 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
