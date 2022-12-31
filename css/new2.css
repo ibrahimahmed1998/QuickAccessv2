@@ -38,6 +38,11 @@
     border-radius: 4px;
 }
 
+.imgheader{
+    width: 45px;
+    height: 30px;
+}
+
 img {
     width: 55px;
     height: 55px;
@@ -66,7 +71,7 @@ img:hover {
 }
 
 .navbar-brand {
-    margin: 0% 50% 0% -15%;
+    margin: 0% 30% 0% -15%;
 }
 
 .nav-link {
