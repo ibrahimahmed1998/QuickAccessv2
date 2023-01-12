@@ -15,10 +15,12 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
 const a = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.linkedin.com/in/ibrahimahmed1998" }); 
 const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" }); 
 const git = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://github.com/ibrahimahmed1998" }); 
+const gpt = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chat.openai.com/chat" }); 
 
 create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/in.png"}), 
 create_e(yu,"img", "imgheader", null, {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(git,"img", "imgheader", null, {name:"src",val:"../IMG/github-min.png"}), 
+create_e(gpt,"img", "imgheader", null, {name:"src",val:"../IMG/gpt-min.jpg"}), 
 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
