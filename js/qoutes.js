@@ -13,31 +13,6 @@ address=[
     },
     {qoutes:"لَقَدْ خَلَقْنَا الْإِنْسَانَ فِي كَبَدٍ {البلد:4}" 
     }
-    // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-     // {qoutes:"  " 
-    // },
-    
 ]
 
 function getRandomQoutes(){

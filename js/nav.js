@@ -1,4 +1,4 @@
-const links = ["111","222","333","AR_CS","EN_CS","PROGRAMMING","JOBS"], 
+const links = ["111","222","333","AR_CS","EN_CS","P111","P222","JOBS"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
