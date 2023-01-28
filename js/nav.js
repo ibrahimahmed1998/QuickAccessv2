@@ -1,4 +1,4 @@
-const links = ["111","222","333","AR_CS","EN_CS","P111","P222","JOBS"], 
+const links = ["111","222","333","AR_CS","EN_CS","P111","P222","JOBS","Inside"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
@@ -12,12 +12,12 @@ const className = "navbar navbar-expand-lg navbar-dark bg-dark fixed-top";
 const nav = create_e(body, "nav", className, null, { name: "id" ,val:"mainNav" } );
 const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div1" });
    
-const a = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.linkedin.com/in/ibrahimahmed1998" }); 
+// const a = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.linkedin.com/in/ibrahimahmed1998" }); 
 const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" }); 
 const git = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://github.com/ibrahimahmed1998" }); 
 const gpt = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chat.openai.com/chat" }); 
 
-create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/in.png"}), 
+// create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/in.png"}), 
 create_e(yu,"img", "imgheader", null, {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(git,"img", "imgheader", null, {name:"src",val:"../IMG/github-min.png"}), 
 create_e(gpt,"img", "imgheader", null, {name:"src",val:"../IMG/gpt-min.jpg"}), 
