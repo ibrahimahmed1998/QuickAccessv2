@@ -1,4 +1,4 @@
-const links = ["111","222","333","AR_CS","EN_CS","P111","P222","JOBS","Inside"], 
+const links = ["111","222","333","EN_CS","AR_CS","P111","P222","JOBS","Inside"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
@@ -20,7 +20,7 @@ const gpt = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "http
 // create_e(a,"img", "imgheader", null, {name:"src",val:"../IMG/in.png"}), 
 create_e(yu,"img", "imgheader", null, {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(git,"img", "imgheader", null, {name:"src",val:"../IMG/github-min.png"}), 
-create_e(gpt,"img", "imgheader", null, {name:"src",val:"../IMG/gpt-min.jpg"}), 
+create_e(gpt,"img", "imgheader", null, {name:"src",val:"../IMG/chatgpt.jpg"}), 
 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
