@@ -1,0 +1,33 @@
+/* 
+
+
+.qoutes {
+    position: absolute;
+    top: 44%;
+    right: 27%;
+    max-width: 50%;
+    font-weight: bolder;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    display: table-cell;
+
+    width: 780px;
+    height: 135px;
+}
+
+#qoutes_val {
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    vertical-align: middle;
+    align-self: center;
+    justify-self: center;
+
+}
+
+
+  
+ } */

@@ -1,0 +1,28 @@
+ /* 
+
+
+.sidebar {
+    min-height: calc(100vh - 56px);
+    display: inline-block;
+    width: 119px;
+    background-color: #002143;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 15px;
+}
+
+
+.sidebar a:hover {
+    background-color: red;
+}
+
+
+
+*/
