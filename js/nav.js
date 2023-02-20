@@ -26,10 +26,13 @@ create_e(gpt,"img", "imgheader", null, {name:"src",val:"../IMG/chatgpt.jpg"}),
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
 const element4 = document.querySelector("#navbarResponsive"), 
 ul = create_e(element4, "ul", "navbar-nav ms-auto", null, { name: "id", val: "ul1" }); 
+
 links.forEach((c, b) => { let d = c[b] = create_e(ul, "li", "nav-item", null, { name: "id", val: "li" + b }); 
-create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.html` }) })
- 
 
-
-
+if(links[b] =="JOBS")
+{
+    create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.htm` });    
+}
+else{ create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.html` })  }
+})
   
