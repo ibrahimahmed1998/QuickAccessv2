@@ -1,4 +1,4 @@
-const links = ["111","222","333","EN_CS","AR_CS","P111","P222","JOBS","Marketing","Inside"], 
+const links = ["111","2","3","EN_CS","AR_CS","P1","P2","JOBS","Marketing","Inside"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
@@ -29,10 +29,12 @@ ul = create_e(element4, "ul", "navbar-nav ms-auto", null, { name: "id", val: "ul
 
 links.forEach((c, b) => { let d = c[b] = create_e(ul, "li", "nav-item", null, { name: "id", val: "li" + b }); 
 
-if(links[b] =="JOBS")
-{
+if(links[b] =="JOBS" || links[b] =="P1" )
+ {
     create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.htm` });    
-}
+ }
+
 else{ create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.html` })  }
+
 })
   
