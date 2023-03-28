@@ -14,18 +14,20 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <link id="shLink" href="Home_files/sheet002.htm">
 <link id="shLink" href="Home_files/sheet003.htm">
 <link id="shLink" href="Home_files/sheet004.htm">
+<link id="shLink" href="Home_files/sheet005.htm">
 
 <link id="shLink">
 
 <script language="JavaScript">
 <!--
- var c_lTabs=4;
+ var c_lTabs=5;
 
  var c_rgszSh=new Array(c_lTabs);
  c_rgszSh[0] = "Home";
  c_rgszSh[1] = "Companies";
  c_rgszSh[2] = "Numbers";
  c_rgszSh[3] = "Advise1";
+ c_rgszSh[4] = "AVG";
 
 
 
@@ -317,6 +319,10 @@ function fnSetActiveSheet(iSh)
    <x:ExcelWorksheet>
     <x:Name>Advise1</x:Name>
     <x:WorksheetSource HRef="Home_files/sheet004.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>AVG</x:Name>
+    <x:WorksheetSource HRef="Home_files/sheet005.htm"/>
    </x:ExcelWorksheet>
   </x:ExcelWorksheets>
   <x:Stylesheet HRef="Home_files/stylesheet.css"/>
