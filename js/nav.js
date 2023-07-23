@@ -32,7 +32,8 @@ links.forEach((c, b) => { let d = c[b] = create_e(ul, "li", "nav-item", null, { 
 if(links[b] =="AR_CS" ||
       links[b] =="P1" ||  
  links[b] =="English" ||  
- links[b] =="Inside" 
+ links[b] =="Inside"  ||
+ links[b] =="2" 
   )
  {
     create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.htm` });    
