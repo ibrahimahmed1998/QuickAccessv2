@@ -13,17 +13,19 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <link id="shLink" href="2_files/sheet001.htm">
 <link id="shLink" href="2_files/sheet002.htm">
 <link id="shLink" href="2_files/sheet003.htm">
+<link id="shLink" href="2_files/sheet004.htm">
 
 <link id="shLink">
 
 <script language="JavaScript">
 <!--
- var c_lTabs=3;
+ var c_lTabs=4;
 
  var c_rgszSh=new Array(c_lTabs);
  c_rgszSh[0] = "0";
- c_rgszSh[1] = "FB Pages";
- c_rgszSh[2] = "Others";
+ c_rgszSh[1] = "Borsa";
+ c_rgszSh[2] = "FB Pages";
+ c_rgszSh[3] = "Others";
 
 
 
@@ -305,12 +307,16 @@ function fnSetActiveSheet(iSh)
     <x:WorksheetSource HRef="2_files/sheet001.htm"/>
    </x:ExcelWorksheet>
    <x:ExcelWorksheet>
-    <x:Name>FB Pages</x:Name>
+    <x:Name>Borsa</x:Name>
     <x:WorksheetSource HRef="2_files/sheet002.htm"/>
    </x:ExcelWorksheet>
    <x:ExcelWorksheet>
-    <x:Name>Others</x:Name>
+    <x:Name>FB Pages</x:Name>
     <x:WorksheetSource HRef="2_files/sheet003.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>Others</x:Name>
+    <x:WorksheetSource HRef="2_files/sheet004.htm"/>
    </x:ExcelWorksheet>
   </x:ExcelWorksheets>
   <x:Stylesheet HRef="2_files/stylesheet.css"/>
