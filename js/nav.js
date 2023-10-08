@@ -1,4 +1,4 @@
-const links = ["1","2","3","English","P1","Inside"], 
+const links = ["1","2","3","Body","P1","Inside"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
@@ -31,7 +31,7 @@ links.forEach((c, b) => { let d = c[b] = create_e(ul, "li", "nav-item", null, { 
 
 if(links[b] =="AR_CS" ||
       links[b] =="P1" ||  
- links[b] =="English" ||  
+ links[b] =="Body" ||  
  links[b] =="Inside"  ||
  links[b] =="2" 
   )
