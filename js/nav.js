@@ -1,4 +1,4 @@
-const links = ["1","2","3","Body","P1","Inside"], 
+const links = ["1","2","3","4","Body","P1"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
@@ -33,7 +33,8 @@ if(links[b] =="AR_CS" ||
       links[b] =="P1" ||  
  links[b] =="Body" ||  
  links[b] =="Inside"  ||
- links[b] =="2" 
+ links[b] =="2" ||
+ links[b] =="4" 
   )
  {
     create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.htm` });    
