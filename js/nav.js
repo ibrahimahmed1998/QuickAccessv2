@@ -1,4 +1,4 @@
-const links = ["1","2","3","4","Body","P1"], 
+const links = ["1","2","4","Body","P1"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
