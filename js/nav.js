@@ -16,8 +16,7 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" }); 
 
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
-create_e(yu,"b", "imgheader", "youbtube", {name:"src",val:"../IMG/youbtube.png"}), 
-
+create_e(yu,"b", "imgheader", "youtube", {name:"src",val:"../IMG/youbtube.png"}), 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
 const element4 = document.querySelector("#navbarResponsive"), 
