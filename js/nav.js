@@ -16,11 +16,13 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" }); 
  const trans = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://translate.google.com" }); 
  const cs = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "cs.htm" }); 
+ const freelance = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Freelance.htm" }); 
 
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
-create_e(yu,"b", "imgheader", "youtube", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(yu,"b", "imgheader", "Youtube", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(trans,"b", "imgheader", "Translate", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(cs,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(freelance,"b", "imgheader", "Freelance", {name:"src",val:"../IMG/youbtube.png"}), 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
 const element4 = document.querySelector("#navbarResponsive"), 
