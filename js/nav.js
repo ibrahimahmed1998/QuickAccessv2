@@ -1,4 +1,4 @@
-const links = ["3"], 
+const links = ["Other"], 
 create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
@@ -15,13 +15,13 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const a = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.linkedin.com" }); 
  const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" }); 
  const trans = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://translate.google.com" }); 
- const cs = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "cs.htm" }); 
+ const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS.htm" }); 
  const freelance = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Freelance.htm" }); 
 
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
 create_e(yu,"b", "imgheader", "Youtube", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(trans,"b", "imgheader", "Translate", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(cs,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(freelance,"b", "imgheader", "Freelance", {name:"src",val:"../IMG/youbtube.png"}), 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
@@ -30,7 +30,7 @@ ul = create_e(element4, "ul", "navbar-nav ms-auto", null, { name: "id", val: "ul
 
 links.forEach((c, b) => { let d = c[b] = create_e(ul, "li", "nav-item", null, { name: "id", val: "li" + b }); 
 
-if(links[b] =="AR_CS" || links[b] =="P1" ||   links[b] =="Body" || links[b] =="2" || links[b] =="3" )
+if(links[b] =="AR_CS" || links[b] =="P1" ||   links[b] =="Body" || links[b] =="2" || links[b] =="Other" )
  {create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.htm` });     }
 else{ create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.html` })  }
 })
