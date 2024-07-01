@@ -72,7 +72,8 @@ img:hover {
 }
 
 .nav-link {
-    font-weight: 700
+    font-weight: 700;
+    color: white !important;
 }
 
 .navbar.navbar-expand-lg.navbar-dark.bg-dark,
@@ -83,10 +84,8 @@ img:hover {
 }
 
 .navbar-brand {
-    margin: 0% 30% 0% -15%;
+    margin: 0% 30% 0% -22%;
 }
-
-.nav-link { color: white !important; }
 
 .nav-link:hover, .navbar-brand:hover { color: #a71ea7 !important; }
 

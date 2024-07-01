@@ -1,5 +1,4 @@
-const links = ["Other"], 
-create_e = (root, ele, d, txt, c) => { 
+const links = ["Other"], create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),
     txt && (b.textContent = txt),
@@ -17,20 +16,30 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const trans = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://translate.google.com" }); 
  const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS.htm" }); 
  const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" }); 
+ const Sell = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "sell.html" }); 
+ const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
+ const AI = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://ai.com" }); 
+ const Copilot = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://copilot.microsoft.com/" }); 
 
+ 
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
 create_e(yu,"b", "imgheader", "Youtube", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(trans,"b", "imgheader", "Translate", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(More,"b", "imgheader", "More", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(Sell,"b", "imgheader", "Sell", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(GPT,"b", "imgheader", "GPT", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(AI,"b", "imgheader", "AI", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(Copilot,"b", "imgheader", "Copilot", {name:"src",val:"../IMG/youbtube.png"}), 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
+
 const element4 = document.querySelector("#navbarResponsive"), 
 ul = create_e(element4, "ul", "navbar-nav ms-auto", null, { name: "id", val: "ul1" }); 
 
 links.forEach((c, b) => { let d = c[b] = create_e(ul, "li", "nav-item", null, { name: "id", val: "li" + b }); 
 
-if(links[b] =="AR_CS" || links[b] =="P1" ||   links[b] =="Body" || links[b] =="2" || links[b] =="Other" || links[b] =="More" )
+if(  links[b] =="2" || links[b] =="Other"  )
  {create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.htm` });     }
 else{ create_e(d, "a", "nav-link", links[b], { name: "href", val: `${links[b]}.html` })  }
 })
