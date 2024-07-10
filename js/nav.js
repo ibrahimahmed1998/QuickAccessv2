@@ -18,9 +18,7 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" }); 
  const Sell = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "sell.html" }); 
  const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
- const AI = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://ai.com" }); 
- const Copilot = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://copilot.microsoft.com/" }); 
-
+ 
  
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
 create_e(yu,"b", "imgheader", "Youtube", {name:"src",val:"../IMG/youbtube.png"}), 
@@ -29,8 +27,6 @@ create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}),
 create_e(More,"b", "imgheader", "More", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(Sell,"b", "imgheader", "Sell", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(GPT,"b", "imgheader", "GPT", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(AI,"b", "imgheader", "AI", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(Copilot,"b", "imgheader", "Copilot", {name:"src",val:"../IMG/youbtube.png"}), 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
 
