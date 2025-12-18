@@ -17,7 +17,7 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS.htm" }); 
  const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" }); 
  const Sell = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "sell.html" }); 
- const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
+//  const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
  
  
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
@@ -26,7 +26,7 @@ create_e(trans,"b", "imgheader", "Translate", {name:"src",val:"../IMG/youbtube.p
 create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(More,"b", "imgheader", "More", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(Sell,"b", "imgheader", "Sell", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(GPT,"b", "imgheader", "GPT", {name:"src",val:"../IMG/youbtube.png"}), 
+// create_e(GPT,"b", "imgheader", "GPT", {name:"src",val:"../IMG/youbtube.png"}), 
 
 create_e(div1, "div", "collapse navbar-collapse", null, { name: "id", val: "navbarResponsive" }); 
 
