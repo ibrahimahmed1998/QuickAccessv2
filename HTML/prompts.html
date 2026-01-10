@@ -1,0 +1,136 @@
+<head id="head"><title>Prompts</title><link rel="icon" href="../css/icon1.jpg" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="../css/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/new2.css" />
+</head><body id="test"><script src="../js/nav.js"></script>
+<table class="table mind"><tr>
+<th colspan="8" style="color: rgb(255, 127, 202) !important; font-size: 1.2em;">CODING GUIDELINES & BEST PRACTICES</th>
+</tr><tr>
+<th colspan="8" style="color: greenyellow !important;">OOP & SOLID Principles</th>
+</tr><tr>
+<td colspan="8" style="text-align: left; padding: 15px;">
+• Use OOP & SOLID Principles in all code implementations<br>
+• Single Responsibility: Each class should have one reason to change<br>
+• Open/Closed: Open for extension, closed for modification<br>
+• Liskov Substitution: Derived classes must be substitutable for base classes<br>
+• Interface Segregation: Don't force clients to depend on unused methods<br>
+• Dependency Inversion: Depend on abstractions, not concretions
+</td>
+</tr>
+<tr>
+<th colspan="8" style="color: greenyellow !important;">Code Quality & Performance</th>
+</tr><tr>
+<td colspan="8" style="text-align: left; padding: 15px;">
+• <strong>Use Top = 1</strong> instead of First() or FirstOrDefault()<br>
+• <strong>Use Record Codes</strong> not GUID (Custom Field preferred)<br>
+• <strong>Add NoLock</strong> within queries: <code>var q = new QueryExpression("EntityName") { NoLock = true; };</code><br>
+• <strong>Execute Multiple Transaction</strong> instead of for loop updates<br>
+• <strong>Don't use dynamic or var</strong> - Use the matched data type explicitly<br>
+• <strong>Add Logs and Traces</strong> for debugging and monitoring
+</td>
+</tr>
+<tr>
+<th colspan="8" style="color: greenyellow !important;">Communication Style</th>
+</tr><tr>
+<td colspan="8" style="text-align: left; padding: 15px;">
+• Consider me as <strong>beginner or caveman</strong> - explain thoroughly<br>
+• Mention the <strong>best story or use case</strong> for the question<br>
+• Provide <strong>Summary in AR-EG</strong> (Arabic - Egyptian)<br>
+• Ask before showing <strong>worst scenario or bad code design</strong><br>
+• If query about code: <strong>speak a lot, give full context, no short answers</strong><br>
+• Provide complete explanations with real-world examples
+</td>
+</tr>
+</table>
+
+<table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr>
+<th colspan="8" style="color: rgb(93, 93, 235) !important; font-size: 1.2em;">DYNAMICS 365 / POWER PLATFORM SPECIFIC</th>
+</tr><tr>
+<td colspan="8" style="text-align: left; padding: 15px;">
+<strong>Query Best Practices:</strong><br>
+✓ Use QueryExpression with NoLock = true<br>
+✓ Use Top = 1 for single record retrieval<br>
+✓ Filter by Record Code instead of GUID when possible<br><br>
+
+<strong>Bulk Operations:</strong><br>
+✓ Use ExecuteMultipleRequest with transactions<br>
+✓ Avoid for loops for update/create operations<br>
+✓ Handle partial success scenarios<br><br>
+
+<strong>Type Safety:</strong><br>
+✓ Use Entity early-bound classes<br>
+✓ Avoid 'dynamic' keyword<br>
+✓ Avoid 'var' unless type is obvious from right side<br>
+✓ Use OptionSetValue, Money, EntityReference types explicitly
+</td>
+</tr>
+</table>
+
+<table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr>
+<th colspan="8" style="color: rgb(199, 202, 34) !important; font-size: 1.2em;">CODE EXAMPLES</th>
+</tr><tr>
+<td colspan="8" style="text-align: left; padding: 15px;">
+<strong>✅ GOOD - Use Top = 1:</strong><br>
+<code style="color: lightgreen;">
+QueryExpression query = new QueryExpression("account")<br>
+{<br>
+&nbsp;&nbsp;NoLock = true,<br>
+&nbsp;&nbsp;TopCount = 1<br>
+};<br>
+EntityCollection results = service.RetrieveMultiple(query);
+</code><br><br>
+
+<strong>❌ BAD - Using First():</strong><br>
+<code style="color: salmon;">
+var accounts = service.RetrieveMultiple(query).Entities.First();
+</code><br><br>
+
+<strong>✅ GOOD - ExecuteMultiple:</strong><br>
+<code style="color: lightgreen;">
+ExecuteMultipleRequest multipleRequest = new ExecuteMultipleRequest()<br>
+{<br>
+&nbsp;&nbsp;Settings = new ExecuteMultipleSettings() { ContinueOnError = true, ReturnResponses = true },<br>
+&nbsp;&nbsp;Requests = new OrganizationRequestCollection()<br>
+};
+</code><br><br>
+
+<strong>❌ BAD - For Loop Updates:</strong><br>
+<code style="color: salmon;">
+foreach(Entity entity in entities)<br>
+{<br>
+&nbsp;&nbsp;service.Update(entity); // Slow, multiple round trips<br>
+}
+</code>
+</td>
+</tr>
+</table>
+
+<table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr>
+<th colspan="8" style="color: red !important; font-size: 1.2em;">QUICK REFERENCE</th>
+</tr><tr>
+<th><a href="1.html">Main Links</a></th>
+<th><a href="NET.html">.NET Resources</a></th>
+<th><a href="AI.html">AI Resources</a></th>
+<th><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/samples/">D365 Code Samples</a></th>
+<th><a href="https://learn.microsoft.com/en-us/dotnet/csharp/">C# Docs</a></th>
+<th><a href="https://refactoring.guru" style="color: greenyellow !important;">Refactoring Guru</a></th>
+<th><a href="https://www.c-sharpcorner.com">C# Corner</a></th>
+<th><a href="https://stackoverflow.com">Stack Overflow</a></th>
+</tr>
+</table>
+
+<!--
+PROMPT TEMPLATE FOR AI ASSISTANTS:
+====================================
+When I ask about code:
+- Use OOP & SOLID Principles, logs and traces
+- Use Top = 1 not first or default
+- Use Record Codes not GUID // Custom Field
+- Add No Lock within Queries ex: var q = new QueryExpression("EntityName") { NoLock = true; };
+- Use execute multiple transaction instead of for loop update
+- Don't use dynamic or var try to use the matched data type
+- Consider me as beginner or caveman
+- Mention the best story or use case for this question
+- Summery in AR-EG
+- Ask me if you can give the worst scenario or bad code design
+- if my query about code or not speak a lot and give me full context no short answers
+-->
