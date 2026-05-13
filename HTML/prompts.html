@@ -1,11 +1,26 @@
 <head id="head"><title>Prompts</title><link rel="icon" href="../css/icon1.jpg" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="../css/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/new2.css" />
+<style>
+	body { background: #181824; color: #f3f3f3; }
+	.section-icon { font-size: 1.3em; margin-right: 8px; vertical-align: middle; }
+	.summary-card { background: #232336; border-radius: 12px; box-shadow: 0 2px 8px #0002; padding: 24px; margin: 24px auto 32px auto; max-width: 900px; }
+	.table.mind { margin-bottom: 32px; }
+	code { background: #232336; border-radius: 4px; padding: 2px 6px; }
+	th[colspan="8"] { letter-spacing: 0.5px; }
+</style>
 </head><body id="test"><script src="../js/nav.js"></script>
+<div class="summary-card">
+	<h2 style="color:rgb(255,127,202);margin-bottom:10px;">🚀 Coding & D365 Prompt Reference</h2>
+	<div style="font-size:1.1em;line-height:1.7;">
+		This page collects the most important coding guidelines, best practices, and quick references for Dynamics 365, Power Platform, and general software engineering. Use it as your daily cheat sheet for writing clean, maintainable, and high-performance code.<br>
+		<span style="color:greenyellow;">Tip:</span> Each section below is color-coded and includes icons for fast scanning.
+	</div>
+</div>
 <table class="table mind"><tr>
-<th colspan="8" style="color: rgb(255, 127, 202) !important; font-size: 1.2em;">CODING GUIDELINES & BEST PRACTICES</th>
+<th colspan="8" style="color: rgb(255, 127, 202) !important; font-size: 1.2em;"><span class="section-icon">💡</span>CODING GUIDELINES & BEST PRACTICES</th>
 </tr><tr>
-<th colspan="8" style="color: greenyellow !important;">OOP & SOLID Principles</th>
+<th colspan="8" style="color: greenyellow !important;"><span class="section-icon">🧩</span>OOP & SOLID Principles</th>
 </tr><tr>
 <td colspan="8" style="text-align: left; padding: 15px;">
 • Use OOP & SOLID Principles in all code implementations<br>
@@ -17,7 +32,7 @@
 </td>
 </tr>
 <tr>
-<th colspan="8" style="color: greenyellow !important;">Code Quality & Performance</th>
+<th colspan="8" style="color: greenyellow !important;"><span class="section-icon">⚡</span>Code Quality & Performance</th>
 </tr><tr>
 <td colspan="8" style="text-align: left; padding: 15px;">
 • <strong>Use Top = 1</strong> instead of First() or FirstOrDefault()<br>
@@ -29,7 +44,7 @@
 </td>
 </tr>
 <tr>
-<th colspan="8" style="color: greenyellow !important;">Communication Style</th>
+<th colspan="8" style="color: greenyellow !important;"><span class="section-icon">🗣️</span>Communication Style</th>
 </tr><tr>
 <td colspan="8" style="text-align: left; padding: 15px;">
 • Consider me as <strong>beginner or caveman</strong> - explain thoroughly<br>
@@ -43,7 +58,7 @@
 </table>
 
 <table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr>
-<th colspan="8" style="color: rgb(93, 93, 235) !important; font-size: 1.2em;">DYNAMICS 365 / POWER PLATFORM SPECIFIC</th>
+<th colspan="8" style="color: rgb(93, 93, 235) !important; font-size: 1.2em;"><span class="section-icon">🧭</span>DYNAMICS 365 / POWER PLATFORM SPECIFIC</th>
 </tr><tr>
 <td colspan="8" style="text-align: left; padding: 15px;">
 <strong>Query Best Practices:</strong><br>
@@ -66,7 +81,7 @@
 </table>
 
 <table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr>
-<th colspan="8" style="color: rgb(199, 202, 34) !important; font-size: 1.2em;">CODE EXAMPLES</th>
+<th colspan="8" style="color: rgb(199, 202, 34) !important; font-size: 1.2em;"><span class="section-icon">📋</span>CODE EXAMPLES</th>
 </tr><tr>
 <td colspan="8" style="text-align: left; padding: 15px;">
 <strong>✅ GOOD - Use Top = 1:</strong><br>
@@ -96,7 +111,7 @@ ExecuteMultipleRequest multipleRequest = new ExecuteMultipleRequest()<br>
 <strong>❌ BAD - For Loop Updates:</strong><br>
 <code style="color: salmon;">
 foreach(Entity entity in entities)<br>
-{<br>
+{
 &nbsp;&nbsp;service.Update(entity); // Slow, multiple round trips<br>
 }
 </code>
@@ -105,7 +120,7 @@ foreach(Entity entity in entities)<br>
 </table>
 
 <table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr>
-<th colspan="8" style="color: red !important; font-size: 1.2em;">QUICK REFERENCE</th>
+<th colspan="8" style="color: red !important; font-size: 1.2em;"><span class="section-icon">⏩</span>QUICK REFERENCE</th>
 </tr><tr>
 <th><a href="1.html">Main Links</a></th>
 <th><a href="NET.html">.NET Resources</a></th>
