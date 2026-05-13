@@ -19,6 +19,7 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const Local = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Local.html" }); 
  const Prompts = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "prompts.html" }); 
  const Projects = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Projects.html" }); 
+ Projects.style.setProperty("color", "#23B5D3", "important");
 //  const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
  
  
