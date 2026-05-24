@@ -1,0 +1,413 @@
+# .NET Backend Engineer Master Skill Tree 🚀
+
+Purpose:
+This document defines the expected skills, architecture standards, coding principles,
+and production engineering practices for elite ASP.NET Core backend development.
+
+Optimized for:
+- AI coding agents
+- Senior backend workflows
+- Enterprise ASP.NET Core systems
+- High-scale APIs
+- SaaS platforms
+- AI-ready backend systems
+
+---
+
+# 1. Core Language Mastery (C#)
+
+A backend engineer must deeply understand C# before scaling systems.
+
+## Required Topics
+
+### Fundamentals
+- Types
+- Nullable reference types
+- Collections
+- Generics
+- LINQ
+- Delegates
+- Events
+- Extension methods
+
+### Advanced
+- async / await
+- Task Parallel Library
+- CancellationToken
+- Span<T>
+- Memory<T>
+- IAsyncEnumerable
+- Reflection
+- Attributes
+- Source Generators
+- Expression Trees
+
+### Performance
+- Boxing / Unboxing
+- Heap vs Stack
+- GC behavior
+- Object pooling
+- Allocation reduction
+
+### Clean Coding
+- SOLID
+- DRY
+- KISS
+- YAGNI
+- Composition over inheritance
+
+---
+
+# 2. ASP.NET Core Mastery
+
+## Core Concepts
+
+- Middleware Pipeline
+- Dependency Injection
+- Configuration System
+- Minimal APIs
+- Controllers
+- Filters
+- Model Binding
+- Validation
+- Endpoint Routing
+
+## API Development
+
+### REST APIs
+- Proper HTTP methods
+- Status codes
+- API versioning
+- Pagination
+- Filtering
+- Sorting
+
+### OpenAPI
+- Swagger
+- Scalar
+
+### Serialization
+- System.Text.Json
+- Custom converters
+
+---
+
+# 3. Architecture
+
+## Mandatory Architectural Patterns
+
+### Clean Architecture
+Layers:
+- Domain
+- Application
+- Infrastructure
+- Presentation
+
+### DDD
+- Entities
+- Value Objects
+- Aggregates
+- Domain Events
+
+### CQRS
+- Commands
+- Queries
+- MediatR
+
+### Vertical Slice Architecture
+Preferred for scalable APIs.
+
+---
+
+# 4. Database Engineering
+
+## SQL Databases
+
+Primary:
+- PostgreSQL
+- SQL Server
+
+## ORM
+
+### Entity Framework Core
+Must Know:
+- DbContext lifecycle
+- Fluent API
+- Migrations
+- Query optimization
+- AsNoTracking
+- Compiled queries
+- Transactions
+
+## SQL Skills
+
+- Indexing
+- Joins
+- Execution plans
+- CTEs
+- Window functions
+- Transactions
+- Isolation levels
+
+## NoSQL
+
+- Redis
+- MongoDB
+
+---
+
+# 5. Authentication & Security
+
+## Authentication
+- JWT
+- OAuth2
+- OpenID Connect
+
+## Authorization
+- Policies
+- Roles
+- Claims
+
+## Security Best Practices
+
+- HTTPS only
+- Secure headers
+- Input validation
+- Rate limiting
+- Secret management
+- API key protection
+
+## OWASP Top 10
+Mandatory knowledge.
+
+---
+
+# 6. Async & Scalability
+
+High-scale systems depend on proper async architecture.
+
+## Required Skills
+
+- Fully async request pipeline
+- Avoid blocking calls
+- Thread pool understanding
+- Background services
+- Queues
+- Event-driven systems
+
+## Messaging
+
+- RabbitMQ
+- Kafka
+- Azure Service Bus
+
+---
+
+# 7. Caching
+
+## Technologies
+- Redis
+- MemoryCache
+- Distributed Cache
+
+## Concepts
+- Cache Aside
+- TTL
+- Sliding expiration
+- Response caching
+
+---
+
+# 8. Cloud & DevOps
+
+## Containers
+
+- Docker
+- Docker Compose
+
+## CI/CD
+
+- GitHub Actions
+- Azure DevOps
+
+## Cloud
+
+Primary:
+- Microsoft Azure
+
+Secondary:
+- AWS
+
+## Azure Services
+- App Service
+- Azure SQL
+- Azure Functions
+- Service Bus
+- Key Vault
+- Application Insights
+
+---
+
+# 9. Observability
+
+## Logging
+- Serilog
+- Structured logging
+
+## Monitoring
+- Grafana
+- Prometheus
+- Application Insights
+
+## Tracing
+- OpenTelemetry
+- Correlation IDs
+
+---
+
+# 10. Testing
+
+## Unit Testing
+- xUnit
+- FluentAssertions
+- Moq / NSubstitute
+
+## Integration Testing
+- TestContainers
+- WebApplicationFactory
+
+## API Testing
+- Postman
+- Bruno
+
+---
+
+# 11. Performance Engineering
+
+## Critical Skills
+
+- Async optimization
+- Query optimization
+- Response compression
+- Memory optimization
+- HTTP connection pooling
+
+## Must Avoid
+
+- Blocking async code
+- N+1 queries
+- Large allocations
+- Sync-over-async
+- Creating HttpClient manually
+
+---
+
+# 12. Git & Team Collaboration
+
+## Required Skills
+
+- Branching strategies
+- Pull requests
+- Rebase
+- Cherry-pick
+- Conflict resolution
+
+## Preferred Workflow
+- Trunk-based development
+
+---
+
+# 13. Production Readiness
+
+## Health & Reliability
+
+- Health checks
+- Retry policies
+- Circuit breakers
+- Idempotency
+- Graceful shutdown
+
+## Libraries
+- Polly
+
+---
+
+# 14. AI-Ready Backend Engineering 🤖
+
+Modern .NET backends increasingly integrate AI systems.
+
+## Skills
+
+- OpenAI APIs
+- Semantic Kernel
+- MCP servers
+- Vector databases
+- RAG pipelines
+- Embeddings
+
+## Vector DBs
+
+- Qdrant
+- Pinecone
+- pgvector
+
+---
+
+# 15. Senior-Level System Design
+
+## Required Topics
+
+- Distributed systems
+- CAP theorem
+- Eventual consistency
+- Horizontal scaling
+- Load balancing
+- CDN
+- API gateways
+
+## Practice Systems
+
+Build:
+- LMS backend
+- Chat system
+- Booking system
+- Payment gateway
+- AI assistant backend
+
+---
+
+# 16. Recommended NuGet Packages
+
+## Architecture
+- MediatR
+- FluentValidation
+- AutoMapper
+
+## Logging
+- Serilog.AspNetCore
+
+## Resilience
+- Polly
+
+## Documentation
+- Swashbuckle.AspNetCore
+
+## Testing
+- FluentAssertions
+- Respawn
+
+---
+
+# 17. Preferred Backend Folder Structure
+
+```txt
+src/
+ ├── Api/
+ ├── Application/
+ ├── Domain/
+ ├── Infrastructure/
+ └── Shared/
+
+tests/
+ ├── UnitTests/
+ └── IntegrationTests/
