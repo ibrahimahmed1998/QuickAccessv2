@@ -12,10 +12,10 @@ const nav = create_e(body, "nav", className, null, { name: "id" ,val:"mainNav" }
 const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div1" });
    
  const a = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.linkedin.com" }); 
- const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" }); 
- const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS.htm" }); 
- const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" }); 
- const Sell = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "sell.html" }); 
+ const yu = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://www.youtube.com/feed/subscriptions" });
+ const AI = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "AI.html" });
+ const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS.htm" });
+ const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" });
  const Local = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Local.html" }); 
  const Prompts = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "prompts.html" }); 
  const Projects = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Projects.html" }); 
@@ -24,10 +24,10 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  
  
 create_e(a,"b", "imgheader", "Linkedin", {name:"src",val:"../IMG/in.png"}), 
-create_e(yu,"b", "imgheader", "Youtube", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(More,"b", "imgheader", "More", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(Sell,"b", "imgheader", "Sell", {name:"src",val:"../IMG/youbtube.png"}), 
+create_e(yu,"b", "imgheader", "Youtube", {name:"src",val:"../IMG/youbtube.png"}),
+create_e(AI,"b", "imgheader", "AI", {name:"src",val:"../IMG/youbtube.png"}),
+create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}),
+create_e(More,"b", "imgheader", "More", {name:"src",val:"../IMG/youbtube.png"}),
 create_e(Local,"b", "imgheader", "Local", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(Prompts,"b", "imgheader", "Prompts", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(Projects,"b", "imgheader", "Projects", {name:"src",val:"../IMG/youbtube.png"}), 
