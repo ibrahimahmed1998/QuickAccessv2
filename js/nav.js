@@ -17,7 +17,6 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS.htm" });
  const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" });
  const Local = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Local.html" }); 
- const Prompts = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "prompts.html" }); 
  const Projects = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Projects.html" }); 
  Projects.style.setProperty("color", "#23B5D3", "important");
 //  const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
@@ -29,7 +28,6 @@ create_e(AI,"b", "imgheader", "AI", {name:"src",val:"../IMG/youbtube.png"}),
 create_e(CS,"b", "imgheader", "CS", {name:"src",val:"../IMG/youbtube.png"}),
 create_e(More,"b", "imgheader", "More", {name:"src",val:"../IMG/youbtube.png"}),
 create_e(Local,"b", "imgheader", "Local", {name:"src",val:"../IMG/youbtube.png"}), 
-create_e(Prompts,"b", "imgheader", "Prompts", {name:"src",val:"../IMG/youbtube.png"}), 
 create_e(Projects,"b", "imgheader", "Projects", {name:"src",val:"../IMG/youbtube.png"}), 
 // create_e(GPT,"b", "imgheader", "GPT", {name:"src",val:"../IMG/youbtube.png"}), 
 
