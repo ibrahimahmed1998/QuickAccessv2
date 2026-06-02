@@ -1,0 +1,81 @@
+# ==========================================
+# .claudeignore — ASP.NET Web API Project
+# ==========================================
+
+# Build outputs
+bin/
+obj/
+out/
+publish/
+
+# Package restore
+packages/
+*.nupkg
+
+# Entity Framework — ignore migration snapshots & designer files
+# (Claude should NOT auto-generate or modify migrations)
+**/Migrations/*Designer.cs
+**/Migrations/*ModelSnapshot.cs
+
+# Test results & coverage
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.coveragexml
+
+# Secrets & environment config — NEVER expose these
+appsettings.Production.json
+appsettings.Staging.json
+**/*.pfx
+**/*.p12
+**/*.key
+**/*.pem
+.env
+.env.*
+secrets.json
+**/Properties/launchSettings.json
+
+# Azure config & deployment artifacts
+.azure/
+azure-pipelines.yml
+*.pubxml
+*.pubxml.user
+deploy/
+infra/
+bicep/
+terraform/
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Visual Studio & Rider IDE files
+.vs/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+*.userosscache
+*.userprefs
+
+# Auto-generated & designer files
+*.Designer.cs
+*.g.cs
+*.g.i.cs
+*_generated.cs
+GlobalUsings.g.cs
+AssemblyInfo.cs
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NuGet internals
+.nuget/
+nuget.config
