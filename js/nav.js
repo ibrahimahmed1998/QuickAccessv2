@@ -17,7 +17,7 @@ const div1 = create_e(nav, "div", "container px-4", null, { name:"id" , val:"div
  const CS = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "CS/CS.html" });
  const More = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "More.html" });
  const Local = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Local.html" }); 
- const Projects = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Projects.html" }); 
+ const Projects = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "Projects/Projects.html" }); 
  Projects.style.setProperty("color", "#23B5D3", "important");
 //  const GPT = create_e(div1, "a", "navbar-brand", null, { name: "href", val: "https://chatgpt.com/?model=gpt-4o" }); 
  
