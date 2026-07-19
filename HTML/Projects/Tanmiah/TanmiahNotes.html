@@ -55,6 +55,7 @@
             text-transform: uppercase;
             color: var(--tn-accent);
             font-weight: 700;
+            text-align: right;
         }
 
         .tn-title {
@@ -62,12 +63,14 @@
             font-weight: 800;
             margin: 0;
             color: #fff;
+            text-align: right;
         }
 
         .tn-subtitle {
             color: var(--tn-muted);
             font-size: 14px;
             margin: 0;
+            text-align: right;
         }
 
         .tn-tags {
@@ -133,6 +136,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-align: right;
+            direction: rtl;
         }
 
         .tn-card-title .dot {
@@ -202,13 +207,214 @@
             border: 1px solid rgba(79, 209, 197, 0.2);
             border-radius: 8px;
             white-space: nowrap;
+            text-align: right;
+            direction: rtl;
         }
 
         .tn-kv .v {
             color: var(--tn-text);
             font-size: 15px;
             line-height: 1.6;
+            text-align: right;
+            direction: rtl;
         }
+
+        /* Section headers between grids */
+        .tn-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 32px 4px 14px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .tn-section-title .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #0b1220;
+            background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2));
+            box-shadow: 0 4px 14px rgba(79, 209, 197, 0.35);
+        }
+
+        .tn-section-title .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--tn-border), transparent);
+        }
+
+        html[dir="rtl"] .tn-section-title .line {
+            background: linear-gradient(270deg, var(--tn-border), transparent);
+        }
+
+        /* Card variants */
+        .tn-card.accent-good::before { background: linear-gradient(180deg, var(--tn-good), var(--tn-accent)); }
+        .tn-card.accent-warn::before { background: linear-gradient(180deg, var(--tn-warn), #ff8a5c); }
+        .tn-card.accent-info::before { background: linear-gradient(180deg, var(--tn-accent-2), #b18cff); }
+
+        /* Compact note under card */
+        .tn-note {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            color: var(--tn-muted);
+            background: rgba(124, 156, 255, 0.06);
+            border: 1px dashed rgba(124, 156, 255, 0.25);
+            line-height: 1.7;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .tn-note strong { color: var(--tn-accent); font-weight: 700; }
+
+        /* Type chips (row of badges) */
+        .tn-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 4px 0 14px;
+        }
+
+        .tn-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid var(--tn-border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--tn-text);
+        }
+
+        .tn-type .swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--tn-accent);
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .tn-type.type-a { color: var(--tn-good); border-color: rgba(126, 231, 135, 0.35); background: rgba(126, 231, 135, 0.08); }
+        .tn-type.type-b { color: var(--tn-warn); border-color: rgba(255, 207, 92, 0.35); background: rgba(255, 207, 92, 0.08); }
+        .tn-type.type-c { color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.35); background: rgba(124, 156, 255, 0.10); }
+
+        /* Flow (steps) */
+        .tn-flow {
+            display: grid;
+            gap: 10px;
+        }
+
+        .tn-step {
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            gap: 12px;
+            align-items: start;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--tn-border);
+        }
+
+        .tn-step .n {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            font-weight: 800;
+            color: #0b1220;
+            background: linear-gradient(135deg, var(--tn-accent-2), var(--tn-accent));
+        }
+
+        .tn-step .txt {
+            color: var(--tn-text);
+            font-size: 15px;
+            line-height: 1.75;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .tn-step .txt small {
+            display: block;
+            margin-top: 4px;
+            color: var(--tn-muted);
+            font-size: 12.5px;
+        }
+
+        /* If/Then rule blocks */
+        .tn-rule {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 10px;
+            align-items: stretch;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--tn-border);
+            margin-bottom: 10px;
+        }
+
+        .tn-rule .cond,
+        .tn-rule .then {
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .tn-rule .cond {
+            background: rgba(124, 156, 255, 0.08);
+            border: 1px solid rgba(124, 156, 255, 0.25);
+            color: var(--tn-text);
+        }
+
+        .tn-rule .then {
+            background: rgba(79, 209, 197, 0.08);
+            border: 1px solid rgba(79, 209, 197, 0.25);
+            color: var(--tn-text);
+        }
+
+        .tn-rule .arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 8px;
+            color: var(--tn-accent);
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        html[dir="rtl"] .tn-rule .arrow::before { content: "◀"; }
+        html:not([dir="rtl"]) .tn-rule .arrow::before { content: "▶"; }
+
+        .tn-rule.negative .then {
+            background: rgba(255, 120, 120, 0.08);
+            border-color: rgba(255, 120, 120, 0.28);
+        }
+
+        @media (max-width: 620px) {
+            .tn-rule { grid-template-columns: 1fr; }
+            .tn-rule .arrow { transform: rotate(-90deg); padding: 2px 0; }
+        }
+
+        .tn-badge.info { background: rgba(124, 156, 255, 0.15); color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.25); }
+        .tn-badge.bad  { background: rgba(255, 120, 120, 0.12); color: #ff9b9b; border-color: rgba(255, 120, 120, 0.28); }
 
         .tn-footer {
             margin-top: 28px;
@@ -224,37 +430,208 @@
     <main class="tn-container">
         <header class="tn-header">
             <span class="tn-eyebrow">Tanmiah · Notes</span>
-            <h1 class="tn-title">ملاحظات التعويضات والزيارات</h1>
-            <p class="tn-subtitle">مرجع سريع لأنواع الطلبات وقواعد التعويض والزيارات الميدانية.</p>
+            <h1 class="tn-title">ملاحظات التعويضات ومسار الطلب</h1>
+            <p class="tn-subtitle">مرجع سريع لأنواع الطلبات، المستفيدين، الزيارات، التكامل مع مسار، والمسار الوظيفي للطلب حتى تسليم التعويض.</p>
             <div class="tn-tags">
                 <span class="tn-tag">#عقاري</span>
                 <span class="tn-tag">#مجتمعي</span>
-                <span class="tn-tag">#عقاري مجتمعي</span>
+                <span class="tn-tag">#عقاري_مجتمعي</span>
+                <span class="tn-tag">#مسار</span>
+                <span class="tn-tag">#التعويضات</span>
             </div>
         </header>
 
+        <!-- 1) Request Types & Beneficiaries -->
+        <h2 class="tn-section-title">
+            <span class="num">1</span>
+            <span>أنواع الطلبات والمستفيدين وقواعد التعويض</span>
+            <span class="line"></span>
+        </h2>
+
+        <div class="tn-types">
+            <span class="tn-type type-a"><span class="swatch"></span>عقاري</span>
+            <span class="tn-type type-b"><span class="swatch"></span>مجتمعي</span>
+            <span class="tn-type type-c"><span class="swatch"></span>عقاري / مجتمعي</span>
+        </div>
+
         <section class="tn-grid">
-            <article class="tn-card">
-                <h2 class="tn-card-title"><span class="dot"></span>قواعد التعويض</h2>
-                <ul class="tn-list">
-                    <li>المستأجر يتعوض <span class="tn-badge">تعويض مجتمعي</span> ( الحزم )</li>
-                    <li>لو مالك العقار مقيم فيه ( بيتعوض تعويضين <span class="tn-badge good">مادي</span> + <span class="tn-badge">مجتمعي</span> )</li>
-                </ul>
+            <article class="tn-card accent-good">
+                <h3 class="tn-card-title"><span class="dot"></span>عقاري</h3>
+                <div class="tn-kv">
+                    <div class="k">المستفيد</div>
+                    <div class="v">مالك العقار</div>
+                    <div class="k">التعويض</div>
+                    <div class="v"><span class="tn-badge good">تعويض مادي</span></div>
+                </div>
             </article>
 
-            <article class="tn-card">
-                <h2 class="tn-card-title"><span class="dot"></span>الزيارات حسب نوع الطلب</h2>
+            <article class="tn-card accent-warn">
+                <h3 class="tn-card-title"><span class="dot"></span>مجتمعي</h3>
                 <div class="tn-kv">
-                    <div class="k">مجتمعي</div>
-                    <div class="v">توجد <span class="tn-badge">زيارة ميدانية</span></div>
+                    <div class="k">المستفيد</div>
+                    <div class="v">مستأجر العقار</div>
+                    <div class="k">التعويض</div>
+                    <div class="v"><span class="tn-badge warn">تعويض مجتمعي</span> ( الحزم )</div>
+                </div>
+            </article>
 
-                    <div class="k">عقاري مجتمعي</div>
-                    <div class="v">توجد <span class="tn-badge warn">زيارة حصر</span> و <span class="tn-badge">زيارة ميدانية</span></div>
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>عقاري / مجتمعي</h3>
+                <div class="tn-kv">
+                    <div class="k">المستفيد</div>
+                    <div class="v">مالك العقار ويسكن فيه</div>
+                    <div class="k">التعويض</div>
+                    <div class="v"><span class="tn-badge good">مادي</span> + <span class="tn-badge warn">مجتمعي</span></div>
                 </div>
             </article>
         </section>
 
-        <div class="tn-footer">Tanmiah · Quick Reference</div>
+        <!-- 2) Visits per request type -->
+        <h2 class="tn-section-title">
+            <span class="num">2</span>
+            <span>الزيارات حسب نوع الطلب</span>
+            <span class="line"></span>
+        </h2>
+
+        <section class="tn-grid">
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>مصفوفة الزيارات</h3>
+                <div class="tn-kv">
+                    <div class="k">عقاري</div>
+                    <div class="v"><span class="tn-badge warn">زيارة حصر</span></div>
+
+                    <div class="k">مجتمعي</div>
+                    <div class="v"><span class="tn-badge info">زيارة ميدانية</span></div>
+
+                    <div class="k">عقاري / مجتمعي</div>
+                    <div class="v"><span class="tn-badge warn">زيارة حصر</span> + <span class="tn-badge info">زيارة ميدانية</span></div>
+                </div>
+                <div class="tn-note">
+                    <strong>جدولة زيارة الحصر:</strong> تقوم بها <strong>تنمية</strong> وليست مسار.
+                </div>
+            </article>
+
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>الإدارات المعنية بالزيارات</h3>
+                <div class="tn-kv">
+                    <div class="k">إدارة الجودة</div>
+                    <div class="v">لدراسة حالة العقار</div>
+
+                    <div class="k">إدارة المتابعة المجتمعية</div>
+                    <div class="v">لمتابعة حالة المستفيد</div>
+                </div>
+            </article>
+        </section>
+
+        <!-- 3) Integration with Masar (GIS) -->
+        <h2 class="tn-section-title">
+            <span class="num">3</span>
+            <span>التكامل مع مسار (GIS)</span>
+            <span class="line"></span>
+        </h2>
+
+        <section class="tn-grid">
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>ما الذي يُرسل إلى مسار؟</h3>
+                <ul class="tn-list">
+                    <li>الطلب <span class="tn-badge warn">مجتمعي</span> <span class="tn-badge bad">لا يذهب لمسار</span></li>
+                    <li>يذهب فقط الطلب <span class="tn-badge good">عقاري</span> أو <span class="tn-badge info">عقاري / مجتمعي</span></li>
+                    <li>لأن مسار مختصة فقط بالعقارات وليس المستأجرين</li>
+                </ul>
+            </article>
+
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>أمثلة للطلبات القادمة من GIS</h3>
+                <ul class="tn-list">
+                    <li>الاطلاع على <span class="tn-badge">محضر الحصر</span></li>
+                    <li>التدقيق</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- 4) Field visit scheduling & eligibility -->
+        <h2 class="tn-section-title">
+            <span class="num">4</span>
+            <span>جدولة الزيارة الميدانية وحالة الاستحقاق</span>
+            <span class="line"></span>
+        </h2>
+
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>حقل «حالة الاستحقاق» داخل جدولة الزيارة الميدانية</h3>
+            <div class="tn-rule">
+                <div class="cond">إذا كانت الحالة = <span class="tn-badge good">مستحق</span></div>
+                <div class="arrow" aria-hidden="true"></div>
+                <div class="then">يتم إنشاء ريكورد في <span class="tn-badge">خدمة التدقيق</span></div>
+            </div>
+            <div class="tn-rule negative">
+                <div class="cond">إذا كانت الحالة = <span class="tn-badge bad">غير مستحق</span></div>
+                <div class="arrow" aria-hidden="true"></div>
+                <div class="then">لا يتم إنشاء ريكورد في خدمة التدقيق</div>
+            </div>
+        </article>
+
+        <!-- 5) Routing by compensation type -->
+        <h2 class="tn-section-title">
+            <span class="num">5</span>
+            <span>مسار الطلب حسب نوع التعويض</span>
+            <span class="line"></span>
+        </h2>
+
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>قواعد التوجيه</h3>
+            <div class="tn-rule">
+                <div class="cond">نوع التعويض = <span class="tn-badge good">نقدي</span></div>
+                <div class="arrow" aria-hidden="true"></div>
+                <div class="then">الطلب يمر بـ <span class="tn-badge">الإدارة المالية</span></div>
+            </div>
+            <div class="tn-rule">
+                <div class="cond">نوع التعويض = <span class="tn-badge warn">عيني</span> <em>و</em> الطلب <span class="tn-badge good">عقاري</span></div>
+                <div class="arrow" aria-hidden="true"></div>
+                <div class="then">الطلب يمر بـ <span class="tn-badge">إدارة نقل الملكية</span></div>
+            </div>
+        </article>
+
+        <!-- 6) After financial service -->
+        <h2 class="tn-section-title">
+            <span class="num">6</span>
+            <span>ما بعد الخدمة المالية</span>
+            <span class="line"></span>
+        </h2>
+
+        <section class="tn-grid">
+            <article class="tn-card accent-good">
+                <h3 class="tn-card-title"><span class="dot"></span>خدمة جدولة زيارة واستلام التعويضات</h3>
+                <ul class="tn-list">
+                    <li>بعد انتهاء الطلب من مرحلة <span class="tn-badge">الخدمة المالية</span> يتم إنشاء طلب <span class="tn-badge good">تلقائياً</span> في هذه الخدمة.</li>
+                </ul>
+            </article>
+
+            <article class="tn-card accent-warn">
+                <h3 class="tn-card-title"><span class="dot"></span>خدمة تسليم الحزم والبرامج التنموية</h3>
+                <ul class="tn-list">
+                    <li>تُنشأ فقط إذا كان الطلب <span class="tn-badge warn">مجتمعي</span> أو <span class="tn-badge info">عقاري / مجتمعي</span></li>
+                    <li>وحالة الاستحقاق = <span class="tn-badge good">مستحق</span></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- 7) Post-relocation supervision -->
+        <h2 class="tn-section-title">
+            <span class="num">7</span>
+            <span>الإشراف على عملية النقل</span>
+            <span class="line"></span>
+        </h2>
+
+        <article class="tn-card accent-info">
+            <h3 class="tn-card-title"><span class="dot"></span>نموذج الإشراف على عملية النقل</h3>
+            <ul class="tn-list">
+                <li>يُستخدم <span class="tn-badge">بعد</span> انتقال المستفيد فعلياً من العقار.</li>
+                <li>لمتابعة والتأكد من إتمام عملية النقل بشكل سليم.</li>
+            </ul>
+        </article>
+
+        <p class="tn-footer">آخر تحديث للمرجع · Tanmiah Notes</p>
+
     </main>
 </body>
 </html>
