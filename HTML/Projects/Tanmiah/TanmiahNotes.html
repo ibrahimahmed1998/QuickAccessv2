@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanmiah Notes</title>
+    <link rel="icon" href="../../../css/icon1.jpg" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../../../css/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/new2.css">
+    <style>
+        :root {
+            --tn-bg: #0b1220;
+            --tn-panel: #111a2e;
+            --tn-panel-2: #16223b;
+            --tn-border: rgba(255, 255, 255, 0.08);
+            --tn-text: #e6ecf5;
+            --tn-muted: #9aa8bd;
+            --tn-accent: #4fd1c5;
+            --tn-accent-2: #7c9cff;
+            --tn-warn: #ffcf5c;
+            --tn-good: #7ee787;
+            --tn-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        html, body {
+            background: radial-gradient(1200px 600px at 80% -10%, rgba(124, 156, 255, 0.10), transparent 60%),
+                        radial-gradient(900px 500px at -10% 110%, rgba(79, 209, 197, 0.08), transparent 60%),
+                        var(--tn-bg) !important;
+            color: var(--tn-text);
+            font-family: "Segoe UI", "Cairo", Tahoma, Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .tn-container {
+            max-width: 1080px;
+            margin: 32px auto 64px;
+            padding: 0 20px;
+        }
+
+        .tn-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 28px 28px 22px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(124, 156, 255, 0.14), rgba(79, 209, 197, 0.10));
+            border: 1px solid var(--tn-border);
+            box-shadow: var(--tn-shadow);
+            margin-bottom: 24px;
+        }
+
+        .tn-eyebrow {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--tn-accent);
+            font-weight: 700;
+        }
+
+        .tn-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+            color: #fff;
+        }
+
+        .tn-subtitle {
+            color: var(--tn-muted);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .tn-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .tn-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #0b1220;
+            background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2));
+            border-radius: 999px;
+            letter-spacing: 0.3px;
+        }
+
+        .tn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .tn-card {
+            background: linear-gradient(180deg, var(--tn-panel), var(--tn-panel-2));
+            border: 1px solid var(--tn-border);
+            border-radius: 14px;
+            padding: 22px 22px 18px;
+            box-shadow: var(--tn-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+        }
+
+        .tn-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--tn-accent), var(--tn-accent-2));
+            border-radius: 4px 0 0 4px;
+        }
+
+        html[dir="rtl"] .tn-card::before {
+            inset: 0 0 0 auto;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .tn-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(124, 156, 255, 0.35);
+        }
+
+        .tn-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tn-card-title .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--tn-accent);
+            box-shadow: 0 0 12px var(--tn-accent);
+        }
+
+        .tn-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tn-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--tn-border);
+            color: var(--tn-text);
+            font-size: 15px;
+            line-height: 1.7;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .tn-list li:last-child { border-bottom: none; }
+
+        .tn-list li::before {
+            content: "◆";
+            color: var(--tn-accent);
+            font-size: 10px;
+            margin-top: 8px;
+            flex: none;
+        }
+
+        .tn-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 6px;
+            margin: 0 2px;
+            background: rgba(124, 156, 255, 0.15);
+            color: var(--tn-accent-2);
+            border: 1px solid rgba(124, 156, 255, 0.25);
+        }
+
+        .tn-badge.good { background: rgba(126, 231, 135, 0.12); color: var(--tn-good); border-color: rgba(126, 231, 135, 0.25); }
+        .tn-badge.warn { background: rgba(255, 207, 92, 0.12); color: var(--tn-warn); border-color: rgba(255, 207, 92, 0.25); }
+
+        .tn-kv {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 10px 16px;
+            align-items: center;
+        }
+
+        .tn-kv .k {
+            font-weight: 700;
+            color: var(--tn-accent);
+            padding: 6px 10px;
+            background: rgba(79, 209, 197, 0.08);
+            border: 1px solid rgba(79, 209, 197, 0.2);
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .tn-kv .v {
+            color: var(--tn-text);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .tn-footer {
+            margin-top: 28px;
+            text-align: center;
+            color: var(--tn-muted);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body id="test">
+    <script src="../../../js/nav.js"></script>
+
+    <main class="tn-container">
+        <header class="tn-header">
+            <span class="tn-eyebrow">Tanmiah · Notes</span>
+            <h1 class="tn-title">ملاحظات التعويضات والزيارات</h1>
+            <p class="tn-subtitle">مرجع سريع لأنواع الطلبات وقواعد التعويض والزيارات الميدانية.</p>
+            <div class="tn-tags">
+                <span class="tn-tag">#عقاري</span>
+                <span class="tn-tag">#مجتمعي</span>
+                <span class="tn-tag">#عقاري مجتمعي</span>
+            </div>
+        </header>
+
+        <section class="tn-grid">
+            <article class="tn-card">
+                <h2 class="tn-card-title"><span class="dot"></span>قواعد التعويض</h2>
+                <ul class="tn-list">
+                    <li>المستأجر يتعوض <span class="tn-badge">تعويض مجتمعي</span> ( الحزم )</li>
+                    <li>لو مالك العقار مقيم فيه ( بيتعوض تعويضين <span class="tn-badge good">مادي</span> + <span class="tn-badge">مجتمعي</span> )</li>
+                </ul>
+            </article>
+
+            <article class="tn-card">
+                <h2 class="tn-card-title"><span class="dot"></span>الزيارات حسب نوع الطلب</h2>
+                <div class="tn-kv">
+                    <div class="k">مجتمعي</div>
+                    <div class="v">توجد <span class="tn-badge">زيارة ميدانية</span></div>
+
+                    <div class="k">عقاري مجتمعي</div>
+                    <div class="v">توجد <span class="tn-badge warn">زيارة حصر</span> و <span class="tn-badge">زيارة ميدانية</span></div>
+                </div>
+            </article>
+        </section>
+
+        <div class="tn-footer">Tanmiah · Quick Reference</div>
+    </main>
+</body>
+</html>
