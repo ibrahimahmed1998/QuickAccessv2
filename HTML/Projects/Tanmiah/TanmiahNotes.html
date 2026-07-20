@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanmiah Notes</title>
+    <title>Tanmiah Notes — المرجع الكامل</title>
     <link rel="icon" href="../../../css/icon1.jpg" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../../../css/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../../css/new2.css">
@@ -19,6 +19,7 @@
             --tn-accent-2: #7c9cff;
             --tn-warn: #ffcf5c;
             --tn-good: #7ee787;
+            --tn-bad: #ff9b9b;
             --tn-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
 
@@ -31,397 +32,109 @@
             min-height: 100vh;
         }
 
-        .tn-container {
-            max-width: 1080px;
-            margin: 32px auto 64px;
-            padding: 0 20px;
-        }
+        .tn-container { max-width: 1080px; margin: 32px auto 64px; padding: 0 20px; }
 
         .tn-header {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 28px 28px 22px;
-            border-radius: 16px;
+            display: flex; flex-direction: column; gap: 10px;
+            padding: 28px 28px 22px; border-radius: 16px;
             background: linear-gradient(135deg, rgba(124, 156, 255, 0.14), rgba(79, 209, 197, 0.10));
-            border: 1px solid var(--tn-border);
-            box-shadow: var(--tn-shadow);
-            margin-bottom: 24px;
+            border: 1px solid var(--tn-border); box-shadow: var(--tn-shadow); margin-bottom: 24px;
         }
+        .tn-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--tn-accent); font-weight: 700; text-align: right; }
+        .tn-title { font-size: 28px; font-weight: 800; margin: 0; color: #fff; text-align: right; }
+        .tn-subtitle { color: var(--tn-muted); font-size: 14px; margin: 0; text-align: right; }
+        .tn-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+        .tn-tag { display: inline-flex; align-items: center; padding: 5px 12px; font-size: 12px; font-weight: 700; color: #0b1220; background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2)); border-radius: 999px; letter-spacing: 0.3px; }
 
-        .tn-eyebrow {
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--tn-accent);
-            font-weight: 700;
-            text-align: right;
-        }
+        /* Table of contents */
+        .tn-toc { background: linear-gradient(180deg, var(--tn-panel), var(--tn-panel-2)); border: 1px solid var(--tn-border); border-radius: 14px; padding: 18px 22px; margin-bottom: 28px; box-shadow: var(--tn-shadow); }
+        .tn-toc h2 { font-size: 15px; color: var(--tn-accent); margin: 0 0 12px; text-align: right; }
+        .tn-toc ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px 18px; }
+        .tn-toc a { color: var(--tn-text); text-decoration: none; font-size: 13.5px; display: flex; gap: 8px; align-items: center; direction: rtl; text-align: right; padding: 4px 0; }
+        .tn-toc a:hover { color: var(--tn-accent); }
+        .tn-toc a .num { color: var(--tn-accent-2); font-weight: 800; min-width: 18px; }
 
-        .tn-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin: 0;
-            color: #fff;
-            text-align: right;
-        }
-
-        .tn-subtitle {
-            color: var(--tn-muted);
-            font-size: 14px;
-            margin: 0;
-            text-align: right;
-        }
-
-        .tn-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 6px;
-        }
-
-        .tn-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 12px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #0b1220;
-            background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2));
-            border-radius: 999px;
-            letter-spacing: 0.3px;
-        }
-
-        .tn-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
+        .tn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
 
         .tn-card {
             background: linear-gradient(180deg, var(--tn-panel), var(--tn-panel-2));
-            border: 1px solid var(--tn-border);
-            border-radius: 14px;
-            padding: 22px 22px 18px;
-            box-shadow: var(--tn-shadow);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--tn-border); border-radius: 14px; padding: 22px 22px 18px;
+            box-shadow: var(--tn-shadow); position: relative; overflow: hidden;
             transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
         }
+        .tn-card::before { content: ""; position: absolute; inset: 0 0 0 auto; width: 4px; background: linear-gradient(180deg, var(--tn-accent), var(--tn-accent-2)); border-radius: 0 4px 4px 0; }
+        .tn-card:hover { transform: translateY(-2px); border-color: rgba(124, 156, 255, 0.35); }
 
-        .tn-card::before {
-            content: "";
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--tn-accent), var(--tn-accent-2));
-            border-radius: 4px 0 0 4px;
-        }
+        .tn-card-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; text-align: right; direction: rtl; }
+        .tn-card-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tn-accent); box-shadow: 0 0 12px var(--tn-accent); }
 
-        html[dir="rtl"] .tn-card::before {
-            inset: 0 0 0 auto;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .tn-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(124, 156, 255, 0.35);
-        }
-
-        .tn-card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            margin: 0 0 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-align: right;
-            direction: rtl;
-        }
-
-        .tn-card-title .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--tn-accent);
-            box-shadow: 0 0 12px var(--tn-accent);
-        }
-
-        .tn-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .tn-list li {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            padding: 10px 0;
-            border-bottom: 1px dashed var(--tn-border);
-            color: var(--tn-text);
-            font-size: 15px;
-            line-height: 1.7;
-            text-align: right;
-            direction: rtl;
-        }
-
+        .tn-list { list-style: none; margin: 0; padding: 0; }
+        .tn-list li { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px dashed var(--tn-border); color: var(--tn-text); font-size: 15px; line-height: 1.7; text-align: right; direction: rtl; }
         .tn-list li:last-child { border-bottom: none; }
+        .tn-list li::before { content: "◆"; color: var(--tn-accent); font-size: 10px; margin-top: 8px; flex: none; }
 
-        .tn-list li::before {
-            content: "◆";
-            color: var(--tn-accent);
-            font-size: 10px;
-            margin-top: 8px;
-            flex: none;
-        }
-
-        .tn-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 6px;
-            margin: 0 2px;
-            background: rgba(124, 156, 255, 0.15);
-            color: var(--tn-accent-2);
-            border: 1px solid rgba(124, 156, 255, 0.25);
-        }
-
+        .tn-badge { display: inline-block; padding: 2px 8px; font-size: 12px; font-weight: 700; border-radius: 6px; margin: 0 2px; background: rgba(124, 156, 255, 0.15); color: var(--tn-accent-2); border: 1px solid rgba(124, 156, 255, 0.25); }
         .tn-badge.good { background: rgba(126, 231, 135, 0.12); color: var(--tn-good); border-color: rgba(126, 231, 135, 0.25); }
         .tn-badge.warn { background: rgba(255, 207, 92, 0.12); color: var(--tn-warn); border-color: rgba(255, 207, 92, 0.25); }
+        .tn-badge.info { background: rgba(124, 156, 255, 0.15); color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.25); }
+        .tn-badge.bad { background: rgba(255, 120, 120, 0.12); color: var(--tn-bad); border-color: rgba(255, 120, 120, 0.28); }
 
-        .tn-kv {
-            display: grid;
-            grid-template-columns: max-content 1fr;
-            gap: 10px 16px;
-            align-items: center;
-        }
+        .tn-kv { display: grid; grid-template-columns: max-content 1fr; gap: 10px 16px; align-items: center; }
+        .tn-kv .k { font-weight: 700; color: var(--tn-accent); padding: 6px 10px; background: rgba(79, 209, 197, 0.08); border: 1px solid rgba(79, 209, 197, 0.2); border-radius: 8px; white-space: nowrap; text-align: right; direction: rtl; }
+        .tn-kv .v { color: var(--tn-text); font-size: 15px; line-height: 1.6; text-align: right; direction: rtl; }
 
-        .tn-kv .k {
-            font-weight: 700;
-            color: var(--tn-accent);
-            padding: 6px 10px;
-            background: rgba(79, 209, 197, 0.08);
-            border: 1px solid rgba(79, 209, 197, 0.2);
-            border-radius: 8px;
-            white-space: nowrap;
-            text-align: right;
-            direction: rtl;
-        }
+        .tn-section-title { display: flex; align-items: center; gap: 12px; margin: 32px 4px 14px; color: #fff; font-size: 18px; font-weight: 800; letter-spacing: 0.2px; text-align: right; direction: rtl; scroll-margin-top: 20px; }
+        .tn-section-title .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; font-size: 13px; font-weight: 800; color: #0b1220; background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2)); box-shadow: 0 4px 14px rgba(79, 209, 197, 0.35); flex: none; }
+        .tn-section-title .line { flex: 1; height: 1px; background: linear-gradient(270deg, var(--tn-border), transparent); }
 
-        .tn-kv .v {
-            color: var(--tn-text);
-            font-size: 15px;
-            line-height: 1.6;
-            text-align: right;
-            direction: rtl;
-        }
-
-        /* Section headers between grids */
-        .tn-section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 32px 4px 14px;
-            color: #fff;
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 0.2px;
-            text-align: right;
-            direction: rtl;
-        }
-
-        .tn-section-title .num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 800;
-            color: #0b1220;
-            background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2));
-            box-shadow: 0 4px 14px rgba(79, 209, 197, 0.35);
-        }
-
-        .tn-section-title .line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--tn-border), transparent);
-        }
-
-        html[dir="rtl"] .tn-section-title .line {
-            background: linear-gradient(270deg, var(--tn-border), transparent);
-        }
-
-        /* Card variants */
         .tn-card.accent-good::before { background: linear-gradient(180deg, var(--tn-good), var(--tn-accent)); }
         .tn-card.accent-warn::before { background: linear-gradient(180deg, var(--tn-warn), #ff8a5c); }
         .tn-card.accent-info::before { background: linear-gradient(180deg, var(--tn-accent-2), #b18cff); }
+        .tn-card.accent-bad::before { background: linear-gradient(180deg, var(--tn-bad), #ff5c5c); }
 
-        /* Compact note under card */
-        .tn-note {
-            margin-top: 12px;
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-size: 13.5px;
-            color: var(--tn-muted);
-            background: rgba(124, 156, 255, 0.06);
-            border: 1px dashed rgba(124, 156, 255, 0.25);
-            line-height: 1.7;
-            text-align: right;
-            direction: rtl;
-        }
-
+        .tn-note { margin-top: 12px; padding: 10px 12px; border-radius: 10px; font-size: 13.5px; color: var(--tn-muted); background: rgba(124, 156, 255, 0.06); border: 1px dashed rgba(124, 156, 255, 0.25); line-height: 1.7; text-align: right; direction: rtl; }
         .tn-note strong { color: var(--tn-accent); font-weight: 700; }
 
-        /* Type chips (row of badges) */
-        .tn-types {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 4px 0 14px;
-        }
-
-        .tn-type {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 700;
-            border: 1px solid var(--tn-border);
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--tn-text);
-        }
-
-        .tn-type .swatch {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--tn-accent);
-            box-shadow: 0 0 8px currentColor;
-        }
-
+        .tn-types { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 14px; }
+        .tn-type { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; border: 1px solid var(--tn-border); background: rgba(255, 255, 255, 0.03); color: var(--tn-text); }
+        .tn-type .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--tn-accent); box-shadow: 0 0 8px currentColor; }
         .tn-type.type-a { color: var(--tn-good); border-color: rgba(126, 231, 135, 0.35); background: rgba(126, 231, 135, 0.08); }
         .tn-type.type-b { color: var(--tn-warn); border-color: rgba(255, 207, 92, 0.35); background: rgba(255, 207, 92, 0.08); }
         .tn-type.type-c { color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.35); background: rgba(124, 156, 255, 0.10); }
 
-        /* Flow (steps) */
-        .tn-flow {
-            display: grid;
-            gap: 10px;
-        }
+        .tn-flow { display: grid; gap: 10px; }
+        .tn-step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 12px 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--tn-border); }
+        .tn-step .n { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 10px; font-weight: 800; color: #0b1220; background: linear-gradient(135deg, var(--tn-accent-2), var(--tn-accent)); }
+        .tn-step .txt { color: var(--tn-text); font-size: 15px; line-height: 1.75; text-align: right; direction: rtl; }
+        .tn-step .txt small { display: block; margin-top: 4px; color: var(--tn-muted); font-size: 12.5px; }
 
-        .tn-step {
-            display: grid;
-            grid-template-columns: 34px 1fr;
-            gap: 12px;
-            align-items: start;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--tn-border);
-        }
-
-        .tn-step .n {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            font-weight: 800;
-            color: #0b1220;
-            background: linear-gradient(135deg, var(--tn-accent-2), var(--tn-accent));
-        }
-
-        .tn-step .txt {
-            color: var(--tn-text);
-            font-size: 15px;
-            line-height: 1.75;
-            text-align: right;
-            direction: rtl;
-        }
-
-        .tn-step .txt small {
-            display: block;
-            margin-top: 4px;
-            color: var(--tn-muted);
-            font-size: 12.5px;
-        }
-
-        /* If/Then rule blocks */
-        .tn-rule {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 10px;
-            align-items: stretch;
-            padding: 10px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--tn-border);
-            margin-bottom: 10px;
-        }
-
-        .tn-rule .cond,
-        .tn-rule .then {
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: right;
-            direction: rtl;
-        }
-
-        .tn-rule .cond {
-            background: rgba(124, 156, 255, 0.08);
-            border: 1px solid rgba(124, 156, 255, 0.25);
-            color: var(--tn-text);
-        }
-
-        .tn-rule .then {
-            background: rgba(79, 209, 197, 0.08);
-            border: 1px solid rgba(79, 209, 197, 0.25);
-            color: var(--tn-text);
-        }
-
-        .tn-rule .arrow {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 8px;
-            color: var(--tn-accent);
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        html[dir="rtl"] .tn-rule .arrow::before { content: "◀"; }
-        html:not([dir="rtl"]) .tn-rule .arrow::before { content: "▶"; }
-
-        .tn-rule.negative .then {
-            background: rgba(255, 120, 120, 0.08);
-            border-color: rgba(255, 120, 120, 0.28);
-        }
+        .tn-rule { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: stretch; padding: 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--tn-border); margin-bottom: 10px; }
+        .tn-rule .cond, .tn-rule .then { padding: 10px 12px; border-radius: 10px; font-size: 14px; line-height: 1.6; text-align: right; direction: rtl; }
+        .tn-rule .cond { background: rgba(124, 156, 255, 0.08); border: 1px solid rgba(124, 156, 255, 0.25); color: var(--tn-text); }
+        .tn-rule .then { background: rgba(79, 209, 197, 0.08); border: 1px solid rgba(79, 209, 197, 0.25); color: var(--tn-text); }
+        .tn-rule .arrow { display: inline-flex; align-items: center; justify-content: center; padding: 0 8px; color: var(--tn-accent); font-size: 20px; font-weight: 800; }
+        .tn-rule .arrow::before { content: "◀"; }
+        .tn-rule.negative .then { background: rgba(255, 120, 120, 0.08); border-color: rgba(255, 120, 120, 0.28); }
 
         @media (max-width: 620px) {
             .tn-rule { grid-template-columns: 1fr; }
             .tn-rule .arrow { transform: rotate(-90deg); padding: 2px 0; }
         }
 
-        .tn-badge.info { background: rgba(124, 156, 255, 0.15); color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.25); }
-        .tn-badge.bad  { background: rgba(255, 120, 120, 0.12); color: #ff9b9b; border-color: rgba(255, 120, 120, 0.28); }
+        /* Simple RTL table */
+        .tn-table-wrap { overflow-x: auto; }
+        table.tn-table { width: 100%; border-collapse: collapse; direction: rtl; font-size: 14px; }
+        table.tn-table th, table.tn-table td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--tn-border); }
+        table.tn-table th { color: var(--tn-accent); font-weight: 700; background: rgba(79, 209, 197, 0.06); }
+        table.tn-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
-        .tn-footer {
-            margin-top: 28px;
-            text-align: center;
-            color: var(--tn-muted);
-            font-size: 12px;
-        }
+        /* Q&A open question cards */
+        .tn-qa { border-right: 3px solid var(--tn-warn); padding-right: 14px; margin-bottom: 14px; }
+        .tn-qa .q { color: #fff; font-weight: 700; font-size: 14.5px; margin-bottom: 6px; text-align: right; direction: rtl; }
+        .tn-qa .a { color: var(--tn-muted); font-size: 13.5px; line-height: 1.7; text-align: right; direction: rtl; }
+        .tn-qa .a.open { color: var(--tn-warn); }
+
+        .tn-footer { margin-top: 28px; text-align: center; color: var(--tn-muted); font-size: 12px; }
     </style>
 </head>
 <body id="test">
@@ -430,208 +143,495 @@
     <main class="tn-container">
         <header class="tn-header">
             <span class="tn-eyebrow">Tanmiah · Notes</span>
-            <h1 class="tn-title">ملاحظات التعويضات ومسار الطلب</h1>
-            <p class="tn-subtitle">مرجع سريع لأنواع الطلبات، المستفيدين، الزيارات، التكامل مع مسار، والمسار الوظيفي للطلب حتى تسليم التعويض.</p>
+            <h1 class="tn-title">ملاحظات تنمية — من التعريف حتى تسليم التعويض</h1>
+            <p class="tn-subtitle">مرجع شامل: التعريف بالمشروع، التكاملات، مسارات الطلبات، دورة حياة الطلب الكاملة بالمراحل، الإدارة المالية، والزيارات، وصولاً لتسليم التعويض ومتابعته — بالإضافة لأسئلة مفتوحة لسه محتاجة متابعة.</p>
             <div class="tn-tags">
                 <span class="tn-tag">#عقاري</span>
                 <span class="tn-tag">#مجتمعي</span>
                 <span class="tn-tag">#عقاري_مجتمعي</span>
                 <span class="tn-tag">#مسار</span>
+                <span class="tn-tag">#GIS</span>
+                <span class="tn-tag">#الإدارة_المالية</span>
+                <span class="tn-tag">#نقل_الملكية</span>
                 <span class="tn-tag">#التعويضات</span>
             </div>
         </header>
 
-        <!-- 1) Request Types & Beneficiaries -->
-        <h2 class="tn-section-title">
-            <span class="num">1</span>
-            <span>أنواع الطلبات والمستفيدين وقواعد التعويض</span>
-            <span class="line"></span>
-        </h2>
+        <nav class="tn-toc">
+            <h2>فهرس المحتوى</h2>
+            <ul>
+                <li><a href="#s1"><span class="num">1</span> ما هي تنمية؟ والمنصات</a></li>
+                <li><a href="#s2"><span class="num">2</span> التكاملات الأساسية (Integrations)</a></li>
+                <li><a href="#s3"><span class="num">3</span> أنواع الطلبات والمستفيدين</a></li>
+                <li><a href="#s4"><span class="num">4</span> رحلة التقديم من البورتال</a></li>
+                <li><a href="#s5"><span class="num">5</span> قواعد إنشاء الطلب والمستندات</a></li>
+                <li><a href="#s6"><span class="num">6</span> الزيارات حسب نوع الطلب</a></li>
+                <li><a href="#s7"><span class="num">7</span> التكامل مع مسار (GIS)</a></li>
+                <li><a href="#s8"><span class="num">8</span> دورة حياة الطلب الكاملة (BPF)</a></li>
+                <li><a href="#s9"><span class="num">9</span> التوجيه حسب نوع التعويض</a></li>
+                <li><a href="#s10"><span class="num">10</span> الإدارة المالية بالتفصيل</a></li>
+                <li><a href="#s11"><span class="num">11</span> جدولة زيارة واستلام التعويضات</a></li>
+                <li><a href="#s12"><span class="num">12</span> الزيارة الميدانية واحتساب الاستحقاق</a></li>
+                <li><a href="#s13"><span class="num">13</span> تسليم الحزم والمشاريع</a></li>
+                <li><a href="#s14"><span class="num">14</span> الإشراف على النقل والنموذج الموحد</a></li>
+                <li><a href="#s15"><span class="num">15</span> أسئلة مفتوحة ونقاط للمتابعة</a></li>
+            </ul>
+        </nav>
 
+        <!-- 1 -->
+        <h2 class="tn-section-title" id="s1"><span class="num">1</span><span>ما هي تنمية؟ والمنصات</span><span class="line"></span></h2>
+        <section class="tn-grid">
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>الفكرة الأساسية</h3>
+                <ul class="tn-list">
+                    <li>عندنا مشاريع تنموية كبرى مثل <span class="tn-badge">نيوم</span> و<span class="tn-badge">العلا</span>، وقت بناء المواقع المختارة بتتقاطع مع عقارات ملك لناس معينين.</li>
+                    <li>الهدف الأساسي للمشروع: يقدر المستفيد يقدّم طلب تعويض بدل ما يتم إخلاؤه بدون مقابل.</li>
+                </ul>
+            </article>
+            <article class="tn-card accent-good">
+                <h3 class="tn-card-title"><span class="dot"></span>ماذا بنت نتويز؟</h3>
+                <ul class="tn-list">
+                    <li><span class="tn-badge good">Tanmiah Plus</span> — بورتال للمستفيدين يقدّمون من خلاله طلب التعويض</li>
+                    <li>Mobile Application للمستفيدين</li>
+                    <li>CRM للموظفين (الجودة، المتابعة المجتمعية، نقل الملكية، الإدارة المالية... إلخ)</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- 2 -->
+        <h2 class="tn-section-title" id="s2"><span class="num">2</span><span>التكاملات الأساسية (Integrations)</span><span class="line"></span></h2>
+        <section class="tn-grid">
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>Nafath</h3>
+                <div class="tn-note">تسجيل الدخول (Login) — أول خطوة إلزامية قبل أي شيء، وبعدها يتم عمل Redirect للمستفيد على المنصة ليبدأ تقديم الطلب.</div>
+            </article>
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>مسار (Masar)</h3>
+                <div class="tn-note">عندهم خريطة (GIS) لكل ما يخص العقارات والمشاريع ومواقعها وتفاصيلها. مسؤولون عن الحصر والتقدير الميداني الفعلي.</div>
+            </article>
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>Emdha</h3>
+                <div class="tn-note">خدمات التوقيع الرقمي (Digital Signature Services).</div>
+            </article>
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>ISP</h3>
+                <div class="tn-note">يجيب بيانات المستفيد (Beneficiary details) كاملة ويعكسها في النظام. (اختصار غالباً لمزوّدي خدمة الإنترنت المرخّصين من CST كـ stc وموبايلي وزين).</div>
+            </article>
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>GIS</h3>
+                <div class="tn-note">يرجّع رقم العقار (Aqar) لـ CRM، وهو مصدر محضر الحصر والتقدير.</div>
+            </article>
+        </section>
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>قواعد بيانات ثابتة بالنظام</h3>
+            <ul class="tn-list">
+                <li>كل عميل يُنشأ كـ <span class="tn-badge">Contact</span> فقط — لا يوجد Accounts في هذا الجزء.</li>
+                <li>كل عمليات التحقق (Validations) مرتبطة برقم الهوية الوطنية باعتباره المعرّف الفريد (Unique Identifier).</li>
+            </ul>
+        </article>
+
+        <!-- 3 -->
+        <h2 class="tn-section-title" id="s3"><span class="num">3</span><span>أنواع الطلبات والمستفيدين وقواعد التعويض</span><span class="line"></span></h2>
         <div class="tn-types">
             <span class="tn-type type-a"><span class="swatch"></span>عقاري</span>
             <span class="tn-type type-b"><span class="swatch"></span>مجتمعي</span>
             <span class="tn-type type-c"><span class="swatch"></span>عقاري / مجتمعي</span>
         </div>
-
         <section class="tn-grid">
             <article class="tn-card accent-good">
                 <h3 class="tn-card-title"><span class="dot"></span>عقاري</h3>
                 <div class="tn-kv">
-                    <div class="k">المستفيد</div>
-                    <div class="v">مالك العقار</div>
-                    <div class="k">التعويض</div>
-                    <div class="v"><span class="tn-badge good">تعويض مادي</span></div>
+                    <div class="k">الوضع</div><div class="v">مالك للعقار ولكن لا يسكن فيه</div>
+                    <div class="k">المستفيد</div><div class="v">مالك العقار</div>
+                    <div class="k">التعويض</div><div class="v"><span class="tn-badge good">تعويض مادي</span> (شيكات/أمور مالية غالباً)</div>
                 </div>
             </article>
-
             <article class="tn-card accent-warn">
                 <h3 class="tn-card-title"><span class="dot"></span>مجتمعي</h3>
                 <div class="tn-kv">
-                    <div class="k">المستفيد</div>
-                    <div class="v">مستأجر العقار</div>
-                    <div class="k">التعويض</div>
-                    <div class="v"><span class="tn-badge warn">تعويض مجتمعي</span> ( الحزم )</div>
+                    <div class="k">الوضع</div><div class="v">مستأجر للعقار وليس مالكاً</div>
+                    <div class="k">المستفيد</div><div class="v">مستأجر العقار</div>
+                    <div class="k">التعويض</div><div class="v"><span class="tn-badge warn">تعويض مجتمعي</span> (برامج تمويلية وحزم حسب دراسة حالة الأسرة: عدد الأفراد، المرضى، الاحتياج التعليمي...)</div>
                 </div>
             </article>
-
             <article class="tn-card accent-info">
-                <h3 class="tn-card-title"><span class="dot"></span>عقاري / مجتمعي</h3>
+                <h3 class="tn-card-title"><span class="dot"></span>عقاري / مجتمعي (ملك دائم)</h3>
                 <div class="tn-kv">
-                    <div class="k">المستفيد</div>
-                    <div class="v">مالك العقار ويسكن فيه</div>
-                    <div class="k">التعويض</div>
-                    <div class="v"><span class="tn-badge good">مادي</span> + <span class="tn-badge warn">مجتمعي</span></div>
+                    <div class="k">الوضع</div><div class="v">مالك للعقار ويسكن فيه بنفس الوقت</div>
+                    <div class="k">المستفيد</div><div class="v">مالك العقار الساكن فيه</div>
+                    <div class="k">التعويض</div><div class="v"><span class="tn-badge good">مادي</span> (قيمة العقار) + <span class="tn-badge warn">مجتمعي</span> (دراسة حالة الأسرة وحزم مناسبة)</div>
                 </div>
             </article>
         </section>
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>جدول تحديد المسار</h3>
+            <div class="tn-note">المسار يتحدد فعلياً من فيلدين فقط: <strong>حالة الإقامة بالعقار</strong> و<strong>العلاقة بالعقار</strong>.</div>
+            <div class="tn-table-wrap">
+                <table class="tn-table">
+                    <thead><tr><th>العلاقة بالعقار</th><th>حالة الإقامة</th><th>المسار</th><th>ملاحظة</th></tr></thead>
+                    <tbody>
+                        <tr><td>ملك</td><td>دائم</td><td><span class="tn-badge info">عقاري مجتمعي</span></td><td>—</td></tr>
+                        <tr><td>ملك</td><td>غير دائم</td><td><span class="tn-badge good">عقاري</span></td><td>—</td></tr>
+                        <tr><td>إيجار</td><td>دائم</td><td><span class="tn-badge warn">مجتمعي</span></td><td>—</td></tr>
+                        <tr><td>أخرى</td><td>دائم</td><td><span class="tn-badge warn">مجتمعي</span></td><td>حالة خاصة (مزرعة/استثمار) — إدارة المتابعة المجتمعية تحدد التصنيف لاحقاً</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
 
-        <!-- 2) Visits per request type -->
-        <h2 class="tn-section-title">
-            <span class="num">2</span>
-            <span>الزيارات حسب نوع الطلب</span>
-            <span class="line"></span>
-        </h2>
+        <!-- 4 -->
+        <h2 class="tn-section-title" id="s4"><span class="num">4</span><span>رحلة التقديم من البورتال</span><span class="line"></span></h2>
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>خطوات التقديم</h3>
+            <div class="tn-flow">
+                <div class="tn-step"><div class="n">0</div><div class="txt">اختيار اسم المشروع أولاً قبل بدء التقديم.<small>ثم التحقق عبر نفاذ → Redirect للمنصة.</small></div></div>
+                <div class="tn-step"><div class="n">1</div><div class="txt">البيانات الشخصية.<small>يمكن التقديم كـ "وكيل" — عندها يجب إدخال بيانات الأسرة ومعلومات الموكِّل عنه.</small></div></div>
+                <div class="tn-step"><div class="n">2</div><div class="txt">بيانات العقار — <strong>الأهم</strong>، لأن حقلي "حالة الإقامة بالعقار" و"العلاقة بالعقار" هما من يحددان المسار الذي سيسلكه الطلب.</div></div>
+                <div class="tn-step"><div class="n">3</div><div class="txt">البيانات الاجتماعية لمالك العقار.<small>تظهر فقط إذا كان الطلب مجتمعي أو عقاري/مجتمعي — لا تظهر إذا كان عقاري فقط. يتم إدخال بيانات كل أفراد الأسرة.</small></div></div>
+                <div class="tn-step"><div class="n">4</div><div class="txt">تحديد العقار عبر خريطة (Map) بالربط مع GIS.<small>تظهر العقارات الموجودة داخل المشروع باللون الأخضر.</small></div></div>
+                <div class="tn-step"><div class="n">5</div><div class="txt">المستندات والوثائق — حسب متطلبات المسار الذي وقع فيه الطلب.<small>كل الـ Attachments تُحفظ على CRM بمجرد الضغط على "إرسال" (Send).</small></div></div>
+                <div class="tn-step"><div class="n">6</div><div class="txt">بعد تقديم الطلب تظهر خدمة استبيان تسأل المستفيد عن رأيه في الخدمة.</div></div>
+            </div>
+        </article>
 
+        <!-- 5 -->
+        <h2 class="tn-section-title" id="s5"><span class="num">5</span><span>قواعد إنشاء الطلب والمستندات المشتركة</span><span class="line"></span></h2>
+        <article class="tn-card accent-info">
+            <h3 class="tn-card-title"><span class="dot"></span>سكربت نقل الملفات بين مراحل الطلب</h3>
+            <ul class="tn-list">
+                <li>من مرحلة إنشاء الطلب، لكل أنواع الطلبات، فيه سكربت ينقل كل الملفات المرفوعة من مكان لآخر — فتلاقي نفس الملفات مكررة بأكثر من مكان بشكل متعمد.</li>
+                <li><strong>السبب:</strong> أي ممثل في أي مرحلة من مراحل حياة الطلب يحتاج ملف لأي غرض، يروح مباشرة لخانة المستندات والوثائق ويلقى كل شيء أمامه، بدون ما يدور بالـ Lookups أو يرجع لمراحل سابقة.</li>
+            </ul>
+        </article>
+
+        <!-- 6 -->
+        <h2 class="tn-section-title" id="s6"><span class="num">6</span><span>الزيارات حسب نوع الطلب</span><span class="line"></span></h2>
         <section class="tn-grid">
             <article class="tn-card">
                 <h3 class="tn-card-title"><span class="dot"></span>مصفوفة الزيارات</h3>
                 <div class="tn-kv">
-                    <div class="k">عقاري</div>
-                    <div class="v"><span class="tn-badge warn">زيارة حصر</span></div>
-
-                    <div class="k">مجتمعي</div>
-                    <div class="v"><span class="tn-badge info">زيارة ميدانية</span></div>
-
-                    <div class="k">عقاري / مجتمعي</div>
-                    <div class="v"><span class="tn-badge warn">زيارة حصر</span> + <span class="tn-badge info">زيارة ميدانية</span></div>
+                    <div class="k">عقاري</div><div class="v"><span class="tn-badge warn">زيارة حصر</span></div>
+                    <div class="k">مجتمعي</div><div class="v"><span class="tn-badge info">زيارة ميدانية</span></div>
+                    <div class="k">عقاري / مجتمعي</div><div class="v"><span class="tn-badge warn">زيارة حصر</span> + <span class="tn-badge info">زيارة ميدانية</span></div>
                 </div>
-                <div class="tn-note">
-                    <strong>جدولة زيارة الحصر:</strong> تقوم بها <strong>تنمية</strong> وليست مسار.
-                </div>
+                <div class="tn-note"><strong>جدولة زيارة الحصر:</strong> تقوم بها <strong>تنمية</strong> (ممثل إدارة نقل الملكية) وليست مسار — هو يحدد أكثر من موعد ويرسلها للمستفيد ليختار.</div>
             </article>
-
             <article class="tn-card">
                 <h3 class="tn-card-title"><span class="dot"></span>الإدارات المعنية بالزيارات</h3>
                 <div class="tn-kv">
-                    <div class="k">إدارة الجودة</div>
-                    <div class="v">لدراسة حالة العقار</div>
-
-                    <div class="k">إدارة المتابعة المجتمعية</div>
-                    <div class="v">لمتابعة حالة المستفيد</div>
+                    <div class="k">إدارة الجودة</div><div class="v">لدراسة حالة العقار</div>
+                    <div class="k">إدارة المتابعة المجتمعية</div><div class="v">لمتابعة حالة المستفيد ونموذج الإقامة الدائمة</div>
                 </div>
             </article>
         </section>
 
-        <!-- 3) Integration with Masar (GIS) -->
-        <h2 class="tn-section-title">
-            <span class="num">3</span>
-            <span>التكامل مع مسار (GIS)</span>
-            <span class="line"></span>
-        </h2>
-
+        <!-- 7 -->
+        <h2 class="tn-section-title" id="s7"><span class="num">7</span><span>التكامل مع مسار (GIS)</span><span class="line"></span></h2>
         <section class="tn-grid">
             <article class="tn-card accent-info">
-                <h3 class="tn-card-title"><span class="dot"></span>ما الذي يُرسل إلى مسار؟</h3>
+                <h3 class="tn-card-title"><span class="dot"></span>ما الذي يُرسل من CRM لمسار؟</h3>
                 <ul class="tn-list">
-                    <li>الطلب <span class="tn-badge warn">مجتمعي</span> <span class="tn-badge bad">لا يذهب لمسار</span></li>
-                    <li>يذهب فقط الطلب <span class="tn-badge good">عقاري</span> أو <span class="tn-badge info">عقاري / مجتمعي</span></li>
-                    <li>لأن مسار مختصة فقط بالعقارات وليس المستأجرين</li>
+                    <li>الطلب <span class="tn-badge warn">مجتمعي</span> فقط <span class="tn-badge bad">لا يذهب لمسار إطلاقاً</span> — لأن مسار مختصة بالعقارات فقط وليس المستأجرين.</li>
+                    <li>يذهب فقط الطلب <span class="tn-badge good">عقاري</span> أو <span class="tn-badge info">عقاري / مجتمعي</span>.</li>
+                    <li>ما يُرسل لمسار عند اكتمال الطلب: <span class="tn-badge">رقم الطلب</span> + <span class="tn-badge">الوثائق الموجودة</span> + <span class="tn-badge">رقم العقار</span>.</li>
                 </ul>
             </article>
-
             <article class="tn-card">
-                <h3 class="tn-card-title"><span class="dot"></span>أمثلة للطلبات القادمة من GIS</h3>
+                <h3 class="tn-card-title"><span class="dot"></span>ما ترجعه مسار لنا</h3>
                 <ul class="tn-list">
-                    <li>الاطلاع على <span class="tn-badge">محضر الحصر</span></li>
-                    <li>التدقيق</li>
+                    <li>محضر الحصر ومحضر التقدير</li>
+                    <li>صور العقار</li>
+                    <li>الرفع المساحي للعقار</li>
+                    <li>وفيه سكربت يجمع الملفات القادمة حسب نوعها، لتسهيل المراجعة على الموظف — بالإضافة لملف شامل يولّده النظام يجمع المعلومات العقارية والمجتمعية معاً (فقط في حالة عقاري/مجتمعي).</li>
                 </ul>
+                <div class="tn-note">مسار ميدانياً هم من ينزلون، يشيّكون، ويجهزون المحاضر ثم يرسلونها لنا على CRM.</div>
             </article>
         </section>
-
-        <!-- 4) Field visit scheduling & eligibility -->
-        <h2 class="tn-section-title">
-            <span class="num">4</span>
-            <span>جدولة الزيارة الميدانية وحالة الاستحقاق</span>
-            <span class="line"></span>
-        </h2>
-
         <article class="tn-card">
             <h3 class="tn-card-title"><span class="dot"></span>حقل «حالة الاستحقاق» داخل جدولة الزيارة الميدانية</h3>
             <div class="tn-rule">
                 <div class="cond">إذا كانت الحالة = <span class="tn-badge good">مستحق</span></div>
                 <div class="arrow" aria-hidden="true"></div>
-                <div class="then">يتم إنشاء ريكورد في <span class="tn-badge">خدمة التدقيق</span></div>
+                <div class="then">يتم إنشاء ريكورد في <span class="tn-badge">خدمة التدقيق على المعاملة كاملة</span> تلقائياً</div>
             </div>
             <div class="tn-rule negative">
                 <div class="cond">إذا كانت الحالة = <span class="tn-badge bad">غير مستحق</span></div>
                 <div class="arrow" aria-hidden="true"></div>
-                <div class="then">لا يتم إنشاء ريكورد في خدمة التدقيق</div>
+                <div class="then">لا يتم إنشاء أي ريكورد، ويُغلق الطلب</div>
             </div>
         </article>
 
-        <!-- 5) Routing by compensation type -->
-        <h2 class="tn-section-title">
-            <span class="num">5</span>
-            <span>مسار الطلب حسب نوع التعويض</span>
-            <span class="line"></span>
-        </h2>
+        <article class="tn-card accent-good">
+            <h3 class="tn-card-title"><span class="dot"></span>ماذا يحدث بعد التدقيق إذا كان مستحقاً؟</h3>
+            <div class="tn-rule">
+                <div class="cond">بعد التدقيق + الحالة = <span class="tn-badge good">مستحق</span></div>
+                <div class="arrow" aria-hidden="true"></div>
+                <div class="then">ينتقل الطلب إلى <span class="tn-badge">الإدارة المالية</span></div>
+            </div>
+            <div class="tn-rule">
+                <div class="cond">نوع الطلب = <span class="tn-badge info">عقاري / مجتمعي</span> + <span class="tn-badge good">مستحق</span></div>
+                <div class="arrow" aria-hidden="true"></div>
+                <div class="then">سيمر بكلٍّ من: <span class="tn-badge warn">خدمة تسليم الحزم والبرامج</span> + <span class="tn-badge">الإدارة المالية</span></div>
+            </div>
+            <div class="tn-note">
+                <strong>ملخص:</strong> التدقيق مع الاستحقاق يؤدي إلى الإدارة المالية بشكل أساسي. لكن إذا كان الطلب عقاري/مجتمعي ومستحق، يُضاف مسار موازٍ لتسليم الحزم والبرامج التنموية (التعويض المجتمعي).
+            </div>
+        </article>
 
+        <!-- 8 -->
+        <h2 class="tn-section-title" id="s8"><span class="num">8</span><span>دورة حياة الطلب الكاملة (BPF)</span><span class="line"></span></h2>
+        <article class="tn-card accent-info">
+            <h3 class="tn-card-title"><span class="dot"></span>المسار العام لطلب عقاري / عقاري مجتمعي</h3>
+            <div class="tn-flow">
+                <div class="tn-step"><div class="n">1</div><div class="txt"><strong>GIS</strong> — نقطة الانطلاق والإنشاء لكل أنواع الطلبات (سواء من مسار أو من خدمة التدقيق).</div></div>
+                <div class="tn-step"><div class="n">2</div><div class="txt">ممثل خدمة العملاء: خيارات "إعادة للمستفيد" أو "اعتماد الطلب".</div></div>
+                <div class="tn-step"><div class="n">3</div><div class="txt">مسؤول خدمة العملاء: "إعادة لممثل خدمة العملاء" أو "اعتماد الطلب" أو "رفض الطلب".</div></div>
+                <div class="tn-step"><div class="n">4</div><div class="txt">إذا كان النوع مجتمعي أو عقاري/مجتمعي → ننتقل لممثل المتابعة المجتمعية، يشيك على المعلومات المجتمعية بالـ Contact Entity والمستندات الخاصة بها.<small>إذا كان الطلب عقاري فقط، لا نمر على هذه المرحلة أبداً وننتقل مباشرة للجودة.</small></div></div>
+                <div class="tn-step"><div class="n">5</div><div class="txt">إرسال الطلب للجودة (فقط إذا كان عقاري أو عقاري/مجتمعي) — يدققون المستندات، وثيقة التملك، رقم العقار، وكل المعلومات العقارية اللازمة.</div></div>
+                <div class="tn-step"><div class="n">6</div><div class="txt">الجودة: "إغلاق الطلب (مكتمل مقبول)" أو "إعادة الطلب للمراجعة" (يرجع لمن كان ماسكه: ممثل خدمة العملاء أو ممثل المتابعة المجتمعية).<small>عند الإغلاق، تتفعّل نقطة التكامل مع مسار ليبدأوا إجراءاتهم (الحصر وغيره).</small></div></div>
+                <div class="tn-step"><div class="n">7</div><div class="txt">إذا عقاري/مجتمعي: يُنشأ تلقائياً طلب جدولة زيارة حصر (وكذلك لو عقاري فقط). يدخل ممثل إدارة نقل الملكية، يحدد أكثر من موعد، يرسلها للمستفيد ليختار — عند الموافقة يكتمل الطلب.</div></div>
+                <div class="tn-step"><div class="n">8</div><div class="txt">إذا عقاري/مجتمعي أو مجتمعي فقط: تصير أيضاً زيارة ميدانية — ممثل المتابعة المجتمعية يحدد مواعيد، المستفيد يختار، وينزل المسؤول ويعبّي نموذج إثبات الإقامة الدائمة ويحدد الاستحقاق. يمر الطلب على مشرف ثم مدير المتابعة المجتمعية.</div></div>
+                <div class="tn-step"><div class="n">9</div><div class="txt">ممثل المتابعة المجتمعية: يشيك الاستحقاق واستحقاق استعادة المستوى المعيشي → يوافق.</div></div>
+                <div class="tn-step"><div class="n">10</div><div class="txt">مسؤول إدارة المتابعة المجتمعية: يوافق.</div></div>
+                <div class="tn-step"><div class="n">11</div><div class="txt">مسؤول إدارة الجودة: يشيك على معلومات العقار والمستندات العقارية والمعلومات القادمة من مسار/GIS.</div></div>
+                <div class="tn-step"><div class="n">12</div><div class="txt"><strong>الإدارة المالية</strong> — عند الوصول لهذه المرحلة يُنشأ تلقائياً طلب بخدمة "الإدارة المالية" (تفاصيلها في القسم 10).</div></div>
+                <div class="tn-step"><div class="n">13</div><div class="txt">حسب نوع التعويض: نقدي → يمر بالإدارة المالية ويتم Skip لنقل الملكية. عيني → يتم Skip للإدارة المالية وينتقل مباشرة لنقل الملكية. (تفاصيل التوجيه في القسم 9)</div></div>
+                <div class="tn-step"><div class="n">14</div><div class="txt">إدارة نقل الملكية: يرفعون ملف "قرار التخصيص" فقط، وبدونه لا يمكن إغلاق الطلب (Error).</div></div>
+                <div class="tn-step"><div class="n">15</div><div class="txt">عند اكتمال الإدارة المالية (أو نقل الملكية حسب الحالة) يُنشأ تلقائياً طلب في "خدمة جدولة زيارة واستلام التعويضات" (تفاصيلها في القسم 11).</div></div>
+            </div>
+        </article>
+        <article class="tn-card accent-warn">
+            <h3 class="tn-card-title"><span class="dot"></span>مسار الطلب المجتمعي فقط (عبر خدمة التدقيق)</h3>
+            <div class="tn-flow">
+                <div class="tn-step"><div class="n">1</div><div class="txt">إنشاء من CRM (وليس مسار) — أول Stage: GIS.</div></div>
+                <div class="tn-step"><div class="n">2</div><div class="txt">ممثل المتابعة المجتمعية — عنده خياران: يوافق وينتقل لممثل إدارة المتابعة المجتمعية، أو يرجعه لـ GIS (نقطة استفهام مفتوحة — راجع القسم 15).</div></div>
+                <div class="tn-step"><div class="n">3</div><div class="txt">مجتمعي فقط لا يذهب لمسار أبداً وقت الاكتمال — التكامل مع مسار يقتصر فقط على الطلبات التي فيها شق عقاري.</div></div>
+            </div>
+            <div class="tn-note">ملاحظة تيست: بعد أن يقدّم المستفيد الطلب، لوحظ أن حقل "حالة الإقامة بالعقار" غير مربوط بشكل صحيح، مما تسبب في Error واضطر الموظف لإدخالها يدوياً.</div>
+        </article>
+
+        <!-- 9 -->
+        <h2 class="tn-section-title" id="s9"><span class="num">9</span><span>التوجيه حسب نوع التعويض (Skip Logic)</span><span class="line"></span></h2>
         <article class="tn-card">
-            <h3 class="tn-card-title"><span class="dot"></span>قواعد التوجيه</h3>
+            <h3 class="tn-card-title"><span class="dot"></span>قواعد التوجيه بين الإدارة المالية ونقل الملكية</h3>
             <div class="tn-rule">
                 <div class="cond">نوع التعويض = <span class="tn-badge good">نقدي</span></div>
                 <div class="arrow" aria-hidden="true"></div>
-                <div class="then">الطلب يمر بـ <span class="tn-badge">الإدارة المالية</span></div>
+                <div class="then">يمر بـ <span class="tn-badge">الإدارة المالية</span> ويعمل Skip لنقل الملكية</div>
             </div>
             <div class="tn-rule">
-                <div class="cond">نوع التعويض = <span class="tn-badge warn">عيني</span> <em>و</em> الطلب <span class="tn-badge good">عقاري</span></div>
+                <div class="cond">نوع التعويض = <span class="tn-badge warn">عيني</span></div>
                 <div class="arrow" aria-hidden="true"></div>
-                <div class="then">الطلب يمر بـ <span class="tn-badge">إدارة نقل الملكية</span></div>
+                <div class="then">يعمل Skip للإدارة المالية وينتقل مباشرة لـ <span class="tn-badge">إدارة نقل الملكية</span></div>
             </div>
+            <div class="tn-note">من يحدد نوع التعويض (نقدي/عيني) هي <strong>الجودة</strong>. ملخص الحالات: عقاري + تعويض نقدي → لا يمر بنقل الملكية إطلاقاً. عقاري + تعويض عيني → يمر بنقل الملكية ويعمل Skip للمالية.</div>
         </article>
 
-        <!-- 6) After financial service -->
-        <h2 class="tn-section-title">
-            <span class="num">6</span>
-            <span>ما بعد الخدمة المالية</span>
-            <span class="line"></span>
-        </h2>
-
+        <!-- 10 -->
+        <h2 class="tn-section-title" id="s10"><span class="num">10</span><span>الإدارة المالية بالتفصيل</span><span class="line"></span></h2>
         <section class="tn-grid">
             <article class="tn-card accent-good">
-                <h3 class="tn-card-title"><span class="dot"></span>خدمة جدولة زيارة واستلام التعويضات</h3>
+                <h3 class="tn-card-title"><span class="dot"></span>Bulk Approve والـ Views</h3>
                 <ul class="tn-list">
-                    <li>بعد انتهاء الطلب من مرحلة <span class="tn-badge">الخدمة المالية</span> يتم إنشاء طلب <span class="tn-badge good">تلقائياً</span> في هذه الخدمة.</li>
+                    <li>الإدارة المالية فريق صغير (٤ موظفين + مسؤول واحد) يستقبلون كميات هائلة من الطلبات يومياً.</li>
+                    <li>بدل الموافقة طلب بطلب، تم عمل View مخصص بناء على طلبهم يقدر يُصدَّر كـ Excel.</li>
+                    <li>بعد التدقيق على مستوى الـ Entity View، فيه زر لتحديد عدد من الطلبات وإرسالها للمسؤول دفعة واحدة (Bulk).</li>
+                    <li>عند الممثل أيضاً: خاصية رفع الشيكات، وخاصية تحميل كل المستندات المختارة كملف مضغوط واحد (بدل تحميل كل ملف لحاله).</li>
                 </ul>
             </article>
-
-            <article class="tn-card accent-warn">
-                <h3 class="tn-card-title"><span class="dot"></span>خدمة تسليم الحزم والبرامج التنموية</h3>
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>المسؤول ورقم الدفعة</h3>
                 <ul class="tn-list">
-                    <li>تُنشأ فقط إذا كان الطلب <span class="tn-badge warn">مجتمعي</span> أو <span class="tn-badge info">عقاري / مجتمعي</span></li>
-                    <li>وحالة الاستحقاق = <span class="tn-badge good">مستحق</span></li>
+                    <li>المسؤول يأخذ Action باسم "كشف تدقيق الجانب العقاري — مسؤول إدارة التعويضات".</li>
+                    <li>يحدد رقم الدفعة، مع Validations: تسلسل إلزامي، لا يمكن تكرار الرقم، ولا يمكن إعطاء نفس رقم الدفعة لمشروعين مختلفين بنفس الوقت (كل مشروع له دفعته الخاصة).</li>
+                    <li>يمكنه تعديل ملف الإكسل وإضافة Comments ثم رفعه واختيار المطلوب إرجاعه — يرجع لمسؤول إدارة الجودة مع الكومنتس.</li>
+                    <li>عند الانتهاء: "إرسال لبيان الدفعة" → ينتقل تلقائياً لـ"بيان الصرف" (بدون أي Actions، مجرد View معلوماتية).</li>
+                </ul>
+            </article>
+        </section>
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>Views منفصلة: حالة الصرف عقاري / عقاري مجتمعي</h3>
+            <div class="tn-note">نفس الطلبات تظهر في الاثنين، لكن باختلاف الأعمدة — "حالة الصرف عقاري مجتمعي" فيها بيانات أكثر بناء على طلب الإدارة المالية.</div>
+            <div class="tn-table-wrap">
+                <table class="tn-table">
+                    <thead><tr><th>#</th><th>خيار حالة بيان الصرف</th><th>ملاحظة</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>ضمن إجراءات الصرف بوزارة الداخلية</td><td>—</td></tr>
+                        <tr><td>2</td><td>ضمن إجراءات تحويل المبلغ من صندوق الاستثمارات العامة</td><td>—</td></tr>
+                        <tr><td>3</td><td>ضمن إجراء التعزيز من الوزارة المالية</td><td>—</td></tr>
+                        <tr><td>4</td><td>ضمن إجراءات إصدار الشيك</td><td>—</td></tr>
+                        <tr><td>5</td><td>تم إصدار الشيك</td><td><span class="tn-badge good">الوحيد</span> الذي ينقل الطلب تلقائياً للمرحلة التالية (Logic على تغيّر هذا الحقل)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <article class="tn-card accent-warn">
+            <h3 class="tn-card-title"><span class="dot"></span>بيان الشيكات</h3>
+            <ul class="tn-list">
+                <li>عندنا نوعين: بيان شيكات عقاري وبيان شيكات عقاري مجتمعي — كل منهما له View قابل للتصدير.</li>
+                <li>حقول يدخلها المسؤول: رقم شيك التعويض، رقم استعادة المستوى المعيشي، رقم شيك النقل.</li>
+                <li>"تفصيل حالة الشيك" — قائمة خيارات، وأهمها "تم تسليم الشيك" وهو الوحيد الذي ينقل الطلب للخطوة التالية ويغلق الطلب تلقائياً (وهنا ينتهي دور الإدارة المالية فعلياً).</li>
+                <li>تاريخ شيك التعويض: يُدخل هجري فقط ويحتسب النظام الميلادي تلقائياً. إذا نُسي إدخال التاريخ، يُستخدم تاريخ آخر تعديل (Modified On / تاريخ الاستيراد) تلقائياً.</li>
+                <li>عدد الشيكات التي تم صرفها يُحتسب تلقائياً من النظام.</li>
+                <li>زر "بيان الشيك" (منفصل عن بيان الشيكات) — لا فائدة له فعلياً، كانوا طالبينه ثم غيّروا رأيهم.</li>
+            </ul>
+        </article>
+        <article class="tn-card">
+            <h3 class="tn-card-title"><span class="dot"></span>دور نقل الملكية</h3>
+            <ul class="tn-list">
+                <li>يرفعون ملف واحد فقط: "قرار التخصيص"، وبدونه لا يمكن إغلاق الطلب (Error).</li>
+                <li>بعد رفعه يمكن إغلاق الطلب مباشرة.</li>
+            </ul>
+        </article>
+
+        <!-- 11 -->
+        <h2 class="tn-section-title" id="s11"><span class="num">11</span><span>خدمة جدولة زيارة واستلام التعويضات</span><span class="line"></span></h2>
+        <article class="tn-card accent-good">
+            <h3 class="tn-card-title"><span class="dot"></span>آلية تسليم الشيكات</h3>
+            <ul class="tn-list">
+                <li>تُنشأ تلقائياً بمجرد اكتمال (إغلاق) الخدمات المالية.</li>
+                <li>ممثل نقل الملكية يشيك: هل الشيك متطابق؟ إذا لا، يحدد السبب (اختلاف بالمبلغ أو بالاسم).</li>
+                <li>أربع تبليغات للمستفيد ليأتي ويستلم الشيك — أول تبليغ بعد مرور 30 يوم.</li>
+                <li>يُحدَّد رد المستفيد: موافق أو معترض. إذا لم يرد أبداً، يبقى الطلب مفتوحاً لأجل غير مسمى.</li>
+                <li>إذا رد وموافق: يُحدَّد له موعد، يختاره من البوابة، يأتي للممثل ويستلم الشيكات، ثم يقفل الممثل الطلب.</li>
+            </ul>
+        </article>
+
+        <!-- 12 -->
+        <h2 class="tn-section-title" id="s12"><span class="num">12</span><span>الزيارة الميدانية واحتساب الاستحقاق</span><span class="line"></span></h2>
+        <section class="tn-grid">
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>نموذج الإقامة الدائمة</h3>
+                <ul class="tn-list">
+                    <li>حقول مثل: فاتورة كهرباء آخر 6 أشهر، العنوان الوطني للمتأثر في نفس العقار المحدد... إلخ.</li>
+                    <li>فيلدات تلقائية تحسب المجموع وتحدد الاستحقاق بناءً على مدخلات الباحث — إذا المجموع فوق <span class="tn-badge good">50</span> يُصنَّف "مستحق".</li>
+                    <li>إذا مستحق: يُنشأ تلقائياً طلب بخدمة التدقيق على المعاملة (بمسار مختلف عن الطلبات المُنشأة عبر مسار) — لكن بدون معلومات عقارية لأن الطلب مو عقاري.</li>
+                    <li>إذا غير مستحق: يُغلق الطلب ولا يُنشأ أي شيء إضافي.</li>
+                </ul>
+            </article>
+            <article class="tn-card accent-warn">
+                <h3 class="tn-card-title"><span class="dot"></span>القيم الثابتة</h3>
+                <div class="tn-kv">
+                    <div class="k">استعادة المستوى المعيشي</div><div class="v">مبلغ ثابت 500,000 يُحدَّد لكل مشروع — نفس القيمة بالضبط لكل الطلبات المستحقة، بدون استثناءات</div>
+                    <div class="k">قيمة النقل</div><div class="v">مبلغ ثابت 100,000</div>
+                </div>
+                <div class="tn-note">الممثل بهذه المرحلة يقرر أيضاً هل المستفيد مستحق لاستعادة المستوى المعيشي أم لا.</div>
+            </article>
+        </section>
+
+        <!-- 13 -->
+        <h2 class="tn-section-title" id="s13"><span class="num">13</span><span>خدمة تسليم الحزم والبرامج التنموية والمشاريع</span><span class="line"></span></h2>
+        <section class="tn-grid">
+            <article class="tn-card accent-warn">
+                <h3 class="tn-card-title"><span class="dot"></span>تسليم الحزم</h3>
+                <ul class="tn-list">
+                    <li>مختصة فقط بالمسار الذي فيه شق مجتمعي.</li>
+                    <li>إذا تقرر بالزيارة الميدانية أن المستفيد مستحق لاستعادة المستوى المعيشي، تُنشأ تلقائياً خدمة تدقيق، وبنفس الوقت خدمة تسليم حزم وبرامج تنموية.</li>
+                    <li>الطلب يسحب كل البيانات من الطلب الأساسي. إدارة المتابعة المجتمعية (تبويب البرامج التنموية) تخصص الحزم وتحدد نوع كل حزمة.</li>
+                    <li>المسار: ممثل → مسؤول المتابعة المجتمعية → مشرف المتابعة المجتمعية → يُرسل للمستفيد → يُحدَّد موعد الاستلام → يستلمها من الممثل → يُقفل الطلب.</li>
+                    <li>فيه زر جديد قيد التطوير لإضافة مجموعة حزم لفرد واحد دفعة واحدة (بدل تكرار الإضافة لكل حزمة لنفس المستفيد).</li>
+                </ul>
+            </article>
+            <article class="tn-card accent-info">
+                <h3 class="tn-card-title"><span class="dot"></span>المشاريع والحزم</h3>
+                <ul class="tn-list">
+                    <li>المشاريع تأتي بالكامل عبر Integration من مسار — يُنشأ المشروع في CRM مع اسمه، رمزه، والمدينة.</li>
+                    <li>يُضاف للمشروع: الإعانات المالية والحزم المجتمعية.</li>
+                    <li>العلاقة 1:N — المشروع الواحد يمكن أن يكون له أكثر من حزمة. الحزمة ← الإعانة المالية. الحزم المجتمعية ← برامج التطوير.</li>
+                    <li>داخل كل حزمة: لمن مقدَّمة، على أي مشروع، ومواعيد استلامها. والفرد الواحد يمكن أن يكون له أكثر من حزمة بنفس الوقت.</li>
                 </ul>
             </article>
         </section>
 
-        <!-- 7) Post-relocation supervision -->
-        <h2 class="tn-section-title">
-            <span class="num">7</span>
-            <span>الإشراف على عملية النقل</span>
-            <span class="line"></span>
-        </h2>
-
+        <!-- 14 -->
+        <h2 class="tn-section-title" id="s14"><span class="num">14</span><span>الإشراف على النقل والنموذج الموحد</span><span class="line"></span></h2>
+        <section class="tn-grid">
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>نموذج الإشراف على عملية النقل</h3>
+                <ul class="tn-list">
+                    <li>خاص بالمسار الذي فيه شق مجتمعي، بعد أن ينتقل المستفيد فعلياً من العقار (يُنشأ تلقائياً من النظام).</li>
+                    <li>لمتابعة والتأكد من إتمام عملية النقل بشكل سليم — يعبّي المستفيد البيانات ثم يُقفل.</li>
+                </ul>
+            </article>
+            <article class="tn-card">
+                <h3 class="tn-card-title"><span class="dot"></span>طلب المتابعة اللاحقة</h3>
+                <ul class="tn-list">
+                    <li>يستخدم نفس النموذج الموحد لكن بعد الانتقال، لمتابعة المستفيد بعد استلام تعويضاته وانتقاله.</li>
+                </ul>
+            </article>
+        </section>
         <article class="tn-card accent-info">
-            <h3 class="tn-card-title"><span class="dot"></span>نموذج الإشراف على عملية النقل</h3>
-            <ul class="tn-list">
-                <li>يُستخدم <span class="tn-badge">بعد</span> انتقال المستفيد فعلياً من العقار.</li>
-                <li>لمتابعة والتأكد من إتمام عملية النقل بشكل سليم.</li>
-            </ul>
+            <h3 class="tn-card-title"><span class="dot"></span>النموذج الموحد: خط أساس الأعمال الميدانية مقابل خط أساس الدراسات</h3>
+            <div class="tn-kv">
+                <div class="k">خط أساس الدراسات</div><div class="v">Locked من CRM فقط — يعتمد على ما دُرس مكتبياً</div>
+                <div class="k">خط أساس الأعمال الميدانية</div><div class="v">Editable من الميدان — يعتمد على ما يُنزل ويُشاهَد على أرض الميدان قبل نقل المستفيد من العقار</div>
+            </div>
+            <div class="tn-note">النموذج الموحد المفروض يأتي من مسار، لكنه غير إلزامي — حالياً يتم تعبئته يدوياً من داخل CRM لعدم وجود Integration مع مسار لهذا الجزء بعد.</div>
         </article>
 
-        <p class="tn-footer">آخر تحديث للمرجع · Tanmiah Notes</p>
+        <!-- 15 -->
+        <h2 class="tn-section-title" id="s15"><span class="num">15</span><span>أسئلة مفتوحة ونقاط للمتابعة</span><span class="line"></span></h2>
+        <article class="tn-card accent-warn">
+            <h3 class="tn-card-title"><span class="dot"></span>أسئلة لسه محتاجة إجابة</h3>
+            <div class="tn-qa">
+                <div class="q">كل مستفيد كم مرة مسموح له يقدم طلب؟</div>
+                <div class="a open">مفتوح — لم تُحدَّد الإجابة بعد.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">هل ينفع فردين من نفس العائلة يقدمون طلب؟</div>
+                <div class="a open">مفتوح — لم تُحدَّد الإجابة بعد.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">طالما عندنا ربط مع ISP، ليش ما تنعكس بيانات الأفراد تلقائياً بمجرد إدخال رقم الهوية بدل الإدخال اليدوي؟</div>
+                <div class="a open">مفتوح — سؤال تحسين مطروح، يحتاج متابعة مع الفريق التقني.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">إذا لم يُنشأ جدول زيارة الحصر تلقائياً، ما الذي قد يعطّله؟ هل الإنشاء يعتمد على نتيجة راجعة من الـ Integration؟</div>
+                <div class="a open">مفتوح.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">هم مستخدمين الـ Base الخاص بنتويز — هل عند محمد أي تعليق أو تعديل عليه؟</div>
+                <div class="a open">مفتوح — بانتظار تعليق محمد.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">بالطلبات المجتمعية: لما ممثل المتابعة المجتمعية يستلم الطلب (بعد GIS)، عنده خيار "يرجعه لـ GIS" — لكن GIS أصلاً مو من أنشأ الطلب (أُنشئ من CRM)، فليش يرجعه لهم؟</div>
+                <div class="a open">مفتوح — يحتاج مراجعة منطق الـ BPF.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">وقت التيست، بعد تقديم المستفيد للطلب، حقل "حالة الإقامة بالعقار" لم يكن مربوطاً وضرب Error — اضطر الموظف لإدخاله يدوياً.</div>
+                <div class="a open">Bug مرصود — يحتاج إصلاح الربط.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">وقت تحديد موعد استلام الحزم: كيف تظهر الجزئية عند المستفيد عندما يكون له أكثر من موعد وأكثر من حزمة بنفس الوقت؟</div>
+                <div class="a open">مفتوح — الحل المقترح (زر إضافة مجموعة حزم لفرد واحد) قيد التطوير ولم يُعرض بعد.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">هل خدمة نقل الحزم المجتمعية تُنشأ تلقائياً للطلب العقاري؟</div>
+                <div class="a open">مفتوح — يحتاج تأكيد (يبدو أن هذا خاص بالطلبات ذات الشق المجتمعي فقط).</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">هل فيه Integration فعلي حيث نرسل لمسار وقت الزيارة المعتمد (بعد جدولة الزيارة، ننزل نحصر، ثم نجدول الميدانية)؟</div>
+                <div class="a open">مفتوح — يحتاج توثيق تسلسل الـ Integration بدقة.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">إذا كان الشيك "ملغى" — هل يبقى الطلب متعلقاً؟ أليس من المفترض إغلاقه؟ (قرار يخص الإدارة المالية)</div>
+                <div class="a open">مفتوح — يحتاج مراجعة الـ BRD للتأكد.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">بعض الطلبات تقفز الإدارة المالية وتذهب مباشرة لنقل الملكية رغم أن "نقل الملكية" موجودة كـ Stage في الـ BPF — لماذا؟</div>
+                <div class="a">تمت الإجابة: يتحدد حسب نوع التعويض الذي تقرره الجودة (نقدي يتخطى نقل الملكية، عيني يتخطى المالية) — راجع القسم 9.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">كيف يعرف النظام أن المستفيد انتقل فعلياً من العقار لتفعيل نموذج الإشراف على عملية النقل؟</div>
+                <div class="a open">غير معروف بدقة — الافتراض أنه بعد استلام التعويضات وإتمام الانتقال، لكن لا يوجد تأكيد آلي واضح.</div>
+            </div>
+            <div class="tn-qa">
+                <div class="q">النموذج الموحد المفروض يأتي من مسار — من هي الجهة المسؤولة تحديداً؟</div>
+                <div class="a open">غير معروف حتى الآن — حالياً يتم تعبئته يدوياً من CRM لعدم اكتمال الـ Integration.</div>
+            </div>
+        </article>
 
+        <p class="tn-footer">آخر تحديث للمرجع · Tanmiah Notes — مُجمَّع من ملاحظات المشروع</p>
     </main>
 </body>
 </html>
