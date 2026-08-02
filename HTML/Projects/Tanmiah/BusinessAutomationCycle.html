@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Automation Cycle — المرجع الكامل</title>
+    <link rel="icon" href="../../../css/icon1.jpg" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../../../css/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/new2.css">
+    <style>
+        :root {
+            --tn-bg: #0b1220;
+            --tn-panel: #111a2e;
+            --tn-panel-2: #16223b;
+            --tn-border: rgba(255, 255, 255, 0.08);
+            --tn-text: #e6ecf5;
+            --tn-muted: #9aa8bd;
+            --tn-accent: #4fd1c5;
+            --tn-accent-2: #7c9cff;
+            --tn-warn: #ffcf5c;
+            --tn-good: #7ee787;
+            --tn-bad: #ff9b9b;
+            --tn-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        html, body {
+            background: radial-gradient(1200px 600px at 80% -10%, rgba(124, 156, 255, 0.10), transparent 60%),
+                        radial-gradient(900px 500px at -10% 110%, rgba(79, 209, 197, 0.08), transparent 60%),
+                        var(--tn-bg) !important;
+            color: var(--tn-text);
+            font-family: "Segoe UI", "Cairo", Tahoma, Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .tn-container { max-width: 1080px; margin: 32px auto 64px; padding: 0 20px; }
+
+        .tn-header {
+            display: flex; flex-direction: column; gap: 10px;
+            padding: 28px 28px 22px; border-radius: 16px;
+            background: linear-gradient(135deg, rgba(124, 156, 255, 0.14), rgba(79, 209, 197, 0.10));
+            border: 1px solid var(--tn-border); box-shadow: var(--tn-shadow); margin-bottom: 24px;
+        }
+        .tn-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--tn-accent); font-weight: 700; text-align: right; }
+        .tn-title { font-size: 28px; font-weight: 800; margin: 0; color: #fff; text-align: right; }
+        .tn-subtitle { color: var(--tn-muted); font-size: 14px; margin: 0; text-align: right; }
+        .tn-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+        .tn-tag { display: inline-flex; align-items: center; padding: 5px 12px; font-size: 12px; font-weight: 700; color: #0b1220; background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2)); border-radius: 999px; letter-spacing: 0.3px; }
+
+        /* Table of contents */
+        .tn-toc { background: linear-gradient(180deg, var(--tn-panel), var(--tn-panel-2)); border: 1px solid var(--tn-border); border-radius: 14px; padding: 18px 22px; margin-bottom: 28px; box-shadow: var(--tn-shadow); }
+        .tn-toc h2 { font-size: 15px; color: var(--tn-accent); margin: 0 0 12px; text-align: right; }
+        .tn-toc ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px 18px; }
+        .tn-toc a { color: var(--tn-text); text-decoration: none; font-size: 13.5px; display: flex; gap: 8px; align-items: center; direction: rtl; text-align: right; padding: 4px 0; }
+        .tn-toc a:hover { color: var(--tn-accent); }
+        .tn-toc a .num { color: var(--tn-accent-2); font-weight: 800; min-width: 18px; }
+
+        .tn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+        .tn-card {
+            background: linear-gradient(180deg, var(--tn-panel), var(--tn-panel-2));
+            border: 1px solid var(--tn-border); border-radius: 14px; padding: 22px 22px 18px;
+            box-shadow: var(--tn-shadow); position: relative; overflow: hidden;
+            transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+        }
+        .tn-card::before { content: ""; position: absolute; inset: 0 0 0 auto; width: 4px; background: linear-gradient(180deg, var(--tn-accent), var(--tn-accent-2)); border-radius: 0 4px 4px 0; }
+        .tn-card:hover { transform: translateY(-2px); border-color: rgba(124, 156, 255, 0.35); }
+
+        .tn-card-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; text-align: right; direction: rtl; }
+        .tn-card-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tn-accent); box-shadow: 0 0 12px var(--tn-accent); }
+
+        .tn-list { list-style: none; margin: 0; padding: 0; }
+        .tn-list li { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px dashed var(--tn-border); color: var(--tn-text); font-size: 15px; line-height: 1.7; text-align: right; direction: rtl; }
+        .tn-list li:last-child { border-bottom: none; }
+        .tn-list li::before { content: "◆"; color: var(--tn-accent); font-size: 10px; margin-top: 8px; flex: none; }
+
+        .tn-badge { display: inline-block; padding: 2px 8px; font-size: 12px; font-weight: 700; border-radius: 6px; margin: 0 2px; background: rgba(124, 156, 255, 0.15); color: var(--tn-accent-2); border: 1px solid rgba(124, 156, 255, 0.25); }
+        .tn-badge.good { background: rgba(126, 231, 135, 0.12); color: var(--tn-good); border-color: rgba(126, 231, 135, 0.25); }
+        .tn-badge.warn { background: rgba(255, 207, 92, 0.12); color: var(--tn-warn); border-color: rgba(255, 207, 92, 0.25); }
+        .tn-badge.info { background: rgba(124, 156, 255, 0.15); color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.25); }
+        .tn-badge.bad { background: rgba(255, 120, 120, 0.12); color: var(--tn-bad); border-color: rgba(255, 120, 120, 0.28); }
+
+        .tn-kv { display: grid; grid-template-columns: max-content 1fr; gap: 10px 16px; align-items: center; }
+        .tn-kv .k { font-weight: 700; color: var(--tn-accent); padding: 6px 10px; background: rgba(79, 209, 197, 0.08); border: 1px solid rgba(79, 209, 197, 0.2); border-radius: 8px; white-space: nowrap; text-align: right; direction: rtl; }
+        .tn-kv .v { color: var(--tn-text); font-size: 15px; line-height: 1.6; text-align: right; direction: rtl; }
+
+        .tn-section-title { display: flex; align-items: center; gap: 12px; margin: 32px 4px 14px; color: #fff; font-size: 18px; font-weight: 800; letter-spacing: 0.2px; text-align: right; direction: rtl; scroll-margin-top: 20px; }
+        .tn-section-title .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; font-size: 13px; font-weight: 800; color: #0b1220; background: linear-gradient(135deg, var(--tn-accent), var(--tn-accent-2)); box-shadow: 0 4px 14px rgba(79, 209, 197, 0.35); flex: none; }
+        .tn-section-title .line { flex: 1; height: 1px; background: linear-gradient(270deg, var(--tn-border), transparent); }
+
+        .tn-card.accent-good::before { background: linear-gradient(180deg, var(--tn-good), var(--tn-accent)); }
+        .tn-card.accent-warn::before { background: linear-gradient(180deg, var(--tn-warn), #ff8a5c); }
+        .tn-card.accent-info::before { background: linear-gradient(180deg, var(--tn-accent-2), #b18cff); }
+        .tn-card.accent-bad::before { background: linear-gradient(180deg, var(--tn-bad), #ff5c5c); }
+
+        .tn-note { margin-top: 12px; padding: 10px 12px; border-radius: 10px; font-size: 13.5px; color: var(--tn-muted); background: rgba(124, 156, 255, 0.06); border: 1px dashed rgba(124, 156, 255, 0.25); line-height: 1.7; text-align: right; direction: rtl; }
+        .tn-note strong { color: var(--tn-accent); font-weight: 700; }
+
+        .tn-types { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 14px; }
+        .tn-type { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; border: 1px solid var(--tn-border); background: rgba(255, 255, 255, 0.03); color: var(--tn-text); }
+        .tn-type .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--tn-accent); box-shadow: 0 0 8px currentColor; }
+        .tn-type.type-a { color: var(--tn-good); border-color: rgba(126, 231, 135, 0.35); background: rgba(126, 231, 135, 0.08); }
+        .tn-type.type-b { color: var(--tn-warn); border-color: rgba(255, 207, 92, 0.35); background: rgba(255, 207, 92, 0.08); }
+        .tn-type.type-c { color: var(--tn-accent-2); border-color: rgba(124, 156, 255, 0.35); background: rgba(124, 156, 255, 0.10); }
+
+        .tn-flow { display: grid; gap: 10px; }
+        .tn-step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 12px 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--tn-border); }
+        .tn-step .n { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 10px; font-weight: 800; color: #0b1220; background: linear-gradient(135deg, var(--tn-accent-2), var(--tn-accent)); }
+        .tn-step .txt { color: var(--tn-text); font-size: 15px; line-height: 1.75; text-align: right; direction: rtl; }
+        .tn-step .txt small { display: block; margin-top: 4px; color: var(--tn-muted); font-size: 12.5px; }
+
+        .tn-rule { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: stretch; padding: 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--tn-border); margin-bottom: 10px; }
+        .tn-rule .cond, .tn-rule .then { padding: 10px 12px; border-radius: 10px; font-size: 14px; line-height: 1.6; text-align: right; direction: rtl; }
+        .tn-rule .cond { background: rgba(124, 156, 255, 0.08); border: 1px solid rgba(124, 156, 255, 0.25); color: var(--tn-text); }
+        .tn-rule .then { background: rgba(79, 209, 197, 0.08); border: 1px solid rgba(79, 209, 197, 0.25); color: var(--tn-text); }
+        .tn-rule .arrow { display: inline-flex; align-items: center; justify-content: center; padding: 0 8px; color: var(--tn-accent); font-size: 20px; font-weight: 800; }
+        .tn-rule .arrow::before { content: "◀"; }
+        .tn-rule.negative .then { background: rgba(255, 120, 120, 0.08); border-color: rgba(255, 120, 120, 0.28); }
+
+        @media (max-width: 620px) {
+            .tn-rule { grid-template-columns: 1fr; }
+            .tn-rule .arrow { transform: rotate(-90deg); padding: 2px 0; }
+        }
+
+        /* Simple RTL table */
+        .tn-table-wrap { overflow-x: auto; }
+        table.tn-table { width: 100%; border-collapse: collapse; direction: rtl; font-size: 14px; }
+        table.tn-table th, table.tn-table td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--tn-border); }
+        table.tn-table th { color: var(--tn-accent); font-weight: 700; background: rgba(79, 209, 197, 0.06); }
+        table.tn-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+        /* Q&A open question cards */
+        .tn-qa { border-right: 3px solid var(--tn-warn); padding-right: 14px; margin-bottom: 14px; }
+        .tn-qa .q { color: #fff; font-weight: 700; font-size: 14.5px; margin-bottom: 6px; text-align: right; direction: rtl; }
+        .tn-qa .a { color: var(--tn-muted); font-size: 13.5px; line-height: 1.7; text-align: right; direction: rtl; }
+        .tn-qa .a.open { color: var(--tn-warn); }
+
+        .tn-footer { margin-top: 28px; text-align: center; color: var(--tn-muted); font-size: 12px; }
+
+        /* Fixed compensation mapping (request type → compensation type) */
+        .tn-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; direction: rtl; }
+        @media (max-width: 820px) { .tn-map { grid-template-columns: 1fr; } }
+        .tn-map-item { display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--tn-border); }
+        .tn-map-item.req-a { border-color: rgba(126,231,135,0.30); background: linear-gradient(180deg, rgba(126,231,135,0.06), rgba(126,231,135,0.02)); }
+        .tn-map-item.req-b { border-color: rgba(255,207,92,0.30); background: linear-gradient(180deg, rgba(255,207,92,0.06), rgba(255,207,92,0.02)); }
+        .tn-map-item.req-c { border-color: rgba(124,156,255,0.30); background: linear-gradient(180deg, rgba(124,156,255,0.06), rgba(124,156,255,0.02)); }
+        .tn-map-req { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-weight: 800; color: #fff; font-size: 15px; }
+        .tn-map-req .lbl { display: inline-flex; align-items: center; gap: 8px; }
+        .tn-map-req .swatch { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 8px currentColor; }
+        .tn-map-req.req-a .swatch { background: var(--tn-good); color: var(--tn-good); }
+        .tn-map-req.req-b .swatch { background: var(--tn-warn); color: var(--tn-warn); }
+        .tn-map-req.req-c .swatch { background: var(--tn-accent-2); color: var(--tn-accent-2); }
+        .tn-map-arrow { text-align: center; color: var(--tn-muted); font-size: 18px; font-weight: 800; letter-spacing: 2px; }
+        .tn-map-comp { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; padding: 10px; border-radius: 10px; background: rgba(0,0,0,0.15); border: 1px solid var(--tn-border); }
+        .tn-map-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; font-weight: 700; font-size: 13px; border: 1px solid var(--tn-border); }
+        .tn-map-pill.cash { color: var(--tn-good); background: rgba(126,231,135,0.10); border-color: rgba(126,231,135,0.35); }
+        .tn-map-pill.kind { color: var(--tn-warn); background: rgba(255,207,92,0.10); border-color: rgba(255,207,92,0.35); }
+        .tn-map-pill .only { font-size: 11px; padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,0.06); color: var(--tn-muted); font-weight: 700; }
+        .tn-map-plus { color: var(--tn-accent); font-weight: 800; font-size: 16px; }
+        .tn-map-desc { font-size: 12.5px; color: var(--tn-muted); line-height: 1.7; text-align: center; }
+
+        /* Trigger card: highlight automation trigger → outputs */
+        .tn-trigger { display: grid; grid-template-columns: 1fr; gap: 12px; direction: rtl; }
+        .tn-trigger-when { padding: 12px 14px; border-radius: 12px; background: rgba(124,156,255,0.08); border: 1px solid rgba(124,156,255,0.30); color: var(--tn-text); font-size: 14.5px; line-height: 1.7; text-align: right; }
+        .tn-trigger-when strong { color: var(--tn-accent-2); }
+        .tn-trigger-arrow { text-align: center; color: var(--tn-accent); font-size: 22px; font-weight: 800; }
+        .tn-trigger-outs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+        .tn-trigger-out { padding: 12px 14px; border-radius: 12px; background: rgba(79,209,197,0.08); border: 1px solid rgba(79,209,197,0.30); color: var(--tn-text); text-align: right; direction: rtl; }
+        .tn-trigger-out .h { display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--tn-accent); font-size: 14.5px; margin-bottom: 6px; }
+        .tn-trigger-out .h::before { content: "◆"; color: var(--tn-accent); }
+        .tn-trigger-out .d { font-size: 13px; color: var(--tn-muted); line-height: 1.7; }
+    </style>
+</head>
+<body id="test">
+    <script src="../../../js/nav.js"></script>
+
+    <main class="tn-container">
+        <header class="tn-header">
+            <span class="tn-eyebrow">Tanmiah · Business Automation Cycle</span>
+            <h1 class="tn-title">دورة الأتمتة في نظام تنمية — الأتمتات التلقائية عبر مراحل الطلب</h1>
+            <p class="tn-subtitle">مرجع مخصص لكل الأتمتات (Automations / Auto-created records) التي تحدث خلف الكواليس بين المراحل — بدءاً من إنشاء الطلب الجديد وحتى إغلاقه.</p>
+            <div class="tn-tags">
+                <span class="tn-tag">#Automation</span>
+                <span class="tn-tag">#Auto_Created</span>
+                <span class="tn-tag">#عقاري</span>
+                <span class="tn-tag">#عقاري_مجتمعي</span>
+                <span class="tn-tag">#مسار</span>
+                <span class="tn-tag">#محضر_الحصر</span>
+                <span class="tn-tag">#تدقيق</span>
+            </div>
+        </header>
+
+        <nav class="tn-toc">
+            <h2>فهرس المحتوى</h2>
+            <ul>
+                <li><a href="#s1"><span class="num">1</span> عند نهاية الطلب الجديد</a></li>
+                <li><a href="#s2"><span class="num">2</span> عند اعتماد مسؤول إدارة الجودة</a></li>
+                <li><a href="#s3"><span class="num">3</span> عند إغلاق مرحلة بيان الشيكات</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1 -->
+        <h2 class="tn-section-title" id="s1"><span class="num">1</span><span>الأتمتات عند نهاية الطلب الجديد</span><span class="line"></span></h2>
+
+        <article class="tn-card accent-info">
+            <h3 class="tn-card-title"><span class="dot"></span>إنشاء تلقائي: طلب تدقيق + طلب اطلاع على محضر الحصر</h3>
+            <div class="tn-trigger">
+                <div class="tn-trigger-when">
+                    <strong>الشرط (When):</strong> في نهاية <strong>الطلب الجديد</strong> — وعندما يكون نوع الطلب <span class="tn-badge good">عقاري</span> أو <span class="tn-badge info">عقاري / مجتمعي</span>.
+                </div>
+                <div class="tn-trigger-arrow">▼</div>
+                <div class="tn-trigger-outs">
+                    <div class="tn-trigger-out">
+                        <div class="h">طلب تدقيق</div>
+                        <div class="d">يُنشأ تلقائياً على الطلب لبدء دورة التدقيق على المعاملة.</div>
+                    </div>
+                    <div class="tn-trigger-out">
+                        <div class="h">طلب اطلاع على محضر الحصر</div>
+                        <div class="d">يُنشأ تلقائياً ليمكّن الجهة المعنية من الاطلاع على محضر الحصر الوارد من مسار.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tn-note">
+                <strong>ملاحظة:</strong> هذه الأتمتة لا تنطبق على الطلب <span class="tn-badge warn">مجتمعي</span> فقط، لأن الطلب المجتمعي لا يذهب لمسار أصلاً ولا يُصدر له محضر حصر.
+            </div>
+        </article>
+
+        <!-- 2 -->
+        <h2 class="tn-section-title" id="s2"><span class="num">2</span><span>الأتمتات عند اعتماد مسؤول إدارة الجودة - خدمة التدقيق</span><span class="line"></span></h2>
+
+        <article class="tn-card accent-info">
+            <h3 class="tn-card-title"><span class="dot"></span>خطوات نشاط إدارة الجودة — تدقيق واعتماد أو إعادة</h3>
+            <div class="tn-trigger">
+                <div class="tn-trigger-when">
+                    <strong>الشرط (When):</strong> يقوم <strong>مسؤول إدارة الجودة</strong> بالتدقيق على المعاملة كاملةً <strong>واعتمادها.
+                </div>
+                <div class="tn-trigger-arrow">▼</div>
+                <div class="tn-trigger-outs">
+                    <div class="tn-trigger-out">
+                        <div class="h">خدمة التدقيق المالي</div>
+                        <div class="d">عند اعتماد المعاملة كاملةً من مسؤول إدارة الجودة، يُنشئ النظام تلقائياً <strong>خدمة التدقيق المالي</strong> لبدء المرحلة المالية على المعاملة.</div>
+                    </div>
+                 
+                </div>
+            </div>
+            <div class="tn-note">
+                <strong>ملاحظة:</strong> يتفرّع مسار المعاملة بعد إدارة الجودة إلى مسارَين حصريَّين: (اعتماد → إنشاء خدمة التدقيق المالي تلقائياً) أو (رفض/ملاحظات → إعادة إلى الممثل).
+            </div>
+        </article>
+
+        <!-- 3 -->
+        <h2 class="tn-section-title" id="s3"><span class="num">3</span><span>الأتمتات عند إغلاق مرحلة بيان الشيكات - خدمة مالية</span><span class="line"></span></h2>
+
+        <article class="tn-card accent-good">
+            <h3 class="tn-card-title"><span class="dot"></span>إغلاق الطلب تلقائياً + إنشاء خدمة التبليغات وجدولة زيارة استلام التعويضات</h3>
+            <div class="tn-trigger">
+                <div class="tn-trigger-when">
+                    <strong>الشرط (When):</strong> بعد اكتمال مرحلة <strong>بيان الشيكات</strong> على المعاملة، يقوم النظام تلقائياً <strong>بإغلاق الطلب</strong> وإطلاق الأتمتات التالية.
+                </div>
+                <div class="tn-trigger-arrow">▼</div>
+                <div class="tn-trigger-outs">
+                    <div class="tn-trigger-out">
+                        <div class="h">خدمة التبليغات</div>
+                        <div class="d">يُنشئ النظام تلقائياً <strong>خدمة التبليغات</strong> لإشعار المستفيدين بجاهزية التعويضات واستكمال إجراءات الاستلام.</div>
+                    </div>
+                    <div class="tn-trigger-out">
+                        <div class="h">جدولة زيارة استلام التعويضات</div>
+                        <div class="d">يُنشئ النظام تلقائياً <strong>زيارة مجدولة</strong> لاستلام التعويضات وربطها بالطلب المُغلق.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tn-note">
+                <strong>ملاحظة:</strong> إغلاق الطلب هنا هو الحدث المُشغِّل (Trigger) لإنشاء خدمة التبليغات وجدولة زيارة الاستلام في نفس اللحظة — دون تدخل يدوي من المستخدم.
+            </div>
+        </article>
+
+        <p class="tn-footer">Business Automation Cycle · Tanmiah — مرجع الأتمتات التلقائية</p>
+    </main>
+</body>
+</html>
