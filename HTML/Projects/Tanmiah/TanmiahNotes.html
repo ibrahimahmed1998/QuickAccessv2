@@ -451,38 +451,40 @@
         </article>
 
         <article class="tn-card accent-info">
-            <h3 class="tn-card-title"><span class="dot"></span>ربط نوع الطلب بنوع التعويض (Fixed Mapping)</h3>
+            <h3 class="tn-card-title"><span class="dot"></span>ربط نوع الطلب بنوع التعويض</h3>
             <div class="tn-note" style="margin-top: 0; margin-bottom: 14px;">
-                <strong>القاعدة الثابتة:</strong> نوع الطلب يحدد نوع التعويض مباشرة — لا توجد خيارات متعددة داخل النوع الواحد. و<strong>التعويض النقدي</strong> = فلوس مقابل الوحدة (العقار).
+                <strong>ملاحظة مهمة:</strong> التقديرات ليست مؤتمتة — <strong>ممثل الجودة</strong> هو من يحدد نوع التعويض (نقدي/عيني) للطلبات ذات الشق العقاري. أما الطلبات <strong>المجتمعية</strong> فتعويضها <strong>نقدي دائماً</strong>. وبالتالي فالتعويض النقدي يشمل الأنواع الثلاثة (عقاري / مجتمعي / عقاري مجتمعي). و<strong>النقدي</strong> = فلوس (شيكات) مقابل الوحدة، و<strong>العيني</strong> = وحدة/أرض بديلة.
             </div>
             <div class="tn-map">
                 <div class="tn-map-item req-a">
                     <div class="tn-map-req req-a"><span class="lbl"><span class="swatch"></span>عقاري</span></div>
                     <div class="tn-map-arrow">▼</div>
                     <div class="tn-map-comp">
-                        <span class="tn-map-pill cash">نقدي (شيكات) <span class="only">فقط</span></span>
+                        <span class="tn-map-pill cash">نقدي</span>
+                        <span class="tn-map-plus">أو</span>
+                        <span class="tn-map-pill kind">عيني</span>
                     </div>
-                    <div class="tn-map-desc">فلوس/شيكات مقابل الوحدة (قيمة العقار)</div>
+                    <div class="tn-map-desc">حسب اختيار ممثل الجودة (التقديرات غير مؤتمتة)</div>
                 </div>
 
                 <div class="tn-map-item req-b">
                     <div class="tn-map-req req-b"><span class="lbl"><span class="swatch"></span>مجتمعي</span></div>
                     <div class="tn-map-arrow">▼</div>
                     <div class="tn-map-comp">
-                        <span class="tn-map-pill kind">حزم وبرامج تنموية <span class="only">فقط</span></span>
+                        <span class="tn-map-pill cash">نقدي <span class="only">دائماً</span></span>
                     </div>
-                    <div class="tn-map-desc">حزم وبرامج تنموية للأسرة (لا يوجد شيكات)</div>
+                    <div class="tn-map-desc">التعويض نقدي دائماً (بالإضافة للحزم والبرامج التنموية)</div>
                 </div>
 
                 <div class="tn-map-item req-c">
                     <div class="tn-map-req req-c"><span class="lbl"><span class="swatch"></span>عقاري / مجتمعي</span></div>
                     <div class="tn-map-arrow">▼</div>
                     <div class="tn-map-comp">
-                        <span class="tn-map-pill kind">مجتمعي (عيني)</span>
-                        <span class="tn-map-plus">+</span>
                         <span class="tn-map-pill cash">نقدي</span>
+                        <span class="tn-map-plus">أو</span>
+                        <span class="tn-map-pill kind">عيني</span>
                     </div>
-                    <div class="tn-map-desc">حزمة مجتمعية للأسرة + فلوس مقابل الوحدة</div>
+                    <div class="tn-map-desc">حسب اختيار ممثل الجودة (التقديرات غير مؤتمتة)</div>
                 </div>
             </div>
         </article>
@@ -505,10 +507,18 @@
                     <li>المسؤول يأخذ Action باسم "كشف تدقيق الجانب العقاري — مسؤول إدارة التعويضات".</li>
                     <li>يحدد رقم الدفعة، مع Validations: تسلسل إلزامي، لا يمكن تكرار الرقم، ولا يمكن إعطاء نفس رقم الدفعة لمشروعين مختلفين بنفس الوقت (كل مشروع له دفعته الخاصة).</li>
                     <li>يمكنه تعديل ملف الإكسل وإضافة Comments ثم رفعه واختيار المطلوب إرجاعه — يرجع لمسؤول إدارة الجودة مع الكومنتس.</li>
-                    <li>عند الانتهاء: "إرسال لبيان الدفعة" → ينتقل تلقائياً لـ"بيان الصرف" (بدون أي Actions، مجرد View معلوماتية).</li>
+                    <li>عند الانتهاء: الضغط على "بيان الدفعة" → ينتقل الطلب تلقائياً لـ"حالة الصرف"، وهناك يراجع الموظف البيانات ويملأ حقل "نوع المعاملة".</li>
                 </ul>
             </article>
         </section>
+        <article class="tn-card accent-good">
+            <h3 class="tn-card-title"><span class="dot"></span>تسلسل مراحل المالية ومحرّكات الانتقال</h3>
+            <div class="tn-flow">
+                <div class="tn-step"><div class="n">1</div><div class="txt"><strong>بيان الدفعة:</strong> يضغط مسؤول المالية "بيان الدفعة" → يُرسَل الطلب تلقائياً إلى <span class="tn-badge">حالة الصرف</span>.</div></div>
+                <div class="tn-step"><div class="n">2</div><div class="txt"><strong>حالة الصرف:</strong> يراجع الموظف البيانات ويملأ حقل <span class="tn-badge info">نوع المعاملة</span>، ثم ينتقل الطلب للمرحلة التالية عندما تصبح "حالة بيان الصرف" = <span class="tn-badge good">تم إصدار الشيك</span>.</div></div>
+                <div class="tn-step"><div class="n">3</div><div class="txt"><strong>بيان الشيكات:</strong> ينتقل الطلب عندما تصبح "تفاصيل حالة بيان الشيك" = <span class="tn-badge good">تم تسليم الشيك</span>.</div></div>
+            </div>
+        </article>
         <article class="tn-card">
             <h3 class="tn-card-title"><span class="dot"></span>Views منفصلة: حالة الصرف عقاري / عقاري مجتمعي</h3>
             <div class="tn-note">نفس الطلبات تظهر في الاثنين، لكن باختلاف الأعمدة — "حالة الصرف عقاري مجتمعي" فيها بيانات أكثر بناء على طلب الإدارة المالية.</div>
