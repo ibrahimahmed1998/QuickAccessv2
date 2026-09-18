@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM Deployment Notes</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #0b1120;
+      --surface: rgba(17, 28, 51, 0.82);
+      --surface-hover: #1b2d50;
+      --border: rgba(148, 163, 184, 0.18);
+      --text: #e5eefb;
+      --muted: #9fb0ca;
+      --accent: #65a9ff;
+      --accent-soft: rgba(101, 169, 255, 0.14);
+      --danger: #ff7f8f;
+      --success: #6ee7a8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px 20px;
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(43, 104, 194, 0.25), transparent 36rem),
+        linear-gradient(135deg, #08101f 0%, var(--background) 55%, #101b31 100%);
+    }
+
+    main {
+      width: min(880px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 28px;
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(27, 54, 96, 0.9), rgba(13, 23, 43, 0.82)),
+        var(--surface);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -90px;
+      bottom: -110px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(101, 169, 255, 0.1);
+      content: "";
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      content: "";
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+    }
+
+    .step:hover {
+      border-color: rgba(101, 169, 255, 0.58);
+      background: var(--surface-hover);
+      transform: translateY(-4px);
+    }
+
+    .step-index {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.95rem;
+      counter-increment: step;
+    }
+
+    .step-index::before {
+      content: counter(step, decimal-leading-zero);
+    }
+
+    .step h2 {
+      margin: 0 0 6px;
+      color: var(--text);
+      font-size: 1.12rem;
+      line-height: 1.4;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .branch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .branch span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    .branch span::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      content: "";
+    }
+
+    .branch .yes::before {
+      background: var(--success);
+      box-shadow: 0 0 10px rgba(110, 231, 168, 0.7);
+    }
+
+    .branch .no::before {
+      background: var(--danger);
+      box-shadow: 0 0 10px rgba(255, 127, 143, 0.7);
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+
+      .hero {
+        border-radius: 22px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .step {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">CRM deployment notes</p>
+      <h1 id="page-title">Field Deletion Checklist</h1>
+      <p class="intro">
+        Steps to follow before removing a field from a CRM solution, to avoid
+        breaking dependent views, forms, workflows, and reports.
+      </p>
+    </section>
+
+    <section class="flow" aria-label="Field deletion steps">
+      <article class="step">
+        <span class="step-index" aria-hidden="true"></span>
+        <div>
+          <h2>Run Advanced Find on the field</h2>
+          <p>
+            Before deleting a field, use Advanced Find to check whether it is
+            referenced anywhere &mdash; views, forms, business rules,
+            workflows, plugins, or reports.
+          </p>
+          <div class="branch">
+            <span class="yes">Used &rarr; migrate before deleting</span>
+            <span class="no">Not used &rarr; safe to delete</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="step-index" aria-hidden="true"></span>
+        <div>
+          <h2>If it is used, plan the migration</h2>
+          <p>
+            Identify the new field that will replace it and migrate existing
+            data and references into that field before removing the old one.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      Verify usage first, migrate safely, then remove.
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,16 +1,147 @@
-<head id="head"><title>1</title><link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
+<head id="head"><title>Prompts</title><link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="../../css/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../../css/new2.css" />
 <style>
-	body#test {
-		zoom: 0.8;
+	body { background: #181824; color: #f3f3f3; }
+	.nav-cards { display: flex; gap: 16px; justify-content: center; margin: 24px auto 8px auto; max-width: 900px; }
+	.nav-cards a {
+		flex: 1;
+		text-align: center;
+		background: #232336;
+		border-radius: 10px;
+		padding: 14px 10px;
+		font-weight: 700;
+		font-size: 1.05em;
+		box-shadow: 0 2px 8px #0004;
+		transition: transform .15s, background .15s;
 	}
+	.nav-cards a:hover { background: #2e2e46; transform: translateY(-2px); }
+	.summary-card { background: #232336; border-radius: 12px; box-shadow: 0 2px 8px #0002; padding: 24px 28px; margin: 24px auto 32px auto; max-width: 900px; }
+	.summary-card h2 { color: rgb(255,127,202); margin-bottom: 10px; }
+	.summary-card h3 { color: #7fd0ff; margin: 18px 0 8px 0; }
+	.summary-card ol, .summary-card ul { line-height: 1.8; }
+	.summary-card ul ul { margin-top: 4px; }
+	/* override global RTL rule on li in new2.css, this content is English/LTR */
+	.summary-card li { text-align: left; direction: ltr; }
+	.summary-card strong { color: greenyellow; }
+	.summary-card code { background: #14141f; border-radius: 4px; padding: 2px 6px; color: #ffbf7f; }
+	.summary-card .callout {
+		background: #14141f;
+		border-left: 4px solid rgb(255,127,202);
+		padding: 12px 16px;
+		border-radius: 6px;
+		margin-top: 18px;
+	}
+	.card-header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+	.copy-btn {
+		background: #14141f;
+		color: #7fd0ff;
+		border: 1px solid #3a3a55;
+		border-radius: 6px;
+		padding: 6px 12px;
+		font-size: 0.9em;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+	.copy-btn:hover { background: #2e2e46; }
+	.copy-btn.copied { color: greenyellow; border-color: greenyellow; }
+	body#test { zoom: 0.8; }
 </style>
 </head><body id="test"><script src="../../js/nav.js"></script>
-<table class="table mind"><tr>
 
+<div class="nav-cards">
+	<a href="Prompts/mscrm.html">MS CRM</a>
+	<a href="Prompts/backend.html">Backend</a>
+	<a href="Prompts/SQL.html">SQL</a>
+</div>
 
-<th><a href="Prompts/mscrm.html">MS CRM</a></th>
-<th><a href="Prompts/backend.html">Backend</a></th>
-<th><a href="Prompts/SQL.html">SQL</a></th>
+<div class="summary-card">
+	<div class="card-header-row">
+		<h2>📄 Session Export to Word Prompt</h2>
+		<button class="copy-btn" onclick="copyPrompt(this)">📋 Copy Prompt</button>
+	</div>
+	<p>Export <strong>all explanations provided in this session</strong> into a single, complete Word document.</p>
+
+	<h3>Requirements</h3>
+	<ol>
+		<li><strong>Include everything</strong> that was explained throughout the session. Do not omit, summarize, shorten, or skip any explanation, example, definition, note, warning, code explanation, or important detail.</li>
+		<li>Preserve the explanations <strong>from beginning to end and in the same logical order</strong> as they appeared in the session.</li>
+		<li>The document must start with the exact word <strong>"AR"</strong> as the very first text in the document. This is required to ensure that the document correctly handles <strong>Right-to-Left (RTL)</strong> formatting.</li>
+		<li>Since the explanations may contain both <strong>Arabic and English</strong>, format the document properly for mixed Arabic/English content:
+			<ul>
+				<li>Arabic text should use <strong>Right-to-Left (RTL)</strong> direction.</li>
+				<li>English text and code should remain <strong>Left-to-Right (LTR)</strong>.</li>
+				<li>Keep Arabic and English text readable without reversing English words, technical terms, or code.</li>
+			</ul>
+		</li>
+		<li>Preserve all <strong>technical terms, programming keywords, commands, class names, method names, variable names, URLs, file names, and code snippets</strong> exactly as they appeared.</li>
+		<li>Keep all examples and explanations intact. Do not replace detailed explanations with brief summaries.</li>
+		<li>Use clear document formatting:
+			<ul>
+				<li>Main title</li>
+				<li>Section headings</li>
+				<li>Subheadings</li>
+				<li>Bullet points</li>
+				<li>Numbered lists</li>
+				<li>Code blocks where applicable</li>
+				<li>Tables where they improve readability</li>
+			</ul>
+		</li>
+		<li>Do not remove repeated explanations if they were intentionally part of the original session. The goal is to preserve the <strong>complete explanation</strong>, not to create a shortened summary.</li>
+		<li>Make the Word document professional, readable, and suitable for future study or reference.</li>
+		<li>Ensure the final <code>.docx</code> file is generated successfully and provide the <strong>download link</strong> to the completed Word document.</li>
+	</ol>
+
+	<div class="callout">
+		<strong>Important:</strong> The first visible text in the Word document must be <strong>AR</strong>.<br>
+		This is specifically required to preserve proper RTL behavior when opening the document in Microsoft Word.
+	</div>
+</div>
+
+<script>
+const promptText = `Export **all explanations provided in this session** into a single, complete Word document.
+
+Requirements:
+
+1. **Include everything** that was explained throughout the session. Do not omit, summarize, shorten, or skip any explanation, example, definition, note, warning, code explanation, or important detail.
+2. Preserve the explanations **from beginning to end and in the same logical order** as they appeared in the session.
+3. The document must start with the exact word **"AR"** as the very first text in the document. This is required to ensure that the document correctly handles **Right-to-Left (RTL)** formatting.
+4. Since the explanations may contain both **Arabic and English**, format the document properly for mixed Arabic/English content:
+
+   * Arabic text should use **Right-to-Left (RTL)** direction.
+   * English text and code should remain **Left-to-Right (LTR)**.
+   * Keep Arabic and English text readable without reversing English words, technical terms, or code.
+5. Preserve all **technical terms, programming keywords, commands, class names, method names, variable names, URLs, file names, and code snippets** exactly as they appeared.
+6. Keep all examples and explanations intact. Do not replace detailed explanations with brief summaries.
+7. Use clear document formatting:
+
+   * Main title
+   * Section headings
+   * Subheadings
+   * Bullet points
+   * Numbered lists
+   * Code blocks where applicable
+   * Tables where they improve readability
+8. Do not remove repeated explanations if they were intentionally part of the original session. The goal is to preserve the **complete explanation**, not to create a shortened summary.
+9. Make the Word document professional, readable, and suitable for future study or reference.
+10. Ensure the final \`.docx\` file is generated successfully and provide the **download link** to the completed Word document.
+
+**Important:** The first visible text in the Word document must be:
+
+**AR**
+
+This is specifically required to preserve proper RTL behavior when opening the document in Microsoft Word.`;
+
+function copyPrompt(btn) {
+	navigator.clipboard.writeText(promptText).then(() => {
+		const original = btn.textContent;
+		btn.textContent = '✅ Copied!';
+		btn.classList.add('copied');
+		setTimeout(() => {
+			btn.textContent = original;
+			btn.classList.remove('copied');
+		}, 1500);
+	});
+}
+</script>
 
