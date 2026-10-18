@@ -1,0 +1,37 @@
+<head id="head"><title>Plugins</title><link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="../../css/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/new2.css" />
+<style>
+	body#test { zoom: 0.8; }
+	.plugins { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+	.plugin-card { background: #fff; border: 1px solid #e1e4e8; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,.07); overflow: hidden; }
+	.plugin-card h2 { margin: 0; padding: 14px 20px; font-size: 22px; color: #fff; background: linear-gradient(135deg, #10a37f, #0b6e55); }
+	.plugin-card ol { list-style: none; counter-reset: step; margin: 0; padding: 10px 20px; }
+	.plugin-card li { counter-increment: step; display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eef0f2; direction: ltr; text-align: left; }
+	.plugin-card li:last-child { border-bottom: 0; }
+	.plugin-card li::before { content: counter(step); flex: 0 0 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; background: #e6f6f1; color: #0b6e55; font-weight: 700; }
+	.plugin-card code { flex: 1; padding: 8px 12px; font-size: 15px; color: #1f2937; background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; }
+	.plugin-card button { padding: 5px 12px; border: 1px solid #10a37f; border-radius: 6px; background: #fff; color: #10a37f; cursor: pointer; }
+	.plugin-card button:hover { background: #10a37f; color: #fff; }
+</style>
+</head><body id="test"><script src="../../js/nav.js"></script>
+<script src="../../js/lock.js" defer ></script>
+<div class="plugins">
+	<div class="plugin-card">
+		<h2>#codex Plugins</h2>
+		<ol>
+			<li><code>/plugin marketplace add openai/codex-plugin-cc</code><button onclick="copyCmd(this)">Copy</button></li>
+			<li><code>/plugin install codex@openai-codex</code><button onclick="copyCmd(this)">Copy</button></li>
+			<li><code>/reload-plugins</code><button onclick="copyCmd(this)">Copy</button></li>
+			<li><code>/codex:setup</code><button onclick="copyCmd(this)">Copy</button></li>
+		</ol>
+	</div>
+</div>
+<script>
+	function copyCmd(btn) {
+		navigator.clipboard.writeText(btn.previousElementSibling.textContent);
+		btn.textContent = "Copied!";
+		setTimeout(function () { btn.textContent = "Copy"; }, 1200);
+	}
+</script>
+</body>
