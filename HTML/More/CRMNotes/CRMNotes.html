@@ -29,3 +29,19 @@
 
 <th><a href="DeplymentNotes.html" style="color:yellow !important;"> Deplyment Notes </a></th>
 
+
+
+These are the other built-in virtual tables in the same family as Solution History, from the solution-management features:
+
+┌─────────────────────────────────────┬───────────────────────────────────────────────────────────────┬────────────────────────────────────────┐
+│            Virtual table            │                         What it shows                         │           Data source table            │
+├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+│ msdyn_solutionhistory               │ Solution operations: imports, exports, uninstalls             │ msdyn_solutionhistorydatasource        │
+├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+│ msdyn_solutioncomponentsummary      │ Components inside each solution (the list in the newer        │ msdyn_solutioncomponentdatasource      │
+│                                     │ solution explorer)                                            │                                        │
+├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+│ msdyn_solutioncomponentcountsummary │ Component counts per solution and type                        │ msdyn_solutioncomponentcountdatasource │
+├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
+│ msdyn_componentlayer                │ Solution layers of a component ("See solution layers")        │ msdyn_componentlayerdatasource         │
+└─────────────────────────────────────┴───────────────────────────────────────────────────────────────┴────────────────────────────────────────┘
