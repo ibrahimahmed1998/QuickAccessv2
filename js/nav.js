@@ -1,3 +1,36 @@
+// Apply the saved appearance without changing the original page layout.
+(() => {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = new URL('../css/theme.css', document.currentScript.src).href;
+    document.head.appendChild(stylesheet);
+    let savedTheme;
+    try { savedTheme = localStorage.getItem('quickaccess-theme'); } catch { }
+    document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const init = () => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'theme-toggle';
+        const update = () => {
+            const isLight = document.documentElement.dataset.theme === 'light';
+            button.textContent = isLight ? '☾ Dark mode' : '☀ Light mode';
+            button.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
+            button.setAttribute('aria-pressed', String(isLight));
+        };
+        button.addEventListener('click', () => {
+            const theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+            document.documentElement.dataset.theme = theme;
+            try { localStorage.setItem('quickaccess-theme', theme); } catch { }
+            update();
+        });
+        update();
+        document.body.appendChild(button);
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+    else init();
+})();
+
 const links = [], create_e = (root, ele, d, txt, c) => { 
     let b = document.createElement(ele); return root.appendChild(b),
     d && (b.className = d),

@@ -1,9 +1,246 @@
 <!doctype html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Concepts — A practical glossary</title>
+<link rel=stylesheet href=../../css/css/bootstrap.min.css>
 <style>
-:root{color-scheme:light;--ink:#172b30;--muted:#607477;--line:#dce5e3;--green:#126b56;--paper:#fff}*{box-sizing:border-box}body{margin:0;background:#f4f7f5;color:var(--ink);font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1320px;margin:auto;padding:42px 30px}header{border-top:4px solid var(--green);padding-top:23px;display:flex;justify-content:space-between;gap:24px;align-items:center}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:750;color:var(--green);text-transform:uppercase}h1{font-size:clamp(32px,5vw,48px);letter-spacing:-2px;line-height:1.12;margin:12px 0}p{margin:8px 0;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap}button,select,input,textarea{font:inherit}button,select{border:1px solid var(--line);background:white;border-radius:8px;padding:10px 14px;color:var(--ink)}button{cursor:pointer;font-weight:600}button:hover:not(:disabled){border-color:var(--green);background:#edf5f1}button:disabled{opacity:.4;cursor:default}.primary{background:var(--green);color:#fff;border-color:var(--green)}button.primary:hover{background:#0b5342;color:white}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #e0aa42;outline-offset:3px}.toolbar{display:grid;grid-template-columns:1fr 240px 170px;gap:12px;margin:30px 0 14px}label{font-size:12px;font-weight:650;display:block;color:var(--muted)}input,textarea,select{width:100%;margin-top:5px}input,textarea{border:1px solid var(--line);border-radius:8px;background:#fff;padding:11px 13px;color:var(--ink)}.meta{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin:15px 0}.tablebox{overflow:auto;border:1px solid var(--line);border-radius:12px;background:white}table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:680px}caption{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}th{text-align:left;background:#eaf1ed;color:#526663;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;padding:17px 22px}th:nth-child(1){width:24%}th:nth-child(2){width:42%}th:nth-child(3){width:34%}td{padding:20px 22px;vertical-align:top;border-top:1px solid #e6ece9;overflow-wrap:anywhere}td:first-child{font-weight:650}td:nth-child(3){color:#536b66;background:#fcfdfc}tbody tr:hover td{background:#f2f7f4}.tag{display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--green);font-weight:600;margin-top:8px}.pager{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:20px 0}.pages{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.pages button{min-width:40px;padding:8px 10px}.pages button[aria-current=page]{background:var(--green);color:white}.foot{font-size:12px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted)}a{color:var(--green)}details{margin:22px 0}summary{cursor:pointer;font-weight:650}.help{max-width:850px;font-size:14px}.empty{text-align:center;padding:55px;color:var(--muted)}dialog{border:1px solid var(--line);border-radius:16px;width:min(580px,94vw);padding:26px;color:var(--ink);max-height:90vh}dialog::backdrop{background:#122c2b88}dialog h2{margin-top:0}dialog label{margin:14px 0}textarea{min-height:95px;resize:vertical}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}#status{font-size:13px;color:var(--green);min-height:21px}code{background:#eaf1ed;padding:2px 5px;border-radius:4px}.stats{white-space:nowrap} @media(max-width:760px){main{padding:22px 16px}header{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr 1fr}.toolbar label:first-child{grid-column:1/-1}.pager{align-items:flex-start;flex-direction:column}.meta{flex-wrap:wrap}td,th{padding:16px}.stats{white-space:normal}}
-</style></head><body><main>
-<header><div><div class="eyebrow">The learning reference / AI</div><h1>AI, one concept at a time.</h1><p>A practical glossary. Clear definitions. Real-world examples.</p></div><div class="actions"><button id="add" class="primary">＋ Add concept</button><button id="download">Download HTML</button></div></header>
+:root { --top: 5%; --left: 15%; }
+
+th{
+    color: white;
+}
+
+td{
+    color: white;
+}
+
+
+body{
+    background-color: black; 
+}
+
+a{ color:white !important; }
+
+/* .top {
+    margin: var(--top) 0% 0% 15%;
+    display: inline-block;
+    width: 110vh;
+}
+
+.right {
+    margin: 0% 0% 0% 0%;
+    display: inline-block;
+}
+
+.left {
+    margin: 0% 58.7% 1% var(--left);
+    display: inline-block;
+}
+
+.down {
+    margin: 0% 0% 0% var(--left);
+    display: inline-block;
+    width: 110vh;
+} */
+
+.gmail {
+    /* width: 100px;
+    min-height: 100px; */
+    display: inline-flex;
+    margin: 1% 0% -2% 2%;
+}
+
+.gmail img {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+}
+
+.imgheader{
+    width: 45px;
+    height: 30px;
+}
+
+img {
+    width: 55px;
+    height: 55px;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, transform .1s;
+    margin: 0% 1.5% 2% 0%;
+    border-radius: 10px
+}
+
+img:hover {
+    width: 100px;
+    height: 100px;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+}
+
+.nav-link {
+    font-weight: 700;
+    color: white !important;
+}
+
+.navbar.navbar-expand-lg.navbar-dark.bg-dark,
+.fixed-top {
+    background-color: #002143 !important;
+    display: block;
+    position: relative;
+}
+
+.navbar-brand {
+    margin: 0% 30% 0% -21%;
+}
+
+.nav-link:hover, .navbar-brand:hover { color: #a71ea7 !important; }
+
+ 
+
+.ar { text-align: right; }
+
+
+.card {
+    width: 1500px;
+}
+
+.links {
+    margin: -63.5% 2% -3% 9%;
+    display: table;
+}
+
+.label {
+    margin: 1% 83% 1% 0%;
+    display: block;
+    width: max-content;
+}
+
+.underlabel {
+    margin: 0% 0% 0% 1%
+}
+
+li {
+    text-align: right;
+    direction: rtl;
+}
+
+h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.mind a {
+    display:inline-flex;
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+    margin: 0.5% 2.5% 1% 3%;
+ }
+ 
+ sub{
+    vertical-align: sub  ;
+    font-size: small  ;
+    /* color: red; */
+}
+
+
+ 
+
+th{
+    border-color: black !important;
+}
+/* Match the original QuickAccess table layout and navy navigation. */
+:root{--ink:#fff;--muted:#b7c2d0;--line:#293b50;--accent:#65b9ff;--panel:#0b1119;--field:#101c2a}
+html[data-theme="light"]{--ink:#172b42;--muted:#52657a;--line:#d5deea;--accent:#1456a0;--panel:#fff;--field:#eef3f9}
+*{box-sizing:border-box}
+body#test{margin:0;background:#000;color:var(--ink);font:16px/1.5 'Segoe UI',sans-serif;zoom:.8}
+main{padding:20px 18px 75px}
+main>header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+h1{font-size:26px;font-weight:700;margin:0 0 8px}p{margin:8px 0;color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+button,input,select,textarea{font:inherit;border:1px solid var(--line);background:var(--field);color:var(--ink);border-radius:3px;padding:8px 12px}
+button{cursor:pointer}button:hover:not(:disabled){border-color:var(--accent)}button:disabled{opacity:.45;cursor:default}
+.primary,.pages button[aria-current=page]{background:#002143;color:#fff;border-color:#426588}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.toolbar{display:grid;grid-template-columns:1fr 240px 170px;gap:12px;margin:20px 0 14px}
+label{font-size:14px;font-weight:600;display:block;color:var(--muted)}input,select,textarea{width:100%;margin-top:5px}
+.meta{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin:15px 0}
+.tablebox{overflow:auto}table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:680px}
+caption{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+th,td{text-align:left;padding:14px 16px;vertical-align:top;overflow-wrap:anywhere}
+thead th{background:#002143;color:#fff;border-color:var(--line)!important;font-size:16px}
+th:nth-child(1){width:24%}th:nth-child(2){width:42%}th:nth-child(3){width:34%}
+tbody td{border-bottom:1px solid var(--line);color:var(--ink)}td:first-child{font-size:18px;font-weight:700}
+.tag{display:block;color:var(--accent);font-size:12px;font-weight:400;margin-top:7px}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:20px 0}.pages{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.pages button{min-width:40px}
+.foot{font-size:13px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted)}details{margin:20px 0}summary{cursor:pointer;font-weight:600}.help{max-width:950px}
+.empty{text-align:center;padding:40px;color:var(--muted)}
+dialog{border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--ink);width:min(580px,94vw);padding:24px;max-height:90vh}
+dialog::backdrop{background:#0009}dialog h2{font-size:24px;margin-top:0}dialog label{margin:14px 0}textarea{min-height:95px;resize:vertical}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+#status{font-size:14px;color:var(--accent);min-height:21px}code{background:var(--field);color:var(--accent);padding:2px 5px}
+html[data-theme="light"] thead th{background:#e5edf8;color:var(--ink)}
+@media(max-width:760px){main{padding:18px 12px 80px}main>header{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr 1fr}.toolbar label:first-child{grid-column:1/-1}.pager{align-items:flex-start;flex-direction:column}.meta{flex-wrap:wrap}td,th{padding:12px}}
+
+/* The original dark design stays intact. Light mode changes colors only. */
+html[data-theme="dark"] { color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }
+
+.theme-toggle {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10000;
+    min-height: 42px;
+    padding: 9px 15px;
+    border: 1px solid #66798f;
+    border-radius: 7px;
+    background: #002143;
+    color: #fff;
+    font: 600 14px/1.4 'Segoe UI', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0003;
+}
+.theme-toggle:hover { background: #143b65; }
+.theme-toggle:focus-visible { outline: 3px solid #5b9aff; outline-offset: 3px; }
+
+html[data-theme="light"] body {
+    background: #f7f9fc !important;
+    color: #172b42 !important;
+    --bg-color: #f7f9fc;
+    --card-bg: #fff;
+    --text-color: #172b42;
+    --tn-bg: #f7f9fc;
+    --tn-panel: #fff;
+    --tn-panel-2: #eef3f9;
+    --tn-border: #cbd5e1;
+    --tn-text: #172b42;
+    --tn-muted: #52657a;
+    --tn-accent: #00796f;
+    --tn-accent-2: #355eb4;
+}
+html[data-theme="light"] th,
+html[data-theme="light"] td { color: #172b42; border-color: #d5deea !important; }
+html[data-theme="light"] body a { color: #1456a0 !important; }
+/* Keep the original accent colors readable against the light background. */
+html[data-theme="light"] a[style*="color"] { filter: brightness(.5); }
+html[data-theme="light"] hr { border-top-color: #d5deea !important; }
+html[data-theme="light"] .navbar.navbar-expand-lg.navbar-dark.bg-dark,
+html[data-theme="light"] .fixed-top { background-color: #e5edf8 !important; }
+html[data-theme="light"] .navbar a { color: #173c67 !important; }
+html[data-theme="light"] .nav-link:hover,
+html[data-theme="light"] .navbar-brand:hover { color: #861786 !important; }
+html[data-theme="light"] .card { background-color: #fff; color: #172b42; }
+html[data-theme="light"] .theme-toggle { background: #fff; color: #173c67; border-color: #a7b9ce; }
+html[data-theme="light"] .theme-toggle:hover { background: #e5edf8; }
+
+</style></head><body id="test"><script src="../../js/nav.js"></script>
+<script>
+// Keep the shared navigation pointed at the HTML root from this nested page.
+document.querySelectorAll('#mainNav a[href]').forEach(link=>{
+    const href=link.getAttribute('href');
+    if(!/^[a-z][a-z\d+.-]*:/i.test(href)) link.href=new URL('../'+href,location.href).href;
+});
+</script>
+<main>
+<header><div><h1>AI Concepts</h1><p>A practical glossary. Clear definitions. Real-world examples.</p></div><div class="actions"><button id="add" class="primary">＋ Add concept</button><button id="download">Download HTML</button></div></header>
 <div class="toolbar"><label>Search the glossary<input id="search" type="search" placeholder="Try neural network, RAG, or training…"></label><label>Explore a category<select id="category"><option value="">All categories</option></select></label><label>Order by<select id="sort"><option value="original">Learning order</option><option value="az">Title A–Z</option><option value="za">Title Z–A</option></select></label></div>
 <div class="meta"><span id="count" aria-live="polite"></span><span class="stats">3 columns · 25 rows per page · Works offline</span></div>
 <div class="tablebox"><table><caption>AI concepts, definitions, and examples</caption><thead><tr><th scope="col">01 / Concept title</th><th scope="col">02 / Definition & explanation</th><th scope="col">03 / Example</th></tr></thead><tbody id="rows"></tbody></table></div>
@@ -26,6 +263,36 @@ function render(){const data=matches(),total=Math.max(1,Math.ceil(data.length/PA
 ['search','category','sort'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',()=>{page=1;render();}));
 $('add').onclick=()=>{$('form').reset();$('error').textContent='';$('editor').showModal();};$('cancel').onclick=()=>$('editor').close();
 $('form').onsubmit=event=>{event.preventDefault();const fields=new FormData(event.target);const c={title:fields.get('title').trim(),category:fields.get('category').trim()||'Custom',definition:fields.get('definition').trim(),example:fields.get('example').trim()};if(!c.title||!c.definition||!c.example){$('error').textContent='Please fill the title, definition, and example with text.';return;}if(concepts.some(x=>x.title.toLowerCase()===c.title.toLowerCase())){$('error').textContent='That title already exists. Please use a distinct title.';return;}concepts.push(c);categories();$('search').value='';$('category').value='';$('sort').value='original';page=Math.ceil(concepts.length/PAGE_SIZE);render();$('editor').close();$('status').textContent='Concept added. Download HTML to save your updated glossary.';};
-$('download').onclick=()=>{const clone=document.documentElement.cloneNode(true);clone.querySelector('#concept-data').textContent=JSON.stringify(concepts,null,2).replace(/</g,'\\u003c');clone.querySelector('#rows').replaceChildren();clone.querySelector('#pages').replaceChildren();clone.querySelector('#editor').removeAttribute('open');clone.querySelector('#status').textContent='';clone.querySelector('#form').reset();const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ai-concepts.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);$('status').textContent='HTML download requested with all '+concepts.length+' concepts included.';};
+$('download').onclick=()=>{
+    const clone=document.documentElement.cloneNode(true);
+    clone.querySelector('#concept-data').textContent=JSON.stringify(concepts,null,2).replace(/</g,'\\u003c');
+    clone.querySelector('#rows').replaceChildren();
+    clone.querySelector('#pages').replaceChildren();
+    clone.querySelector('#editor').removeAttribute('open');
+    clone.querySelector('#status').textContent='';
+    clone.querySelector('#form').reset();
+    // Bundle styles so exported glossaries retain their appearance offline.
+    const bundled=document.createElement('style');
+    bundled.textContent=[...document.styleSheets].map(sheet=>{
+        try{return [...sheet.cssRules].map(rule=>rule.cssText).join('\n');}
+        catch{return '';}
+    }).join('\n');
+    clone.querySelectorAll('link[rel="stylesheet"], style, script[src], [data-export-theme], #mainNav').forEach(node=>node.remove());
+    clone.querySelector('head').append(bundled);
+    const themeScript=document.createElement('script');
+    themeScript.dataset.exportTheme='';
+    themeScript.textContent=`(() => {
+        const button=document.querySelector('.theme-toggle');
+        const update=()=>{const light=document.documentElement.dataset.theme==='light';button.textContent=light?'☾ Dark mode':'☀ Light mode';button.setAttribute('aria-label','Switch to '+(light?'dark':'light')+' mode');button.setAttribute('aria-pressed',String(light));};
+        try{const saved=localStorage.getItem('quickaccess-theme');if(saved==='light'||saved==='dark')document.documentElement.dataset.theme=saved;}catch{}
+        button.onclick=()=>{const theme=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=theme;try{localStorage.setItem('quickaccess-theme',theme);}catch{}update();};
+        update();
+    })();`;
+    clone.querySelector('body').append(themeScript);
+    const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='ai-concepts.html';a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),10000);
+    $('status').textContent='HTML download requested with all '+concepts.length+' concepts included.';
+};
 categories();render();
 </script></body></html>
