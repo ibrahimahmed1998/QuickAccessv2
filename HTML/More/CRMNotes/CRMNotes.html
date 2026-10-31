@@ -1,47 +1,97 @@
-<head id="head"><title>CRM Notes</title><link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
+﻿<!DOCTYPE html>
+<html lang="en">
+<head id="head">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM Notes</title>
+<link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="../../../css/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../../../css/new2.css" />
-<style> body#test { zoom: 0.8; } </style>
-</head><body id="test"><script src="../../../js/nav.js"></script>
-<script src="../../../js/lock.js" defer ></script>
+<style>
+  body#test { zoom: 0.8; }
+  .crm-wrap { direction: ltr; text-align: left; max-width: 1300px; margin: 20px auto; padding: 0 16px; }
+  .crm-section { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+  .crm-section h2 { font-size: 1.25rem; color: #ffd54f; margin: 0 0 12px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,213,79,0.35); }
+  .crm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .crm-grid a, .crm-grid span { display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); font-weight: 600;
+    transition: transform .15s, background .15s, border-color .15s; word-break: break-word; }
+  .crm-grid span { color: #fff; }
+  .crm-grid a:hover { transform: translateY(-2px); background: rgba(255,213,79,0.15); border-color: #ffd54f; }
+  .crm-grid .highlight { color: #ffd54f !important; border-color: #ffd54f; }
+  .crm-list { margin: 0; padding-left: 20px; padding-right: 0; direction: ltr !important; text-align: left !important; list-style-position: outside; }
+  .crm-list li { padding: 4px 0; color: #fff; direction: ltr !important; text-align: left !important; float: none !important; }
+  .crm-table { width: 100%; border-collapse: collapse; }
+  .crm-table th, .crm-table td { padding: 10px 12px; border: 1px solid rgba(255,255,255,0.15); vertical-align: top; }
+  .crm-table th { background: rgba(255,213,79,0.15); color: #ffd54f; }
+  .crm-table tr:hover td { background: rgba(255,255,255,0.05); }
+  .crm-table code { color: #80deea; background: transparent; }
+</style>
+</head>
+<body id="test" dir="ltr">
+<script src="../../../js/nav.js"></script>
+<script src="../../../js/lock.js" defer></script>
 
-<table class="table mind"><tr>
-<th><a href="https://dev.to/mohamed_elgharably/stop-writing-plugins-like-its-2011-modern-architecture-guide-1j9g">Modern Architecture Guide</a></th>
-<th><a href="https://arpitmscrmhunt.blogspot.com/p/interview-questions.html">Arpit hunt</a></th>
-<th><a href="https://www.msdynamicsblog.com">Dyn Blog</a></th>
-<th><a href="https://www.c-sharpcorner.com/article/validating-client-id-and-client-secret-using-postman">Valida Client ID,SEC</a></th>
-<th><a href="https://www.linkedin.com/pulse/d365-fscm-odata-postman-francisco-zanon">D365 OData</a></th>
-<th><a href="https://www.youtube.com/@xRMCoaches">Xrm Coaches</a></th>
-<th><a href="https://www.youtube.com/@ScottDurow/videos">Scott Durow</th>
-</tr>
-<th><a href="https://arunpotti.com/">arunpotti</a></th>
-<th><a href="https://xrmdynamicscrm.wordpress.com">XRM Dyn CRM</a></th>
-<th><a href="https://carldesouza.com/dynamics-crm/">Carldesouza</a></th>
-<th><a href="https://pcf.gallery/">PCF Gallery</a></th>
-<th><a href="https://www.facebook.com/groups/powerplatformarabic" >PP FB-AR</a></th>
-<th><a href="https://www.crmcrate.com/">CRM Crate</a></th>
-<table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr><!-- 1 -->
-<th><a href="#">?forceclassic=1</a></th>
-<th><a href="#">0x80040265 = err return from Plugin|Workflow</a></th>
-<th><a href="#">Sec Roles,Form,View,processes [Depend ON] Entitites</a></th>
-<th><a href="#"> Form,View </a></th>
+<div class="crm-wrap">
+  <section class="crm-section">
+    <h2>Resources &amp; Blogs</h2>
+    <div class="crm-grid">
+      <a href="https://dev.to/mohamed_elgharably/stop-writing-plugins-like-its-2011-modern-architecture-guide-1j9g" target="_blank">Modern Architecture Guide</a>
+      <a href="https://arpitmscrmhunt.blogspot.com/p/interview-questions.html" target="_blank">Arpit Hunt</a>
+      <a href="https://www.msdynamicsblog.com" target="_blank">Dyn Blog</a>
+      <a href="https://www.c-sharpcorner.com/article/validating-client-id-and-client-secret-using-postman" target="_blank">Validate Client ID / Secret</a>
+      <a href="https://www.linkedin.com/pulse/d365-fscm-odata-postman-francisco-zanon" target="_blank">D365 OData</a>
+      <a href="https://www.youtube.com/@xRMCoaches" target="_blank">XRM Coaches</a>
+      <a href="https://www.youtube.com/@ScottDurow/videos" target="_blank">Scott Durow</a>
+      <a href="https://arunpotti.com/" target="_blank">Arun Potti</a>
+      <a href="https://xrmdynamicscrm.wordpress.com" target="_blank">XRM Dyn CRM</a>
+      <a href="https://carldesouza.com/dynamics-crm/" target="_blank">Carl de Souza</a>
+      <a href="https://pcf.gallery/" target="_blank">PCF Gallery</a>
+      <a href="https://www.facebook.com/groups/powerplatformarabic" target="_blank">PP FB-AR</a>
+      <a href="https://www.crmcrate.com/" target="_blank">CRM Crate</a>
+      <a href="https://github.com/microsoft/power-platform-skills" target="_blank">Power Platform Skills</a>
+    </div>
+  </section>
 
+  <section class="crm-section">
+    <h2>Quick Notes</h2>
+    <div class="crm-grid">
+      <span>?forceclassic=1</span>
+      <span>0x80040265 = error returned from Plugin | Workflow</span>
+      <span>Sec Roles, Form, View, Processes [depend ON] Entities</span>
+      <span>Form, View</span>
+      <a href="DeplymentNotes.html" class="highlight">Deployment Notes</a>
+    </div>
+  </section>
 
-<th><a href="DeplymentNotes.html" style="color:yellow !important;"> Deplyment Notes </a></th>
+  <section class="crm-section">
+    <h2>CRM Ideas</h2>
+    <ul class="crm-list">
+      <li>1: CRM MCP and AI Model 4 Cloud </li>
+      <li>2: Ollama Integration 4 On-Premise</li>
+      <li>3: PCF Gallery</li>
+      <li>4: More visual apps ideas</li>
+      <li>5: </li>
+      <li>6: </li>
 
+    </ul>
+  </section>
 
-
-These are the other built-in virtual tables in the same family as Solution History, from the solution-management features:
-
-┌─────────────────────────────────────┬───────────────────────────────────────────────────────────────┬────────────────────────────────────────┐
-│            Virtual table            │                         What it shows                         │           Data source table            │
-├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
-│ msdyn_solutionhistory               │ Solution operations: imports, exports, uninstalls             │ msdyn_solutionhistorydatasource        │
-├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
-│ msdyn_solutioncomponentsummary      │ Components inside each solution (the list in the newer        │ msdyn_solutioncomponentdatasource      │
-│                                     │ solution explorer)                                            │                                        │
-├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
-│ msdyn_solutioncomponentcountsummary │ Component counts per solution and type                        │ msdyn_solutioncomponentcountdatasource │
-├─────────────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────────────────────────────────┤
-│ msdyn_componentlayer                │ Solution layers of a component ("See solution layers")        │ msdyn_componentlayerdatasource         │
-└─────────────────────────────────────┴───────────────────────────────────────────────────────────────┴────────────────────────────────────────┘
+  <section class="crm-section">
+    <h2>Solution Management Virtual Tables</h2>
+    <p>Built-in virtual tables in the same family as Solution History:</p>
+    <table class="crm-table">
+      <thead><tr><th>Virtual table</th><th>What it shows</th><th>Data source table</th></tr></thead>
+      <tbody>
+        <tr><td><code>msdyn_solutionhistory</code></td><td>Solution operations: imports, exports, uninstalls</td><td><code>msdyn_solutionhistorydatasource</code></td></tr>
+        <tr><td><code>msdyn_solutioncomponentsummary</code></td><td>Components inside each solution (the list in the newer solution explorer)</td><td><code>msdyn_solutioncomponentdatasource</code></td></tr>
+        <tr><td><code>msdyn_solutioncomponentcountsummary</code></td><td>Component counts per solution and type</td><td><code>msdyn_solutioncomponentcountdatasource</code></td></tr>
+        <tr><td><code>msdyn_componentlayer</code></td><td>Solution layers of a component ("See solution layers")</td><td><code>msdyn_componentlayerdatasource</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+</body>
+</html>
