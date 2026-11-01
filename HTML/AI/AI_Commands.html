@@ -1,0 +1,78 @@
+
+
+<head id="head"><title>AI Commands</title><link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="../../css/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/new2.css" />
+<style>
+body#test { zoom: 0.8; }
+.cmd-wrap { max-width: 1100px; margin: 40px auto 60px; padding: 0 20px; }
+.cmd-title { color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.cmd-search {
+    width: 100%; padding: 10px 14px; margin-bottom: 18px;
+    border-radius: 8px; border: 1px solid #334155; background: #0b1220; color: #fff; font-size: 15px;
+}
+.cmd-table { width: 100%; border-collapse: collapse; background: #0f1b2d; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 14px #0006; }
+.cmd-table thead th {
+    text-align: left; padding: 12px 16px; background: #002143; color: #fff;
+    font-size: 15px; letter-spacing: .3px; border-bottom: 2px solid #1a3a5c;
+}
+.cmd-table tbody td { padding: 12px 16px; border-bottom: 1px solid #1a2a3d; vertical-align: top; color: #e4e9f2; }
+.cmd-table tbody tr:hover { background: #142945; }
+.cmd-table tbody tr:last-child td { border-bottom: none; }
+.cmd-name { white-space: nowrap; }
+.cmd-name a {
+    display: inline-block; font-weight: 700; font-size: 15px; color: #7cc4ff !important;
+    background: #0b1f33; border: 1px solid #22496e; border-radius: 6px; padding: 4px 10px; text-decoration: none;
+}
+.cmd-name a:hover { background: #163a5c; }
+.cmd-desc { font-size: 14.5px; line-height: 1.5; color: #c7d2e0; }
+html[data-theme="light"] .cmd-title { color: #172b42; }
+html[data-theme="light"] .cmd-search { background: #fff; color: #172b42; border-color: #cbd5e1; }
+html[data-theme="light"] .cmd-table { background: #fff; box-shadow: 0 4px 14px #0001; }
+html[data-theme="light"] .cmd-table thead th { background: #e5edf8; color: #173c67; border-bottom-color: #cbd5e1; }
+html[data-theme="light"] .cmd-table tbody td { color: #172b42; border-bottom-color: #e2e8f0; }
+html[data-theme="light"] .cmd-table tbody tr:hover { background: #eef3f9; }
+html[data-theme="light"] .cmd-name a { background: #eaf2ff; border-color: #a7c8ec; color: #1456a0 !important; }
+</style>
+</head><body id="test"><script src="../../js/nav.js"></script>
+
+<div class="cmd-wrap">
+  <input id="cmdSearch" class="cmd-search" type="search" placeholder="Filter commands...">
+  <table class="cmd-table" id="cmdTable">
+    <thead>
+      <tr><th style="width:230px;">Command</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="cmd-name"><a href="#">/init</a></td><td class="cmd-desc">Scans the project and generates/updates the base instructions file (e.g. CLAUDE.md) so the assistant understands the repo's structure and conventions.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/plan</a></td><td class="cmd-desc">Asks the assistant to produce a step-by-step plan for a task before any code is written, so it can be reviewed and approved first.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/rubber-duck</a></td><td class="cmd-desc">Starts a rubber-duck style dialogue where you explain the problem out loud to clarify your own thinking before implementing a fix.</td></tr>
+      <tr><td class="cmd-name"><a href="https://github.com/mattpocock/skills">/setup-matt-pocock-skills</a></td><td class="cmd-desc">Installs Matt Pocock's community skill pack, adding a curated set of prebuilt skills to the assistant.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/goal</a></td><td class="cmd-desc">Sets or displays the current high-level goal/objective that should guide the session's work.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/workflow</a></td><td class="cmd-desc">Defines or runs a named multi-step workflow that chains several actions together.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/compact</a></td><td class="cmd-desc">Compacts/summarizes the conversation history to free up context window space while keeping key details.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/agents</a></td><td class="cmd-desc">Lists the available subagents and lets you inspect, create, or switch between them.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/skills</a></td><td class="cmd-desc">Lists installed skills/plugins and lets you enable, disable, or manage them.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="cmd-table" id="cmdTable2" style="margin-top:24px;">
+    <thead>
+      <tr><th style="width:230px;">Command</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="cmd-name"><a href="#">/model</a></td><td class="cmd-desc">Shows the active AI model or switches to a different one for the session.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/efforts</a></td><td class="cmd-desc">Sets or views the reasoning-effort level (e.g. low/medium/high) used when generating responses.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/status</a></td><td class="cmd-desc">Shows the current session status, including active model, context usage, and connected tools.</td></tr>
+      <tr><td class="cmd-name"><a href="#">/usage</a></td><td class="cmd-desc">Displays token/request usage statistics and remaining limits for the account or session.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+document.getElementById('cmdSearch').addEventListener('input', function () {
+    var q = this.value.trim().toLowerCase();
+    document.querySelectorAll('#cmdTable tbody tr, #cmdTable2 tbody tr').forEach(function (row) {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+});
+</script>
