@@ -7,13 +7,15 @@
 <table class="table mind">
 <tr>
 
-
-<th><a href="#">codex //Free Models</a></th>
-<th><a href="#">commandcode //Free Models</a></th>
-<th><a href="#">opencode //Free Models</a></th>
-<th><a href="#">ollama //Free Models</a></th>
+<th><a href="#" style="color: rgb(68, 197, 68) !important">Contains Free Models</a></th>
 <tr></tr>
-
+<th><a href="#">codex</a></th>
+<th title="Copy command code"><a href="#"  class="copy-text" onclick="copyText(this)">cmdc</a></th>
+<th><a href="#" >opencode</a></th>
+<th><a href="#">ollama</a></th>
+<tr></tr>
+<th><a href="#" style="color: rgb(84, 197, 197) !important">Other</a></th>
+<tr></tr>
 <th><a href="#">copilot</a></th>
 <th><a href="#">claude</a></th>
 <th><a href="#">gemini</a></th>
@@ -28,3 +30,15 @@
 <th><a href="https://www.piercode.com">piercode</a></th>
 <th><a href="https://openclaw.ai/">openclaw</a></th>
 </tr>
+
+
+
+<script>
+function copyText(element) {
+  const text = element.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
+</script>

@@ -1,14 +1,122 @@
 <head id="head"><title>AI</title><link rel="icon" href="../css/icon1.jpg" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="../css/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/new2.css" />
-<style>body#test { zoom: 0.8;} </style>
+<style>
+body#test { zoom: 0.8; }
+.concept-section {
+    max-width: 960px;
+    margin: 28px auto 36px;
+    padding: 0 18px;
+}
+.concept-card {
+    background: #0b1119;
+    border: 1px solid #293b50;
+    border-radius: 8px;
+    padding: 18px 22px;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+.concept-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.concept-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.concept-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #b7c2d0;
+}
+.concept-category {
+    font-size: 12px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #101c2a;
+    border: 1px solid #293b50;
+    color: #65b9ff;
+}
+.concept-all-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #65b9ff !important;
+    text-decoration: none;
+}
+.concept-all-link:hover {
+    text-decoration: underline;
+}
+.concept-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #fff;
+}
+.concept-definition {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+    color: #e4ebf3;
+}
+.concept-example {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 10px 12px;
+    border-left: 3px solid #65b9ff;
+    background: #101c2a;
+    border-radius: 0 4px 4px 0;
+    color: #b7c2d0;
+}
+.concept-example strong {
+    color: #fff;
+}
+html[data-theme="light"] .concept-card {
+    background: #fff;
+    border-color: #d5deea;
+    color: #172b42;
+}
+html[data-theme="light"] .concept-kicker {
+    color: #52657a;
+}
+html[data-theme="light"] .concept-category {
+    background: #eef3f9;
+    border-color: #d5deea;
+    color: #1456a0;
+}
+html[data-theme="light"] .concept-all-link {
+    color: #1456a0 !important;
+}
+html[data-theme="light"] .concept-title {
+    color: #172b42;
+}
+html[data-theme="light"] .concept-definition {
+    color: #243b53;
+}
+html[data-theme="light"] .concept-example {
+    background: #eef3f9;
+    border-left-color: #1456a0;
+    color: #52657a;
+}
+html[data-theme="light"] .concept-example strong {
+    color: #172b42;
+}
+</style>
 </head><body id="test"><script src="../js/nav.js"></script>
 <script src="../js/lock.js" defer ></script>
 <table class="table mind"><tr>
 <th><a href="AI/AI_Commands.html" style="color: rgb(29, 216, 29) !important;">Commands</a></th>
 <th><a href="AI/TokenSaving.html" style="color: rgb(29, 216, 29) !important;">TokenSaving</a></th>
 <th><a href="AI/MCP.html">MCP</a></th>
-<th><a href="AI/Plugins.html" >Skills</a></th>
+<th><a href="AI/AI_Skills.html" >Skills</a></th>
 <th><a href="AI/Plugins.html" >Plugins</a></th>
 <th><a href="AI/prompts.html" >Prompts</a></th>
 
@@ -30,7 +138,74 @@
 
 
 </tr>
+</table>
 
+<section class="concept-section" id="concept-spotlight" aria-live="polite" hidden>
+    <div class="concept-card">
+        <div class="concept-head">
+            <div class="concept-meta">
+                <span class="concept-kicker">AI Concept</span>
+                <span class="concept-category" id="concept-category"></span>
+            </div>
+            <a class="concept-all-link" href="AI/AI_Concepts.html">All Concepts →</a>
+        </div>
+        <h2 class="concept-title" id="concept-title"></h2>
+        <p class="concept-definition" id="concept-definition"></p>
+        <p class="concept-example"><strong>Example:</strong> <span id="concept-example"></span></p>
+    </div>
+</section>
+
+<script src="../js/ai-concepts-fallback.js"></script>
+<script>
+(async () => {
+    const STORAGE_KEY = 'ai-last-concept-index';
+
+    async function loadConcepts() {
+        try {
+            const response = await fetch('AI/AI_Concepts.html', { cache: 'no-store' });
+            if (response.ok) {
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const dataEl = doc.getElementById('concept-data');
+                if (dataEl && dataEl.textContent.trim()) {
+                    const parsed = JSON.parse(dataEl.textContent);
+                    if (Array.isArray(parsed) && parsed.length) return parsed;
+                }
+            }
+        } catch {
+            // Fallback for file:// where fetch is blocked by browser CORS rules.
+        }
+        return Array.isArray(window.AI_CONCEPTS_FALLBACK) ? window.AI_CONCEPTS_FALLBACK : [];
+    }
+
+    function pickConceptIndex(length) {
+        if (length <= 1) return 0;
+        let lastIndex = -1;
+        try {
+            const saved = sessionStorage.getItem(STORAGE_KEY);
+            if (saved !== null) lastIndex = Number.parseInt(saved, 10);
+        } catch { }
+        let nextIndex = Math.floor(Math.random() * length);
+        if (nextIndex === lastIndex) {
+            nextIndex = (nextIndex + 1 + Math.floor(Math.random() * (length - 1))) % length;
+        }
+        try {
+            sessionStorage.setItem(STORAGE_KEY, String(nextIndex));
+        } catch { }
+        return nextIndex;
+    }
+
+    const concepts = await loadConcepts();
+    if (!concepts.length) return;
+
+    const concept = concepts[pickConceptIndex(concepts.length)];
+    document.getElementById('concept-category').textContent = concept.category || 'General';
+    document.getElementById('concept-title').textContent = concept.title || '';
+    document.getElementById('concept-definition').textContent = concept.definition || '';
+    document.getElementById('concept-example').textContent = concept.example || '';
+    document.getElementById('concept-spotlight').hidden = false;
+})();
+</script>
 
 <!-- 
 <th><a href="https://www.anthropic.com/news">Anthropic News</a></th>

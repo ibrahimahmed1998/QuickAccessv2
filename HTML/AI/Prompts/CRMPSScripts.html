@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM PowerShell Script Prompt Builder</title>
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --border:#334155; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --ok:#22c55e; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--text); }
+  header { padding:20px 28px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+  header h1 { margin:0; font-size:1.3rem; } header h1 span { color:var(--accent); }
+  main { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:20px 28px; }
+  @media (max-width:1000px){ main { grid-template-columns:1fr; } }
+  section { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin-bottom:16px; }
+  section h2 { margin:0 0 12px; font-size:.95rem; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; }
+  label { display:block; font-size:.8rem; color:var(--muted); margin:10px 0 4px; }
+  input, textarea, select { width:100%; padding:8px 10px; background:#0b1220; color:var(--text); border:1px solid var(--border); border-radius:6px; font:inherit; font-size:.9rem; }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--accent); }
+  textarea { resize:vertical; min-height:38px; }
+  .preview { position:sticky; top:20px; align-self:start; }
+  pre { white-space:pre-wrap; word-wrap:break-word; background:#0b1220; border:1px solid var(--border); border-radius:8px; padding:14px; font-family:Consolas,monospace; font-size:.82rem; line-height:1.5; max-height:calc(100vh - 170px); overflow:auto; margin:0; }
+  button { background:var(--accent); color:#0f172a; border:0; border-radius:6px; padding:9px 16px; font-weight:600; cursor:pointer; }
+  button.secondary { background:transparent; color:var(--text); border:1px solid var(--border); }
+  button:hover { filter:brightness(1.1); }
+  .actions { display:flex; gap:8px; }
+  .toast { position:fixed; bottom:20px; right:20px; background:var(--ok); color:#052e16; padding:10px 16px; border-radius:6px; font-weight:600; opacity:0; transition:opacity .3s; }
+  .toast.show { opacity:1; }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ CRM <span>PowerShell</span> Script Prompt Builder</h1>
+  <div class="actions">
+    <button class="secondary" onclick="resetForm()">Reset</button>
+    <button onclick="copyPrompt()">📋 Copy Prompt</button>
+  </div>
+</header>
+
+<main>
+  <div id="form">
+    <section><h2>1. Task Goal &amp; Purpose</h2>
+      <label>Goal</label><input id="goal" placeholder="Export records / Bulk update field / Deactivate records / Migrate data / Export OptionSets / Count records">
+      <label>Target Entity Logical Name</label><input id="entity" placeholder="contact, account, ntw_newrequest, incident">
+    </section>
+    <section><h2>2. Environment &amp; Authentication</h2>
+      <label>Server URL</label><input id="url" placeholder="https://CompanyCRM.CompanyDomain.gov.sa">
+    </section>
+    <section><h2>3. Fields / Attributes</h2>
+      <label>Primary / Key Field</label><input id="key" placeholder="contactid">
+      <label>Fields to Read</label><textarea id="read" placeholder="fullname, ntw_amountofsalary, new_opsmaritalstatus"></textarea>
+      <label>Fields to Update / Write (if applicable)</label><textarea id="write" placeholder="statuscode = 2, ntw_status = 100000001"></textarea>
+      <label>Formatting</label><textarea id="fmt" placeholder="include formatted display labels for OptionSets and lookup names, plus raw values for mapping"></textarea>
+    </section>
+    <section><h2>4. Filtering &amp; Input</h2>
+      <label>Target Scope</label><input id="scope" placeholder="All records / Filter by FetchXML / Filter by input CSV containing GUIDs">
+      <label>Conditions / Criteria</label><textarea id="cond" placeholder="statecode == 0 (Active only), createdon >= 2026-01-01"></textarea>
+      <label>Input File Parameter</label><input id="input" placeholder="optional -InputIdFile .\ids.csv">
+    </section>
+    <section><h2>5. Performance &amp; Safety</h2>
+      <label>Page Size</label><select id="page"><option>50</option><option selected>100</option><option>250</option><option>500</option></select>
+      <label>Pause Between Pages</label><input id="pause" value="2–5 seconds">
+    </section>
+    <section><h2>6. Output &amp; Logging</h2>
+      <label>Output Format</label>
+      <select id="out">
+        <option value="">— choose —</option>
+        <option>Excel workbook using ImportExcel with auto-filter</option>
+        <option>UTF-8 CSV with BOM for Arabic characters</option>
+        <option>Console only</option>
+      </select>
+      <label>Checkpoint / Resumability</label>
+      <select id="resume">
+        <option value="Yes - save progress per page so interrupted runs can resume">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </section>
+  </div>
+
+  <div class="preview">
+    <section><h2>Generated Prompt</h2><pre id="output"></pre></section>
+  </div>
+</main>
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+  const v = id => {
+    const el = document.getElementById(id);
+    return el.value.trim() || `[${el.placeholder || '...'}]`;
+  };
+  function build() {
+    document.getElementById('output').textContent =
+`Please write a production-ready PowerShell script for Microsoft Dynamics CRM / 365 On-Premise.
+
+1. TASK GOAL & PURPOSE:
+- Goal: ${v('goal')}
+- Target Entity Logical Name: ${v('entity')}
+
+2. ENVIRONMENT & AUTHENTICATION:
+- Server URL: ${v('url')}
+- Deployment Type: Dynamics CRM On-Premise (IFD / Claims / Active Directory)
+- Auth Method: Interactive popup dialog (Get-CrmConnection -InteractiveMode) with OAuth fallback and pre-flight WhoAmI check.
+- Required Modules: Microsoft.Xrm.Data.PowerShell (auto-check and auto-install if missing).
+
+3. FIELDS / ATTRIBUTES INVOLVED:
+- Primary / Key Field: ${v('key')}
+- Fields to Read: ${v('read')}
+- Fields to Update / Write (if applicable): ${v('write')}
+- Formatting: ${v('fmt')}
+
+4. FILTERING & INPUT:
+- Target Scope: ${v('scope')}
+- Conditions / Criteria: ${v('cond')}
+- Input File Parameter: ${v('input')}
+
+5. PERFORMANCE & SAFETY (ON-PREMISE RULES):
+- Paging: Use FetchXML with paging cookie (PageSize = ${v('page')}).
+- Traffic Throttling: Add randomized pause between pages (${v('pause')}) to avoid stressing On-Premise IIS and SQL.
+- Resilience: Network retry logic with exponential backoff for transient server connection drops.
+- Safety Switch: Include -WhatIf or -DryRun switch before applying any modifications.
+
+6. OUTPUT & LOGGING:
+- Output Format: ${document.getElementById('out').value || '[Excel / CSV / Console]'}
+- Console Logging: Timestamped color-coded logs (step, info, success, warning, error).
+- Checkpoint / Resumability: ${v('resume')}.`;
+  }
+  function copyPrompt() {
+    navigator.clipboard.writeText(document.getElementById('output').textContent).then(() => {
+      const t = document.getElementById('toast'); t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    });
+  }
+  function resetForm() {
+    document.querySelectorAll('#form input, #form textarea').forEach(e => e.value = e.defaultValue);
+    document.querySelectorAll('#form select').forEach(s => s.selectedIndex = Math.max(0, [...s.options].findIndex(o => o.defaultSelected)));
+    build();
+  }
+  document.getElementById('form').addEventListener('input', build);
+  build();
+</script>
+</body>
+</html>

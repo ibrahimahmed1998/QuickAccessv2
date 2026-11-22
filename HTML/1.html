@@ -1,4 +1,4 @@
-<head id="head"><title>EveryDay</title><link rel="icon" href="../css/icon1.jpg" type="image/x-icon">
+<head id="head"><title>Delivery أسرع | Q Engineer</title><link rel="icon" href="../css/icon1.jpg" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="../css/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/new2.css" />
 <style>body#test { zoom: 0.8; /* 80% zoom out for all content */}</style>
@@ -44,6 +44,7 @@
 <th><a href="https://googleprojectzero.blogspot.com">Proj Zero</a></th>
 <th><a href="More/BackendNotes.html">Backend N</a></th>
 <th><a href="More/CRMNotes/CRMNotes.html">CRM N</a></th>
+<th><a href="#">Quantom</a></th>
 
 <th><a href="https://loop.cloud.microsoft/p/eyJ3Ijp7InUiOiJodHRwczovL25ld2VyYXRlY2hub2xvZ3kuc2hhcmVwb2ludC5jb20vP25hdj1jejBsTWtZbVpEMWlJVFJVT0UxTE9DMXZSbXR0WDBOdE5rZHdSVmxpTnpGS01HVktabVIyYWpsS2FtTmxkRjh3ZFdSTWJHSlpURk5wWkVNMmRIcFNjakJ2V2sxM2VWTjVVbkFtWmowd01WQkVVMGxNUVZkVk5ESlVVVmxHVWxBMFRrWktWVlJYTlVJMlYwcE9VbGxhSm1NOUptWnNkV2xrUFRFJTNEIiwiciI6ZmFsc2V9LCJwIjp7InUiOiJodHRwczovL25ld2VyYXRlY2hub2xvZ3kuc2hhcmVwb2ludC5jb20vY29udGVudHN0b3JhZ2UveDhGTk8teHRza3VDUlgyX2ZNVEhMWThBTjhibjJHMUZrM19admxjU19mQT9uYXY9Y3owbE1rWmpiMjUwWlc1MGMzUnZjbUZuWlNVeVJuZzRSazVQTFhoMGMydDFRMUpZTWw5bVRWUklURms0UVU0NFltNHlSekZHYXpOZlduWnNZMU5mWmtFbVpEMWlJVFJVT0UxTE9DMXZSbXR0WDBOdE5rZHdSVmxpTnpGS01HVktabVIyYWpsS2FtTmxkRjh3ZFdSTWJHSlpURk5wWkVNMmRIcFNjakJ2V2sxM2VWTjVVbkFtWmowd01WQkVVMGxNUVZWTFdWcE5Na1JVVGxCSVdrRktSVkpPUmtFeldFZzNSVkZZSm1NOUptWnNkV2xrUFRFJTNEIiwiciI6ZmFsc2V9LCJpIjp7ImkiOiI4MzQ3OTJmMy1hODg1LTQzODgtOGRkMS1mMmQ2OTI4NWQ3MWMifX0"  style="color: #9e0d0d !important;">#Loop</a></th>
 <th><a href="Netw.html" style="color: #9e0d0d !important;">#Company</a></th>
@@ -63,8 +64,30 @@
 <th><a href="file:///D:/Me">Review Me</a></th>
 <th><a href="ERP/ERP.html">ERP</a></th>
 <th><a href="https://learning.sap.com">SAP</a></th>
-</tr>
+<th><a href="https://egyptinnovate.com">Egypt Innovate</a></th>
+<th><a href="Business/Business.html">Business</a></th>
+<th><a href="More/UnlockFormScript.html">UnlockFormScript</a></th>
 
+</tr>
+</table> 
+<button id="randomNote" type="button" title="Click for another note" style="display:block;margin:10px auto;max-width:900px;padding:12px 18px;text-align:left;cursor:pointer;border:0;border-left:4px solid #8f9bff;background:#171a2b;color:#d6d9e5;border-radius:8px;"></button>
+<script>
+// Keep in sync with More/Words.html (fetch is blocked on file://)
+var notes = [
+  "🚀 Learn Faster by Building: design an HTML page or a small game for the purpose, e.g. OOP, Design Patterns, SOLID Principles.",
+  "🎯 Master a Unique Skill: every day is an opportunity to develop expertise in something that sets you apart. What skill did I work on today? How can I improve tomorrow?",
+  "🤐 Without Tongue | Silence: it teaches us to listen, observe, and think deeply. Did I listen more than I spoke today?",
+  "💬 Good Tongue | Words: words can heal, inspire, or hurt. Speak truth with kindness and purpose. Did my words today build others up?",
+  "🌙 Starving | Fasting: whether from food, social media, or distractions, it teaches discipline and gratitude. What should I fast from?",
+  "🙏 Think Well of God: cultivate trust and gratitude. What am I grateful for today? How can I trust more?",
+  "❤️ Think Well of People: assume best intentions. Compassion opens doors that judgment closes. Who can I show more kindness to?",
+  "# Review Me Directory: don't forget to clone projects weekly and update projects weekly."
+];
+var noteBtn = document.getElementById("randomNote");
+function showNote() { noteBtn.textContent = notes[Math.floor(Math.random() * notes.length)]; }
+noteBtn.onclick = showNote;
+showNote();
+</script>
 
 <!--
 <th><a href="https://www.examprepper.co/exam/143/70">Exam Prepper</a></th>

@@ -1,0 +1,22 @@
+(() => {
+  const fc = Xrm.Page, st = { patched: 0, blocked: 0 };
+
+  fc.getControl().forEach(c => {
+    try {
+      if (c.__godOrig) return;
+      c.__godOrig = c.setDisabled;
+      c.setDisabled = v => { if (v) { st.blocked++; return; } try { c.__godOrig.call(c, false); } catch (e) {} };
+      st.patched++;
+    } catch (e) {}
+  });
+
+  fc.getControl().forEach(c => { try { c.setDisabled(false); } catch (e) {} });
+  fc.ui.tabs.forEach(t => {
+    try { t.setVisible(true); } catch (e) {}
+    try { t.sections.forEach(s => s.setVisible(true)); } catch (e) {}
+  });
+
+  window.__god = st;
+  console.log("[god] patched", st.patched, "- now run: setInterval(() => console.log(" +
+              "document.title, window.__god.blocked), 3000)");
+})();
