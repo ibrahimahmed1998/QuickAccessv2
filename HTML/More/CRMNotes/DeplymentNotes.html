@@ -18,6 +18,26 @@
       --accent-soft: rgba(101, 169, 255, 0.14);
       --danger: #ff7f8f;
       --success: #6ee7a8;
+      --bg-grad: linear-gradient(135deg, #08101f 0%, var(--background) 55%, #101b31 100%);
+      --hero-bg: linear-gradient(135deg, rgba(27, 54, 96, 0.9), rgba(13, 23, 43, 0.82)), var(--surface);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        color-scheme: light;
+        --background: #f4f7fb;
+        --surface: #ffffff;
+        --surface-hover: #eef3f9;
+        --border: #cbd5e1;
+        --text: #172b42;
+        --muted: #52657a;
+        --accent: #1456a0;
+        --accent-soft: rgba(20, 86, 160, 0.12);
+        --danger: #dc2626;
+        --success: #16a34a;
+        --bg-grad: linear-gradient(135deg, #f8fafc 0%, var(--background) 55%, #eaf0f8 100%);
+        --hero-bg: linear-gradient(135deg, #eef3f9, #ffffff);
+      }
     }
 
     * {
@@ -33,8 +53,8 @@
         Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(43, 104, 194, 0.25), transparent 36rem),
-        linear-gradient(135deg, #08101f 0%, var(--background) 55%, #101b31 100%);
+        radial-gradient(circle at top right, rgba(43, 104, 194, 0.15), transparent 36rem),
+        var(--bg-grad);
     }
 
     main {
@@ -49,9 +69,7 @@
       padding: clamp(28px, 6vw, 58px);
       border: 1px solid var(--border);
       border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(27, 54, 96, 0.9), rgba(13, 23, 43, 0.82)),
-        var(--surface);
+      background: var(--hero-bg);
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
     }
 
@@ -243,6 +261,40 @@
       <article class="step">
         <span class="step-index" aria-hidden="true"></span>
         <div>
+          <h2>Backup first</h2>
+          <p>
+            Take an on-demand environment backup from the Power Platform admin
+            center and export the affected solution (managed and unmanaged)
+            before changing anything. Label it with the date and change name
+            so you can restore quickly if something breaks.
+          </p>
+          <div class="branch">
+            <span class="yes">Backup confirmed &rarr; continue</span>
+            <span class="no">No backup &rarr; do not deploy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="step-index" aria-hidden="true"></span>
+        <div>
+          <h2>Stop SMS activities and plugins</h2>
+          <p>
+            Before deploying, deactivate SMS-sending workflows, Power Automate
+            flows, and plugin steps (Plugin Registration Tool &rarr; disable
+            step) so customers don't receive duplicate or test messages while
+            data is imported or migrated. Note every component you disable.
+          </p>
+          <div class="branch">
+            <span class="yes">After deployment &rarr; re-enable each step</span>
+            <span class="no">Then send one test SMS to verify</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="step-index" aria-hidden="true"></span>
+        <div>
           <h2>Run Advanced Find on the field</h2>
           <p>
             Before deleting a field, use Advanced Find to check whether it is
@@ -266,6 +318,8 @@
           </p>
         </div>
       </article>
+
+
     </section>
 
     <footer>

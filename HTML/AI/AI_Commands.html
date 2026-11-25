@@ -1,78 +1,1190 @@
-
-
-<head id="head"><title>AI Commands</title><link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
+<!doctype html>
+<html lang="en">
+<head id="head">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Agents Commands Reference</title>
+<link rel="icon" href="../../css/icon1.jpg" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="../../css/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../../css/new2.css" />
 <style>
-body#test { zoom: 0.8; }
-.cmd-wrap { max-width: 1100px; margin: 40px auto 60px; padding: 0 20px; }
-.cmd-title { color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+:root {
+  --cmd-bg: #070d17;
+  --cmd-surface: #0d1626;
+  --cmd-surface-2: #121f35;
+  --cmd-surface-hover: #172742;
+  --cmd-border: #1e314d;
+  --cmd-border-strong: #2b4469;
+  --cmd-text: #e6edf7;
+  --cmd-muted: #94a6be;
+  --cmd-pill-bg: #0a192c;
+  --cmd-pill-border: #24476e;
+  --cmd-pill-text: #7cc4ff;
+  --cmd-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
+  --cmd-sticky-bg: rgba(7, 13, 23, 0.92);
+  --cmd-toast-bg: #0f291e;
+  --cmd-toast-border: #10b981;
+  --cmd-toast-text: #a7f3d0;
+}
+
+html[data-theme="light"] {
+  --cmd-bg: #f4f7fb;
+  --cmd-surface: #ffffff;
+  --cmd-surface-2: #eef3f9;
+  --cmd-surface-hover: #f3f7fc;
+  --cmd-border: #d5e0ec;
+  --cmd-border-strong: #b7c8dc;
+  --cmd-text: #172b42;
+  --cmd-muted: #52657a;
+  --cmd-pill-bg: #eaf2ff;
+  --cmd-pill-border: #a7c8ec;
+  --cmd-pill-text: #1456a0;
+  --cmd-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  --cmd-sticky-bg: rgba(244, 247, 251, 0.94);
+  --cmd-toast-bg: #ecfdf5;
+  --cmd-toast-border: #059669;
+  --cmd-toast-text: #065f46;
+}
+
+* { box-sizing: border-box; }
+
+body#test {
+  zoom: 0.8;
+  margin: 0;
+  background: var(--cmd-bg) !important;
+  color: var(--cmd-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.cmd-page {
+  max-width: 1200px;
+  margin: 26px auto 80px;
+  padding: 0 20px;
+}
+
+.cmd-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--cmd-border);
+}
+
+.cmd-hero-title {
+  margin: 0 0 6px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cmd-text);
+}
+
+.cmd-hero-sub {
+  margin: 0;
+  font-size: 15px;
+  color: var(--cmd-muted);
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+.cmd-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cmd-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: var(--cmd-surface);
+  border: 1px solid var(--cmd-border);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--cmd-muted);
+}
+
+.cmd-stat-pill strong {
+  color: var(--cmd-text);
+}
+
+.cmd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--cmd-border-strong);
+  background: var(--cmd-surface);
+  color: var(--cmd-text);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.cmd-btn:hover {
+  background: var(--cmd-surface-2);
+  border-color: var(--cmd-pill-text);
+}
+
+.cmd-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--cmd-sticky-bg);
+  backdrop-filter: blur(10px);
+  padding: 14px 0 16px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--cmd-border);
+}
+
+.cmd-search-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.cmd-search-box {
+  position: relative;
+  flex: 1 1 340px;
+}
+
+.cmd-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cmd-muted);
+  pointer-events: none;
+  display: flex;
+}
+
 .cmd-search {
-    width: 100%; padding: 10px 14px; margin-bottom: 18px;
-    border-radius: 8px; border: 1px solid #334155; background: #0b1220; color: #fff; font-size: 15px;
+  width: 100%;
+  padding: 11px 76px 11px 42px;
+  border-radius: 10px;
+  border: 1px solid var(--cmd-border-strong);
+  background: var(--cmd-surface);
+  color: var(--cmd-text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.cmd-table { width: 100%; border-collapse: collapse; background: #0f1b2d; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 14px #0006; }
+
+.cmd-search::placeholder {
+  color: var(--cmd-muted);
+}
+
+.cmd-search:focus {
+  border-color: var(--cmd-pill-text);
+  box-shadow: 0 0 0 3px rgba(124, 196, 255, 0.18);
+}
+
+.cmd-search-kbd {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 2px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--cmd-border-strong);
+  background: var(--cmd-surface-2);
+  color: var(--cmd-muted);
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.cmd-search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: none;
+  background: var(--cmd-surface-2);
+  color: var(--cmd-text);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.cmd-search-clear.visible {
+  display: inline-flex;
+}
+
+.cmd-type-group {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cmd-type-btn {
+  padding: 8px 13px;
+  border-radius: 8px;
+  border: 1px solid var(--cmd-border);
+  background: var(--cmd-surface);
+  color: var(--cmd-muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cmd-type-btn:hover {
+  color: var(--cmd-text);
+  border-color: var(--cmd-border-strong);
+}
+
+.cmd-type-btn.active {
+  background: var(--cmd-pill-bg);
+  border-color: var(--cmd-pill-border);
+  color: var(--cmd-pill-text);
+}
+
+.cmd-agent-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.cmd-agent-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--cmd-border);
+  background: var(--cmd-surface);
+  color: var(--cmd-muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cmd-agent-tab:hover {
+  color: var(--cmd-text);
+  border-color: var(--cmd-border-strong);
+}
+
+.cmd-agent-tab.active {
+  background: var(--agent-soft, var(--cmd-pill-bg));
+  border-color: var(--agent-accent, var(--cmd-pill-border));
+  color: var(--cmd-text);
+}
+
+.cmd-tab-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--agent-accent, var(--cmd-pill-text));
+  flex-shrink: 0;
+}
+
+.cmd-tab-count {
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--cmd-surface-2);
+  color: var(--cmd-muted);
+}
+
+.cmd-agent-tab.active .cmd-tab-count {
+  color: var(--cmd-text);
+}
+
+.cmd-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.agent-card {
+  background: var(--cmd-surface);
+  border: 1px solid var(--cmd-border);
+  border-top: 3px solid var(--agent-accent, #38bdf8);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--cmd-shadow);
+}
+
+.agent-card[hidden] {
+  display: none;
+}
+
+.agent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  background: var(--cmd-surface-2);
+  border-bottom: 1px solid var(--cmd-border);
+}
+
+.agent-card.collapsed .agent-header {
+  border-bottom: none;
+}
+
+.agent-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.agent-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 7px;
+  background: var(--agent-soft);
+  border: 1px solid var(--agent-border);
+  color: var(--agent-accent);
+  font-family: Consolas, 'Cascadia Code', monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.agent-name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cmd-text);
+}
+
+.agent-tagline {
+  margin: 3px 0 0;
+  font-size: 13.5px;
+  color: var(--cmd-muted);
+}
+
+.agent-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.agent-count {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--cmd-surface);
+  border: 1px solid var(--cmd-border);
+  color: var(--cmd-muted);
+}
+
+.agent-docs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--cmd-border-strong);
+  background: var(--cmd-surface);
+  color: var(--cmd-pill-text) !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.agent-docs-link:hover {
+  background: var(--cmd-pill-bg);
+  text-decoration: none;
+}
+
+.agent-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  border: 1px solid var(--cmd-border-strong);
+  background: var(--cmd-surface);
+  color: var(--cmd-text);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.agent-toggle:hover {
+  background: var(--cmd-surface-hover);
+}
+
+.agent-card.collapsed .agent-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.agent-body {
+  overflow-x: auto;
+}
+
+.agent-card.collapsed .agent-body {
+  display: none;
+}
+
+.cmd-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 660px;
+}
+
 .cmd-table thead th {
-    text-align: left; padding: 12px 16px; background: #002143; color: #fff;
-    font-size: 15px; letter-spacing: .3px; border-bottom: 2px solid #1a3a5c;
+  text-align: left;
+  padding: 11px 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cmd-muted);
+  background: var(--cmd-surface);
+  border-bottom: 1px solid var(--cmd-border) !important;
 }
-.cmd-table tbody td { padding: 12px 16px; border-bottom: 1px solid #1a2a3d; vertical-align: top; color: #e4e9f2; }
-.cmd-table tbody tr:hover { background: #142945; }
-.cmd-table tbody tr:last-child td { border-bottom: none; }
-.cmd-name { white-space: nowrap; }
-.cmd-name a {
-    display: inline-block; font-weight: 700; font-size: 15px; color: #7cc4ff !important;
-    background: #0b1f33; border: 1px solid #22496e; border-radius: 6px; padding: 4px 10px; text-decoration: none;
+
+.cmd-table tbody tr {
+  border-bottom: 1px solid var(--cmd-border);
+  transition: background 0.12s ease;
 }
-.cmd-name a:hover { background: #163a5c; }
-.cmd-desc { font-size: 14.5px; line-height: 1.5; color: #c7d2e0; }
-html[data-theme="light"] .cmd-title { color: #172b42; }
-html[data-theme="light"] .cmd-search { background: #fff; color: #172b42; border-color: #cbd5e1; }
-html[data-theme="light"] .cmd-table { background: #fff; box-shadow: 0 4px 14px #0001; }
-html[data-theme="light"] .cmd-table thead th { background: #e5edf8; color: #173c67; border-bottom-color: #cbd5e1; }
-html[data-theme="light"] .cmd-table tbody td { color: #172b42; border-bottom-color: #e2e8f0; }
-html[data-theme="light"] .cmd-table tbody tr:hover { background: #eef3f9; }
-html[data-theme="light"] .cmd-name a { background: #eaf2ff; border-color: #a7c8ec; color: #1456a0 !important; }
+
+.cmd-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.cmd-table tbody tr:hover {
+  background: var(--cmd-surface-hover);
+}
+
+.cmd-table tbody tr[hidden] {
+  display: none;
+}
+
+.cmd-table tbody td {
+  padding: 12px 18px;
+  vertical-align: middle;
+  color: var(--cmd-text);
+  border-color: var(--cmd-border) !important;
+}
+
+.cmd-cell-command {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cmd-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 6px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--cmd-pill-border);
+  background: var(--cmd-pill-bg);
+  color: var(--cmd-pill-text);
+  font-family: Consolas, 'Cascadia Code', monospace;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: left;
+  word-break: break-word;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cmd-copy-btn:hover {
+  border-color: var(--agent-accent, var(--cmd-pill-text));
+  transform: translateY(-1px);
+}
+
+.cmd-copy-btn.copied {
+  background: var(--cmd-toast-bg);
+  border-color: var(--cmd-toast-border);
+  color: var(--cmd-toast-text);
+}
+
+.cmd-copy-icon {
+  opacity: 0.7;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.cmd-ext-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--cmd-border-strong);
+  background: var(--cmd-surface-2);
+  color: var(--cmd-pill-text) !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cmd-ext-link:hover {
+  text-decoration: underline;
+}
+
+.cmd-kind {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--cmd-border);
+  background: var(--cmd-surface-2);
+  color: var(--cmd-muted);
+  white-space: nowrap;
+}
+
+.cmd-kind-slash {
+  color: var(--agent-accent, var(--cmd-pill-text));
+  border-color: var(--agent-border, var(--cmd-pill-border));
+  background: var(--agent-soft, var(--cmd-pill-bg));
+}
+
+.cmd-kind-cli {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.35);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+html[data-theme="light"] .cmd-kind-cli {
+  color: #047857;
+  border-color: rgba(4, 120, 87, 0.25);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.cmd-kind-shortcut {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+html[data-theme="light"] .cmd-kind-shortcut {
+  color: #b45309;
+  border-color: rgba(180, 83, 9, 0.25);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.cmd-desc {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--cmd-text);
+}
+
+.cmd-empty {
+  text-align: center;
+  padding: 48px 24px;
+  border-radius: 12px;
+  border: 1px dashed var(--cmd-border-strong);
+  background: var(--cmd-surface);
+  color: var(--cmd-muted);
+}
+
+.cmd-empty h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: var(--cmd-text);
+}
+
+.cmd-toast {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 10000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--cmd-toast-border);
+  background: var(--cmd-toast-bg);
+  color: var(--cmd-toast-text);
+  font-size: 13.5px;
+  font-weight: 700;
+  box-shadow: var(--cmd-shadow);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.cmd-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .cmd-page { padding: 0 12px; }
+  .cmd-hero-title { font-size: 24px; }
+  .agent-header { padding: 14px 16px; }
+  .cmd-table thead th, .cmd-table tbody td { padding: 10px 12px; }
+}
 </style>
-</head><body id="test"><script src="../../js/nav.js"></script>
-
-<div class="cmd-wrap">
-  <input id="cmdSearch" class="cmd-search" type="search" placeholder="Filter commands...">
-  <table class="cmd-table" id="cmdTable">
-    <thead>
-      <tr><th style="width:230px;">Command</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="cmd-name"><a href="#">/init</a></td><td class="cmd-desc">Scans the project and generates/updates the base instructions file (e.g. CLAUDE.md) so the assistant understands the repo's structure and conventions.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/plan</a></td><td class="cmd-desc">Asks the assistant to produce a step-by-step plan for a task before any code is written, so it can be reviewed and approved first.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/rubber-duck</a></td><td class="cmd-desc">Starts a rubber-duck style dialogue where you explain the problem out loud to clarify your own thinking before implementing a fix.</td></tr>
-      <tr><td class="cmd-name"><a href="https://github.com/mattpocock/skills">/setup-matt-pocock-skills</a></td><td class="cmd-desc">Installs Matt Pocock's community skill pack, adding a curated set of prebuilt skills to the assistant.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/goal</a></td><td class="cmd-desc">Sets or displays the current high-level goal/objective that should guide the session's work.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/workflow</a></td><td class="cmd-desc">Defines or runs a named multi-step workflow that chains several actions together.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/compact</a></td><td class="cmd-desc">Compacts/summarizes the conversation history to free up context window space while keeping key details.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/agents</a></td><td class="cmd-desc">Lists the available subagents and lets you inspect, create, or switch between them.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/skills</a></td><td class="cmd-desc">Lists installed skills/plugins and lets you enable, disable, or manage them.</td></tr>
-    </tbody>
-  </table>
-
-  <table class="cmd-table" id="cmdTable2" style="margin-top:24px;">
-    <thead>
-      <tr><th style="width:230px;">Command</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="cmd-name"><a href="#">/model</a></td><td class="cmd-desc">Shows the active AI model or switches to a different one for the session.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/efforts</a></td><td class="cmd-desc">Sets or views the reasoning-effort level (e.g. low/medium/high) used when generating responses.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/status</a></td><td class="cmd-desc">Shows the current session status, including active model, context usage, and connected tools.</td></tr>
-      <tr><td class="cmd-name"><a href="#">/usage</a></td><td class="cmd-desc">Displays token/request usage statistics and remaining limits for the account or session.</td></tr>
-    </tbody>
-  </table>
-</div>
-
+</head>
+<body id="test">
+<script src="../../js/nav.js"></script>
 <script>
-document.getElementById('cmdSearch').addEventListener('input', function () {
-    var q = this.value.trim().toLowerCase();
-    document.querySelectorAll('#cmdTable tbody tr, #cmdTable2 tbody tr').forEach(function (row) {
-        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-    });
+// Keep shared navigation links pointed at the HTML root from this nested page.
+document.querySelectorAll('#mainNav a[href]').forEach(function (link) {
+  var href = link.getAttribute('href');
+  if (!/^[a-z][a-z\d+.-]*:/i.test(href)) {
+    link.href = new URL('../' + href, location.href).href;
+  }
 });
 </script>
+
+<main class="cmd-page">
+  <header class="cmd-hero">
+    <div>
+      <h1 class="cmd-hero-title">AI Coding Agents — Command Reference</h1>
+      <p class="cmd-hero-sub">Click any command to copy it to your clipboard. Filter by agent, command type, or search across Claude Code, OpenAI Codex, Gemini CLI, OpenCode, GitHub Copilot CLI, and shared workflows.</p>
+    </div>
+    <div class="cmd-hero-actions">
+      <span class="cmd-stat-pill" id="cmdCounter">Showing <strong>0</strong> of <strong>0</strong> commands</span>
+      <button type="button" class="cmd-btn" id="toggleAllBtn">Collapse All</button>
+    </div>
+  </header>
+
+  <section class="cmd-toolbar" aria-label="Filter and search commands">
+    <div class="cmd-search-row">
+      <div class="cmd-search-box">
+        <span class="cmd-search-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </span>
+        <input id="cmdSearch" class="cmd-search" type="search" placeholder="Search commands, flags, or descriptions... (Press / to focus)">
+        <span class="cmd-search-kbd" id="searchKbd">/</span>
+        <button type="button" class="cmd-search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+      </div>
+      <div class="cmd-type-group" role="group" aria-label="Command type filter">
+        <button type="button" class="cmd-type-btn active" data-type="all">All Types</button>
+        <button type="button" class="cmd-type-btn" data-type="slash">Slash (/)</button>
+        <button type="button" class="cmd-type-btn" data-type="cli">CLI / Shell</button>
+        <button type="button" class="cmd-type-btn" data-type="shortcut">Shortcuts &amp; Prefixes</button>
+      </div>
+    </div>
+    <div class="cmd-agent-tabs" id="agentTabs" role="tablist" aria-label="AI agent sections"></div>
+  </section>
+
+  <div class="cmd-sections" id="cmdSections"></div>
+
+  <div class="cmd-empty" id="cmdEmpty" hidden>
+    <h3>No matching commands found</h3>
+    <p>Try a different keyword or reset your agent and type filters.</p>
+    <button type="button" class="cmd-btn" id="resetFiltersBtn">Reset filters</button>
+  </div>
+</main>
+
+<div class="cmd-toast" id="cmdToast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var AGENTS = [
+    {
+      id: 'claude',
+      name: 'Claude Code',
+      binary: 'claude',
+      tagline: 'Anthropic terminal & IDE coding agent — slash commands, CLI flags, and context shortcuts.',
+      docsUrl: 'https://docs.anthropic.com/en/docs/claude-code/slash-commands',
+      accent: '#fb923c',
+      soft: 'rgba(251, 146, 60, 0.14)',
+      border: 'rgba(251, 146, 60, 0.4)',
+      commands: [
+        { cmd: '/init', copy: '/init', type: 'slash', desc: 'Scans the repository and generates or updates CLAUDE.md with build, test, and architecture conventions.' },
+        { cmd: '/compact [instructions]', copy: '/compact', type: 'slash', desc: 'Summarizes and compresses conversation history to free context window space (optionally guided by focus instructions).' },
+        { cmd: '/clear', copy: '/clear', type: 'slash', desc: 'Wipes the active conversation transcript completely to start a fresh task cleanly.' },
+        { cmd: '/plan', copy: '/plan', type: 'slash', desc: 'Switches into read-only planning mode to analyze the codebase and propose an implementation plan before editing.' },
+        { cmd: '/model', copy: '/model', type: 'slash', desc: 'Switches the active Claude model (Sonnet, Opus, Haiku) or adjusts reasoning effort mid-session.' },
+        { cmd: '/effort', copy: '/effort', type: 'slash', desc: 'Sets reasoning effort level (low, medium, high, max) to balance speed, token usage, and deep thinking.' },
+        { cmd: '/context', copy: '/context', type: 'slash', desc: 'Visualizes current context window consumption broken down by system prompt, tools, files, and messages.' },
+        { cmd: '/cost', copy: '/cost', type: 'slash', desc: 'Displays session token usage statistics, duration, and estimated API cost.' },
+        { cmd: '/usage', copy: '/usage', type: 'slash', desc: 'Shows plan rate-limit usage and remaining session/weekly quota windows.' },
+        { cmd: '/status', copy: '/status', type: 'slash', desc: 'Shows Claude Code version, active model, account/auth details, and connected MCP server status.' },
+        { cmd: '/resume', copy: '/resume', type: 'slash', desc: 'Opens an interactive picker to restore and continue a previous conversation session.' },
+        { cmd: '/rewind', copy: '/rewind', type: 'slash', desc: 'Rewinds the conversation and/or reverts file edits back to an earlier checkpoint (also Esc twice).' },
+        { cmd: '/diff', copy: '/diff', type: 'slash', desc: 'Opens an interactive diff viewer showing uncommitted changes and per-turn edits.' },
+        { cmd: '/review', copy: '/review', type: 'slash', desc: 'Reviews pending git changes, branch diffs, or a pull request for bugs and regressions.' },
+        { cmd: '/mcp', copy: '/mcp', type: 'slash', desc: 'Inspects, connects, authenticates, or reconnects Model Context Protocol (MCP) servers.' },
+        { cmd: '/agents', copy: '/agents', type: 'slash', desc: 'Lists, creates, edits, or invokes specialized custom subagents.' },
+        { cmd: '/memory', copy: '/memory', type: 'slash', desc: 'Views loaded CLAUDE.md and auto-memory files and opens them in your editor.' },
+        { cmd: '/permissions', copy: '/permissions', type: 'slash', desc: 'Views or updates allowed/denied tool and bash execution rules.' },
+        { cmd: '/config', copy: '/config', type: 'slash', desc: 'Opens the interactive settings panel (theme, output style, notifications, diff tool).' },
+        { cmd: '/doctor', copy: '/doctor', type: 'slash', desc: 'Runs diagnostics on your Claude Code installation, network, and configuration.' },
+        { cmd: '/help', copy: '/help', type: 'slash', desc: 'Lists all built-in and custom .claude/commands/ slash commands.' },
+        { cmd: 'claude', copy: 'claude', type: 'cli', desc: 'Launches the interactive Claude Code REPL in the current directory.' },
+        { cmd: 'claude -c', copy: 'claude -c', type: 'cli', desc: 'Continues the most recent conversation in the current workspace directory (--continue).' },
+        { cmd: 'claude -r "<session>"', copy: 'claude -r ""', type: 'cli', desc: 'Resumes a specific past session by ID or name (--resume).' },
+        { cmd: 'claude -p "<prompt>"', copy: 'claude -p ""', type: 'cli', desc: 'Runs a one-off prompt in headless print mode and exits (ideal for scripts and pipes).' },
+        { cmd: 'claude --permission-mode plan', copy: 'claude --permission-mode plan', type: 'cli', desc: 'Starts Claude Code directly in safe read-only Plan Mode.' },
+        { cmd: 'claude mcp add <name> -- <cmd>', copy: 'claude mcp add ', type: 'cli', desc: 'Registers a new MCP server from the command line.' },
+        { cmd: 'claude update', copy: 'claude update', type: 'cli', desc: 'Updates the Claude Code CLI binary to the latest version.' },
+        { cmd: '@path/to/file', copy: '@', type: 'shortcut', desc: 'Fuzzy-searches and attaches a file or directory directly into prompt context.' },
+        { cmd: '! <bash-command>', copy: '! ', type: 'shortcut', desc: 'Executes a shell command directly and appends its output to the conversation context.' },
+        { cmd: 'Shift+Tab', copy: 'Shift+Tab', type: 'shortcut', desc: 'Cycles permission modes (Default -> Auto-accept edits -> Plan Mode).' }
+      ]
+    },
+    {
+      id: 'codex',
+      name: 'OpenAI Codex',
+      binary: 'codex',
+      tagline: 'OpenAI terminal coding agent — TUI slash commands, sandbox flags, and headless exec.',
+      docsUrl: 'https://github.com/openai/codex',
+      accent: '#10b981',
+      soft: 'rgba(16, 185, 129, 0.14)',
+      border: 'rgba(16, 185, 129, 0.4)',
+      commands: [
+        { cmd: '/init', copy: '/init', type: 'slash', desc: 'Analyzes the repository and scaffolds an AGENTS.md file with project instructions for Codex.' },
+        { cmd: '/plan', copy: '/plan', type: 'slash', desc: 'Instructs Codex to design a step-by-step implementation blueprint before modifying files.' },
+        { cmd: '/model', copy: '/model', type: 'slash', desc: 'Switches the active OpenAI/Codex model and reasoning effort level on the fly.' },
+        { cmd: '/permissions', copy: '/permissions', type: 'slash', desc: 'Adjusts approval policy and sandbox execution permissions for the active session (also /approvals).' },
+        { cmd: '/review', copy: '/review', type: 'slash', desc: 'Launches a dedicated review agent over uncommitted changes, a base branch, or a specific commit.' },
+        { cmd: '/diff', copy: '/diff', type: 'slash', desc: 'Displays git diffs (including staged, unstaged, and untracked file changes) inside the TUI.' },
+        { cmd: '/compact', copy: '/compact', type: 'slash', desc: 'Summarizes older conversation turns to reclaim context window tokens without losing task state.' },
+        { cmd: '/status', copy: '/status', type: 'slash', desc: 'Shows current session configuration, active model, approval mode, workspace root, and token usage.' },
+        { cmd: '/mcp', copy: '/mcp', type: 'slash', desc: 'Lists connected Model Context Protocol (MCP) tools and server statuses.' },
+        { cmd: '/mention', copy: '/mention', type: 'slash', desc: 'Attaches specific workspace files into the conversation context.' },
+        { cmd: '/new', copy: '/new', type: 'slash', desc: 'Starts a fresh conversation transcript inside the running Codex TUI.' },
+        { cmd: '/fork', copy: '/fork', type: 'slash', desc: 'Clones the current conversation into a new branched session to explore an alternative approach.' },
+        { cmd: 'codex', copy: 'codex', type: 'cli', desc: 'Starts the interactive Codex terminal UI in the current repository.' },
+        { cmd: 'codex exec "<prompt>"', copy: 'codex exec ""', type: 'cli', desc: 'Runs Codex non-interactively/headlessly for automation and CI pipelines.' },
+        { cmd: 'codex resume --last', copy: 'codex resume --last', type: 'cli', desc: 'Resumes the most recent interactive Codex session (or run codex resume to pick from a list).' },
+        { cmd: 'codex fork --last', copy: 'codex fork --last', type: 'cli', desc: 'Forks the most recent session into a new trajectory without altering the original history.' },
+        { cmd: 'codex review', copy: 'codex review', type: 'cli', desc: 'Runs a standalone code review against local repository diffs from the shell.' },
+        { cmd: 'codex -m <model>', copy: 'codex -m ', type: 'cli', desc: 'Launches Codex with a specific model override (e.g., gpt-5-codex or o3).' },
+        { cmd: 'codex -s workspace-write', copy: 'codex -s workspace-write', type: 'cli', desc: 'Sets the sandbox policy (read-only, workspace-write, danger-full-access).' },
+        { cmd: 'codex --full-auto', copy: 'codex --full-auto', type: 'cli', desc: 'Enables low-friction autonomous execution (auto-approves workspace edits and sandboxed commands).' },
+        { cmd: 'codex -c model_reasoning_effort="high"', copy: 'codex -c model_reasoning_effort="high"', type: 'cli', desc: 'Overrides any ~/.codex/config.toml key for a single run.' },
+        { cmd: '@file', copy: '@', type: 'shortcut', desc: 'Searches and attaches workspace files into the Codex composer.' },
+        { cmd: '! <command>', copy: '! ', type: 'shortcut', desc: 'Runs a local shell command from the Codex prompt.' }
+      ]
+    },
+    {
+      id: 'gemini',
+      name: 'Gemini CLI',
+      binary: 'gemini',
+      tagline: 'Google Gemini terminal agent — built-in slash commands, checkpoints, memory, and TOML extensions.',
+      docsUrl: 'https://github.com/google-gemini/gemini-cli',
+      accent: '#60a5fa',
+      soft: 'rgba(96, 165, 250, 0.14)',
+      border: 'rgba(96, 165, 250, 0.4)',
+      commands: [
+        { cmd: '/init', copy: '/init', type: 'slash', desc: 'Inspects the project and generates a tailored GEMINI.md context file.' },
+        { cmd: '/plan', copy: '/plan', type: 'slash', desc: 'Enters Plan Mode to research the codebase and align on steps before making file modifications.' },
+        { cmd: '/compress', copy: '/compress', type: 'slash', desc: 'Replaces lengthy chat history with a concise summary to save tokens and context space.' },
+        { cmd: '/clear', copy: '/clear', type: 'slash', desc: 'Clears the terminal screen and resets the active session context (Ctrl+L).' },
+        { cmd: '/model', copy: '/model', type: 'slash', desc: 'Opens the model selector to switch between Gemini Pro and Flash variants mid-session.' },
+        { cmd: '/memory show', copy: '/memory show', type: 'slash', desc: 'Displays hierarchical GEMINI.md instructions currently loaded (use /memory refresh to reload).' },
+        { cmd: '/memory add <fact>', copy: '/memory add ', type: 'slash', desc: 'Appends a persistent note or preference to your global GEMINI.md memory file.' },
+        { cmd: '/chat save <tag>', copy: '/chat save ', type: 'slash', desc: 'Saves a named checkpoint of the current conversation state.' },
+        { cmd: '/chat resume <tag>', copy: '/chat resume ', type: 'slash', desc: 'Restores a previously saved conversation checkpoint (/chat list views all tags).' },
+        { cmd: '/chat share <file.md>', copy: '/chat share ', type: 'slash', desc: 'Exports the current conversation transcript to a Markdown or JSON file.' },
+        { cmd: '/restore', copy: '/restore', type: 'slash', desc: 'Restores project files to their state prior to a specific tool execution (when checkpointing is enabled).' },
+        { cmd: '/stats', copy: '/stats', type: 'slash', desc: 'Displays session token counts, cached token savings, and per-model request metrics.' },
+        { cmd: '/mcp', copy: '/mcp', type: 'slash', desc: 'Lists configured MCP servers, connection status, and exposed tools (/mcp reload to restart).' },
+        { cmd: '/extensions', copy: '/extensions', type: 'slash', desc: 'Lists active Gemini CLI extensions (/extensions reload to refresh).' },
+        { cmd: '/skills reload', copy: '/skills reload', type: 'slash', desc: 'Reloads discovered agent skills and custom .gemini/commands/*.toml slash commands.' },
+        { cmd: '/settings', copy: '/settings', type: 'slash', desc: 'Opens the interactive Gemini CLI settings editor.' },
+        { cmd: '/tools', copy: '/tools', type: 'slash', desc: 'Lists all built-in and MCP tools currently available to Gemini.' },
+        { cmd: '/help', copy: '/help', type: 'slash', desc: 'Displays all built-in and custom TOML slash commands.' },
+        { cmd: 'gemini', copy: 'gemini', type: 'cli', desc: 'Starts an interactive Gemini CLI session in the current folder.' },
+        { cmd: 'gemini -p "<prompt>"', copy: 'gemini -p ""', type: 'cli', desc: 'Runs a prompt in headless non-interactive mode and prints the response to stdout.' },
+        { cmd: 'gemini -r latest', copy: 'gemini -r latest', type: 'cli', desc: 'Resumes the latest project session (--resume).' },
+        { cmd: 'gemini -m <model>', copy: 'gemini -m ', type: 'cli', desc: 'Starts Gemini CLI using a specific model identifier.' },
+        { cmd: 'gemini --yolo', copy: 'gemini --yolo', type: 'cli', desc: 'Auto-approves all tool calls without confirmation prompts (use in trusted sandboxes).' },
+        { cmd: 'gemini -s', copy: 'gemini -s', type: 'cli', desc: 'Runs tool executions inside an isolated sandbox (--sandbox).' },
+        { cmd: '@path/to/file', copy: '@', type: 'shortcut', desc: 'Injects file or directory contents directly into your prompt.' },
+        { cmd: '!<command>', copy: '!', type: 'shortcut', desc: 'Executes a shell command (! alone toggles persistent Shell Mode).' }
+      ]
+    },
+    {
+      id: 'opencode',
+      name: 'OpenCode',
+      binary: 'opencode',
+      tagline: 'Open-source multi-provider TUI coding agent — agents, keybindings, and headless server.',
+      docsUrl: 'https://opencode.ai/docs',
+      accent: '#a78bfa',
+      soft: 'rgba(167, 139, 250, 0.14)',
+      border: 'rgba(167, 139, 250, 0.4)',
+      commands: [
+        { cmd: '/init', copy: '/init', type: 'slash', desc: 'Analyzes the repository and creates or updates AGENTS.md for OpenCode.' },
+        { cmd: '/models', copy: '/models', type: 'slash', desc: 'Opens the provider and model switcher to change LLMs or reasoning variants.' },
+        { cmd: '/agents', copy: '/agents', type: 'slash', desc: 'Switches between specialized agents (e.g., full-access build vs read-only plan agent).' },
+        { cmd: '/connect', copy: '/connect', type: 'slash', desc: 'Opens the provider authentication modal to add API keys or sign in (/login).' },
+        { cmd: '/compact', copy: '/compact', type: 'slash', desc: 'Summarizes the current session transcript to reduce context usage (/summarize).' },
+        { cmd: '/new', copy: '/new', type: 'slash', desc: 'Starts a new coding session (/clear).' },
+        { cmd: '/sessions', copy: '/sessions', type: 'slash', desc: 'Opens the session switcher to browse and resume past conversations (/resume).' },
+        { cmd: '/undo', copy: '/undo', type: 'slash', desc: 'Reverts the last assistant message and rolls back any file modifications it made.' },
+        { cmd: '/redo', copy: '/redo', type: 'slash', desc: 'Reapplies a previously undone message and its file changes.' },
+        { cmd: '/review', copy: '/review', type: 'slash', desc: 'Reviews uncommitted git changes, branches, or commits inside the TUI.' },
+        { cmd: '/mcps', copy: '/mcps', type: 'slash', desc: 'Manages and toggles Model Context Protocol (MCP) servers.' },
+        { cmd: '/skills', copy: '/skills', type: 'slash', desc: 'Lists and invokes project or global skills.' },
+        { cmd: '/plugins', copy: '/plugins', type: 'slash', desc: 'Opens the plugins and extensions manager.' },
+        { cmd: '/stats', copy: '/stats', type: 'slash', desc: 'Shows token consumption and cost breakdown for the session.' },
+        { cmd: '/status', copy: '/status', type: 'slash', desc: 'Displays active provider connections, LSP servers, and MCP health.' },
+        { cmd: '/share', copy: '/share', type: 'slash', desc: 'Generates a shareable web link for the current session (/unshare revokes it).' },
+        { cmd: '/editor', copy: '/editor', type: 'slash', desc: 'Opens your external $EDITOR to compose a multi-line prompt.' },
+        { cmd: '/themes', copy: '/themes', type: 'slash', desc: 'Switches the OpenCode TUI color theme.' },
+        { cmd: 'opencode', copy: 'opencode', type: 'cli', desc: 'Launches the interactive OpenCode Terminal UI (TUI).' },
+        { cmd: 'opencode run "<prompt>"', copy: 'opencode run ""', type: 'cli', desc: 'Executes a prompt non-interactively from the shell.' },
+        { cmd: 'opencode -c', copy: 'opencode -c', type: 'cli', desc: 'Launches OpenCode and continues the last active session (--continue).' },
+        { cmd: 'opencode serve --port 4096', copy: 'opencode serve --port 4096', type: 'cli', desc: 'Starts a headless OpenCode API server.' },
+        { cmd: 'opencode auth login', copy: 'opencode auth login', type: 'cli', desc: 'Configures LLM provider credentials from the terminal.' },
+        { cmd: 'opencode session list', copy: 'opencode session list', type: 'cli', desc: 'Lists saved sessions (opencode stats shows aggregate usage/cost).' },
+        { cmd: 'Tab', copy: 'Tab', type: 'shortcut', desc: 'Toggles instantly between the build (write) and plan (read-only) agents.' },
+        { cmd: 'Ctrl+P', copy: 'Ctrl+P', type: 'shortcut', desc: 'Opens the OpenCode Command Palette.' },
+        { cmd: 'Ctrl+X then N', copy: 'Ctrl+X', type: 'shortcut', desc: 'Leader shortcut (Ctrl+X) to start a new session (F2 cycles recent models).' }
+      ]
+    },
+    {
+      id: 'copilot',
+      name: 'GitHub Copilot CLI',
+      binary: 'copilot',
+      tagline: 'GitHub Copilot terminal agent — slash commands, GitHub issue/PR references, and CLI flags.',
+      docsUrl: 'https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference',
+      accent: '#2dd4bf',
+      soft: 'rgba(45, 212, 191, 0.14)',
+      border: 'rgba(45, 212, 191, 0.4)',
+      commands: [
+        { cmd: '/model', copy: '/model', type: 'slash', desc: 'Views or switches the underlying LLM powering GitHub Copilot CLI.' },
+        { cmd: '/clear', copy: '/clear', type: 'slash', desc: 'Clears the current conversation history and starts a fresh session (/reset).' },
+        { cmd: '/compact', copy: '/compact', type: 'slash', desc: 'Compresses conversation context when approaching model token limits.' },
+        { cmd: '/diff', copy: '/diff', type: 'slash', desc: 'Inspects file changes made in the workspace during the current session.' },
+        { cmd: '/review', copy: '/review', type: 'slash', desc: 'Runs a Copilot code review on staged or unstaged repository changes.' },
+        { cmd: '/mcp', copy: '/mcp', type: 'slash', desc: 'Views and manages configured Model Context Protocol servers.' },
+        { cmd: '/agent', copy: '/agent', type: 'slash', desc: 'Selects or invokes a custom GitHub Copilot agent profile.' },
+        { cmd: '/skills', copy: '/skills', type: 'slash', desc: 'Lists and manages loaded Copilot skills.' },
+        { cmd: '/usage', copy: '/usage', type: 'slash', desc: 'Displays session token metrics and Copilot premium request usage.' },
+        { cmd: '/login', copy: '/login', type: 'slash', desc: 'Authenticates with GitHub (/logout signs out).' },
+        { cmd: '/help', copy: '/help', type: 'slash', desc: 'Lists all available slash commands, flags, and interactive shortcuts.' },
+        { cmd: 'copilot', copy: 'copilot', type: 'cli', desc: 'Starts an interactive GitHub Copilot agentic CLI session.' },
+        { cmd: 'copilot -p "<prompt>"', copy: 'copilot -p ""', type: 'cli', desc: 'Runs a single prompt non-interactively from the terminal.' },
+        { cmd: 'copilot --resume', copy: 'copilot --resume', type: 'cli', desc: 'Resumes a previous Copilot CLI conversation session.' },
+        { cmd: 'copilot config', copy: 'copilot config', type: 'cli', desc: 'Views or updates Copilot CLI configuration settings from the shell.' },
+        { cmd: '@file / #issue / !cmd', copy: '@', type: 'shortcut', desc: 'Attaches workspace files (@), references GitHub issues/PRs (#), or runs shell commands (!).' }
+      ]
+    },
+    {
+      id: 'workflows',
+      name: 'Workflows, Skills & Shared',
+      binary: 'shared',
+      tagline: 'Cross-agent workflows, Antigravity slash commands, and community skill/plugin packs.',
+      docsUrl: '',
+      accent: '#38bdf8',
+      soft: 'rgba(56, 189, 248, 0.14)',
+      border: 'rgba(56, 189, 248, 0.4)',
+      commands: [
+        { cmd: '/goal', copy: '/goal', type: 'slash', desc: 'Sets or displays the current high-level goal/objective so the agent works thoroughly until achieved.' },
+        { cmd: '/workflow', copy: '/workflow', type: 'slash', desc: 'Defines or runs a named multi-step workflow that chains several actions or subagents together.' },
+        { cmd: '/rubber-duck', copy: '/rubber-duck', type: 'slash', desc: 'Starts a rubber-duck style dialogue where you explain the problem out loud to clarify thinking before fixing.' },
+        { cmd: '/grill-me', copy: '/grill-me', type: 'slash', desc: 'Runs an interactive design interview to resolve ambiguities and align on architecture before execution.' },
+        { cmd: '/boost', copy: '/boost', type: 'slash', desc: 'Activates deep multi-perspective analysis, strategic planning, and rigorous verification for complex tasks.' },
+        { cmd: '/teamwork', copy: '/teamwork', type: 'slash', desc: 'Spawns and coordinates a team/swarm of autonomous agents working in parallel on a large project.' },
+        { cmd: '/browser', copy: '/browser', type: 'slash', desc: 'Delegates live web navigation, UI inspection, and interactive testing to a browser agent.' },
+        { cmd: '/schedule', copy: '/schedule', type: 'slash', desc: 'Schedules an instruction to run on a recurring cron schedule or a one-shot timer.' },
+        { cmd: '/learn', copy: '/learn', type: 'slash', desc: 'Persists a correction, project convention, or complex setup lesson into reusable memory/skills.' },
+        { cmd: '/efforts', copy: '/efforts', type: 'slash', desc: 'Sets or views the reasoning-effort level (e.g., low/medium/high) used when generating responses.' },
+        { cmd: '/setup-matt-pocock-skills', copy: '/setup-matt-pocock-skills', type: 'slash', link: 'https://github.com/mattpocock/skills', desc: "Installs Matt Pocock's community skill pack, adding a curated set of prebuilt skills to the assistant." },
+        { cmd: '/plugin marketplace add openai/codex-plugin-cc', copy: '/plugin marketplace add openai/codex-plugin-cc', type: 'slash', desc: 'Adds the OpenAI Codex plugin marketplace in Claude Code (pair with /plugin install codex@openai-codex).' }
+      ]
+    }
+  ];
+
+  var TYPE_LABELS = {
+    slash: 'Slash /',
+    cli: 'CLI',
+    shortcut: 'Shortcut'
+  };
+
+  var state = {
+    agent: 'all',
+    type: 'all',
+    query: ''
+  };
+
+  var tabsEl = document.getElementById('agentTabs');
+  var sectionsEl = document.getElementById('cmdSections');
+  var emptyEl = document.getElementById('cmdEmpty');
+  var counterEl = document.getElementById('cmdCounter');
+  var searchEl = document.getElementById('cmdSearch');
+  var searchClearEl = document.getElementById('searchClear');
+  var searchKbdEl = document.getElementById('searchKbd');
+  var toggleAllBtn = document.getElementById('toggleAllBtn');
+  var resetFiltersBtn = document.getElementById('resetFiltersBtn');
+  var toastEl = document.getElementById('cmdToast');
+  var toastTimer = null;
+
+  var totalCommands = AGENTS.reduce(function (sum, a) { return sum + a.commands.length; }, 0);
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function showToast(text) {
+    toastEl.textContent = text;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove('show');
+    }, 1500);
+  }
+
+  function copyToClipboard(text, btn) {
+    function markCopied() {
+      btn.classList.add('copied');
+      var label = btn.querySelector('.cmd-copy-label');
+      var orig = label.textContent;
+      label.textContent = orig + '  ✓';
+      setTimeout(function () {
+        btn.classList.remove('copied');
+        label.textContent = orig;
+      }, 1100);
+      showToast('Copied: ' + text);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+        fallbackCopy(text, markCopied);
+      });
+    } else {
+      fallbackCopy(text, markCopied);
+    }
+  }
+
+  function fallbackCopy(text, onDone) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      onDone();
+    } catch (e) {
+      showToast('Copy failed');
+    }
+    document.body.removeChild(ta);
+  }
+
+  function renderTabs() {
+    var html = '<button type="button" class="cmd-agent-tab active" data-agent="all" role="tab" aria-selected="true">' +
+      '<span class="cmd-tab-dot" style="background:var(--cmd-pill-text)"></span>All Agents' +
+      '<span class="cmd-tab-count">' + totalCommands + '</span></button>';
+
+    AGENTS.forEach(function (agent) {
+      html += '<button type="button" class="cmd-agent-tab" data-agent="' + agent.id + '" role="tab" aria-selected="false" ' +
+        'style="--agent-accent:' + agent.accent + ';--agent-soft:' + agent.soft + ';--agent-border:' + agent.border + ';">' +
+        '<span class="cmd-tab-dot"></span>' + escapeHtml(agent.name) +
+        '<span class="cmd-tab-count">' + agent.commands.length + '</span></button>';
+    });
+    tabsEl.innerHTML = html;
+  }
+
+  function renderSections() {
+    var copyIcon = '<span class="cmd-copy-icon" aria-hidden="true">' +
+      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>';
+    var chevronIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+
+    sectionsEl.innerHTML = AGENTS.map(function (agent) {
+      var rowsHtml = agent.commands.map(function (item) {
+        var copyVal = item.copy || item.cmd;
+        var extLink = item.link
+          ? '<a class="cmd-ext-link" href="' + escapeHtml(item.link) + '" target="_blank" rel="noopener noreferrer">Repo ↗</a>'
+          : '';
+        return '<tr data-type="' + item.type + '" data-search="' + escapeHtml((item.cmd + ' ' + item.desc + ' ' + agent.name + ' ' + agent.binary).toLowerCase()) + '">' +
+          '<td><div class="cmd-cell-command">' +
+            '<button type="button" class="cmd-copy-btn" data-copy="' + escapeHtml(copyVal) + '" title="Click to copy">' +
+              copyIcon + '<span class="cmd-copy-label">' + escapeHtml(item.cmd) + '</span>' +
+            '</button>' + extLink +
+          '</div></td>' +
+          '<td><span class="cmd-kind cmd-kind-' + item.type + '">' + TYPE_LABELS[item.type] + '</span></td>' +
+          '<td class="cmd-desc">' + escapeHtml(item.desc) + '</td>' +
+        '</tr>';
+      }).join('');
+
+      var docsHtml = agent.docsUrl
+        ? '<a class="agent-docs-link" href="' + escapeHtml(agent.docsUrl) + '" target="_blank" rel="noopener noreferrer">Docs ↗</a>'
+        : '';
+
+      return '<section class="agent-card" id="agent-' + agent.id + '" data-agent="' + agent.id + '" ' +
+        'style="--agent-accent:' + agent.accent + ';--agent-soft:' + agent.soft + ';--agent-border:' + agent.border + ';">' +
+        '<div class="agent-header">' +
+          '<div class="agent-title-wrap">' +
+            '<span class="agent-badge">' + escapeHtml(agent.binary) + '</span>' +
+            '<div>' +
+              '<h2 class="agent-name">' + escapeHtml(agent.name) + '</h2>' +
+              '<p class="agent-tagline">' + escapeHtml(agent.tagline) + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="agent-meta">' +
+            '<span class="agent-count" data-count-for="' + agent.id + '">' + agent.commands.length + ' commands</span>' +
+            docsHtml +
+            '<button type="button" class="agent-toggle" aria-expanded="true" aria-label="Toggle ' + escapeHtml(agent.name) + ' section">' + chevronIcon + '</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="agent-body">' +
+          '<table class="cmd-table">' +
+            '<thead><tr><th style="width:310px;">Command</th><th style="width:115px;">Type</th><th>Description</th></tr></thead>' +
+            '<tbody>' + rowsHtml + '</tbody>' +
+          '</table>' +
+        '</div>' +
+      '</section>';
+    }).join('');
+  }
+
+  function applyFilters() {
+    var q = state.query.trim().toLowerCase();
+    var visibleTotal = 0;
+
+    document.querySelectorAll('.agent-card').forEach(function (card) {
+      var agentId = card.getAttribute('data-agent');
+      var agentMatches = state.agent === 'all' || state.agent === agentId;
+      var visibleInCard = 0;
+
+      card.querySelectorAll('tbody tr').forEach(function (row) {
+        var typeMatches = state.type === 'all' || row.getAttribute('data-type') === state.type;
+        var textMatches = !q || row.getAttribute('data-search').indexOf(q) !== -1;
+        var showRow = agentMatches && typeMatches && textMatches;
+        row.hidden = !showRow;
+        if (showRow) visibleInCard++;
+      });
+
+      card.hidden = !agentMatches || visibleInCard === 0;
+      var countBadge = card.querySelector('.agent-count');
+      if (countBadge) {
+        countBadge.textContent = visibleInCard + (visibleInCard === 1 ? ' command' : ' commands');
+      }
+      visibleTotal += visibleInCard;
+    });
+
+    counterEl.innerHTML = 'Showing <strong>' + visibleTotal + '</strong> of <strong>' + totalCommands + '</strong> commands';
+    emptyEl.hidden = visibleTotal > 0;
+    searchClearEl.classList.toggle('visible', q.length > 0);
+    searchKbdEl.style.display = q.length > 0 ? 'none' : '';
+  }
+
+  function setAgent(agentId, updateHash) {
+    state.agent = agentId;
+    document.querySelectorAll('.cmd-agent-tab').forEach(function (tab) {
+      var active = tab.getAttribute('data-agent') === agentId;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+    });
+    if (updateHash && history.replaceState) {
+      history.replaceState(null, '', agentId === 'all' ? location.pathname + location.search : '#' + agentId);
+    }
+    applyFilters();
+  }
+
+  renderTabs();
+  renderSections();
+
+  var hashAgent = location.hash ? location.hash.slice(1) : '';
+  if (AGENTS.some(function (a) { return a.id === hashAgent; })) {
+    setAgent(hashAgent, false);
+  } else {
+    applyFilters();
+  }
+
+  tabsEl.addEventListener('click', function (e) {
+    var tab = e.target.closest('.cmd-agent-tab');
+    if (tab) setAgent(tab.getAttribute('data-agent'), true);
+  });
+
+  document.querySelectorAll('.cmd-type-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      state.type = btn.getAttribute('data-type');
+      document.querySelectorAll('.cmd-type-btn').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      applyFilters();
+    });
+  });
+
+  searchEl.addEventListener('input', function () {
+    state.query = this.value;
+    applyFilters();
+  });
+
+  searchClearEl.addEventListener('click', function () {
+    searchEl.value = '';
+    state.query = '';
+    applyFilters();
+    searchEl.focus();
+  });
+
+  resetFiltersBtn.addEventListener('click', function () {
+    searchEl.value = '';
+    state.query = '';
+    state.type = 'all';
+    document.querySelectorAll('.cmd-type-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-type') === 'all');
+    });
+    setAgent('all', true);
+  });
+
+  sectionsEl.addEventListener('click', function (e) {
+    var copyBtn = e.target.closest('.cmd-copy-btn');
+    if (copyBtn) {
+      copyToClipboard(copyBtn.getAttribute('data-copy'), copyBtn);
+      return;
+    }
+    var toggleBtn = e.target.closest('.agent-toggle');
+    if (toggleBtn) {
+      var card = toggleBtn.closest('.agent-card');
+      var collapsed = card.classList.toggle('collapsed');
+      toggleBtn.setAttribute('aria-expanded', String(!collapsed));
+    }
+  });
+
+  toggleAllBtn.addEventListener('click', function () {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.agent-card:not([hidden])'));
+    var anyOpen = cards.some(function (c) { return !c.classList.contains('collapsed'); });
+    cards.forEach(function (c) {
+      c.classList.toggle('collapsed', anyOpen);
+      var btn = c.querySelector('.agent-toggle');
+      if (btn) btn.setAttribute('aria-expanded', String(!anyOpen));
+    });
+    toggleAllBtn.textContent = anyOpen ? 'Expand All' : 'Collapse All';
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== searchEl && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchEl.focus();
+    } else if (e.key === 'Escape' && document.activeElement === searchEl) {
+      searchEl.value = '';
+      state.query = '';
+      applyFilters();
+      searchEl.blur();
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -13,11 +13,11 @@
 <th><a href="https://daily.dev/">Daily Dev</a></th>
 <th><a href="https://dev.to/">Dev.to</a></th>
 <tr>
+<th><a href="More/Important_Lib.html" style="color: greenyellow !important;">Lib/Package</a></th>
+
 <th><a href="https://www.facebook.com/groups/egyptian.geeks" >Eg. Geeks</a></th>
 <th><a href="https://www.youtube.com/@MohamadLawand/videos">Mohamad Lawand</th>
 <th><a href="https://www.youtube.com/@itichannel/streams/">ITI Channel</a></th>
-<th><a href="https://github.com/DietrichGebert/ponytail">PonyTail</a></th>
-<th><a href="https://github.com/Egonex-AI/Understand-Anything">Understand-Anything</a></th>
 <th><a href="https://notebook.google">NoteBook Google</a></th>
 </tr>  
 <table class="table mind"><hr style="height:0.1px; border-top: 0.1px solid yellow;"><tr><!-- 1 -->
@@ -55,8 +55,7 @@
 <th><a href="https://learn.microsoft.com/en-us/sql/?view=sql-server-ver16">SQL</th>
 <th><a href="More/Questinos.html">Q&E</a></th>
 <th><a href="More/Words.html">Notes</a></th>
-<th><a href="More/Important_Lib.html" style="color: greenyellow !important;">Important Lib/Packages</a></th>
-<th><a href="https://playwright.dev/">Playwright for AutoTesting</a></th>
+<th><a href="https://playwright.dev/" title="Playwright for AutoTesting" >Playwright</a></th>
 <tr>
 <th><a href="https://docs.google.com/spreadsheets/d/1sVuvTtsRCpiZcTxU59KT1v8IPQTQd5SZtXTlLcsR7VU/edit#gid=385269748">0</a></th>
 <th><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">HTTP</a></th>
@@ -67,7 +66,11 @@
 <th><a href="https://egyptinnovate.com">Egypt Innovate</a></th>
 <th><a href="Business/Business.html">Business</a></th>
 <th><a href="More/UnlockFormScript.html">UnlockFormScript</a></th>
+<tr>
 
+  <th><a href="#" class="copy-text" onclick="copyText(this)">dynamics-crm mcp->Tanmiah UAT-ADFS</a></th>
+
+</tr>
 </tr>
 </table> 
 <button id="randomNote" type="button" title="Click for another note" style="display:block;margin:10px auto;max-width:900px;padding:12px 18px;text-align:left;cursor:pointer;border:0;border-left:4px solid #8f9bff;background:#171a2b;color:#d6d9e5;border-radius:8px;"></button>
@@ -89,6 +92,16 @@ noteBtn.onclick = showNote;
 showNote();
 </script>
 
+<script>
+function copyText(element) {
+  const text = element.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
+</script>
+
 <!--
 <th><a href="https://www.examprepper.co/exam/143/70">Exam Prepper</a></th>
 
@@ -99,3 +112,5 @@ https://services.moi.gov.eg/eigar/Guidlines.aspx
 <th><a href="https://developer.chrome.com/docs/">developer.chrome</a></th>
 
 -->
+
+

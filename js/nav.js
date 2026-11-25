@@ -1,12 +1,32 @@
-// Apply the saved appearance without changing the original page layout.
+// Follow the system dark/light theme automatically, with an optional temporary toggle.
 (() => {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
     stylesheet.href = new URL('../css/theme.css', document.currentScript.src).href;
     document.head.appendChild(stylesheet);
-    let savedTheme;
-    try { savedTheme = localStorage.getItem('quickaccess-theme'); } catch { }
-    document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const STORAGE_KEY = 'quickaccess-theme-v2';
+    const media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+    const getSystemTheme = () => (media && media.matches ? 'light' : 'dark');
+
+    try { localStorage.removeItem('quickaccess-theme'); } catch { }
+
+    const resolveTheme = () => {
+        const sys = getSystemTheme();
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                const saved = JSON.parse(raw);
+                if (saved && saved.system === sys && (saved.theme === 'light' || saved.theme === 'dark')) {
+                    return saved.theme;
+                }
+                localStorage.removeItem(STORAGE_KEY);
+            }
+        } catch { }
+        return sys;
+    };
+
+    document.documentElement.dataset.theme = resolveTheme();
 
     const init = () => {
         const button = document.createElement('button');
@@ -14,16 +34,33 @@
         button.className = 'theme-toggle';
         const update = () => {
             const isLight = document.documentElement.dataset.theme === 'light';
+            const followingSystem = document.documentElement.dataset.theme === getSystemTheme();
             button.textContent = isLight ? '☾ Dark mode' : '☀ Light mode';
+            button.title = followingSystem
+                ? 'Following system theme — click to switch'
+                : 'Manual override — click to switch (resets when system theme changes)';
             button.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
             button.setAttribute('aria-pressed', String(isLight));
         };
         button.addEventListener('click', () => {
+            const sys = getSystemTheme();
             const theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
             document.documentElement.dataset.theme = theme;
-            try { localStorage.setItem('quickaccess-theme', theme); } catch { }
+            try {
+                if (theme === sys) localStorage.removeItem(STORAGE_KEY);
+                else localStorage.setItem(STORAGE_KEY, JSON.stringify({ theme, system: sys }));
+            } catch { }
             update();
         });
+        const onSystemChange = () => {
+            try { localStorage.removeItem(STORAGE_KEY); } catch { }
+            document.documentElement.dataset.theme = getSystemTheme();
+            update();
+        };
+        if (media) {
+            if (media.addEventListener) media.addEventListener('change', onSystemChange);
+            else if (media.addListener) media.addListener(onSystemChange);
+        }
         update();
         document.body.appendChild(button);
     };

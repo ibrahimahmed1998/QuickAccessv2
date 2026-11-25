@@ -1,6 +1,29 @@
 /* The original dark design stays intact. Light mode changes colors only. */
 html[data-theme="dark"] { color-scheme: dark; }
-html[data-theme="light"] { color-scheme: light; }
+html[data-theme="light"] {
+    color-scheme: light;
+    --bg-color: #f4f7fb;
+    --card-bg: #fff;
+    --text-color: #172b42;
+    --tn-bg: #f4f7fb;
+    --tn-panel: #fff;
+    --tn-panel-2: #eef3f9;
+    --tn-border: #cbd5e1;
+    --tn-text: #172b42;
+    --tn-muted: #52657a;
+    --tn-accent: #0f766e;
+    --tn-accent-2: #1d4ed8;
+    --tn-warn: #b45309;
+    --tn-good: #15803d;
+    --tn-bad: #b91c1c;
+    --tn-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    --bg: #f4f7fb;
+    --panel: #fff;
+    --panel-2: #eef3f9;
+    --border: #cbd5e1;
+    --text: #172b42;
+    --muted: #52657a;
+}
 
 .theme-toggle {
     position: fixed;
@@ -23,17 +46,6 @@ html[data-theme="light"] { color-scheme: light; }
 html[data-theme="light"] body {
     background: #f7f9fc !important;
     color: #172b42 !important;
-    --bg-color: #f7f9fc;
-    --card-bg: #fff;
-    --text-color: #172b42;
-    --tn-bg: #f7f9fc;
-    --tn-panel: #fff;
-    --tn-panel-2: #eef3f9;
-    --tn-border: #cbd5e1;
-    --tn-text: #172b42;
-    --tn-muted: #52657a;
-    --tn-accent: #00796f;
-    --tn-accent-2: #355eb4;
 }
 html[data-theme="light"] th,
 html[data-theme="light"] td { color: #172b42; border-color: #d5deea !important; }
@@ -49,3 +61,72 @@ html[data-theme="light"] .navbar-brand:hover { color: #861786 !important; }
 html[data-theme="light"] .card { background-color: #fff; color: #172b42; }
 html[data-theme="light"] .theme-toggle { background: #fff; color: #173c67; border-color: #a7b9ce; }
 html[data-theme="light"] .theme-toggle:hover { background: #e5edf8; }
+
+/* TanmiahNotes.html & BusinessAutomationCycle.html */
+html[data-theme="light"] .tn-title,
+html[data-theme="light"] .tn-card-title,
+html[data-theme="light"] .tn-section-title,
+html[data-theme="light"] .tn-qa .q,
+html[data-theme="light"] .tn-map-req { color: #172b42; }
+html[data-theme="light"] .tn-step,
+html[data-theme="light"] .tn-rule,
+html[data-theme="light"] .tn-map-item { background: #f8fafc; }
+html[data-theme="light"] .tn-map-comp { background: #eef3f9; }
+html[data-theme="light"] .tn-map-pill .only { background: rgba(23, 43, 66, 0.08); }
+
+/* Products.html */
+html[data-theme="light"] .products-table thead th:hover { color: #172b42; }
+html[data-theme="light"] .products-table tbody td { border-bottom-color: #e2e8f0; }
+
+/* CRMNotes.html */
+html[data-theme="light"] .crm-section { background: #fff; border-color: #d5deea; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06); }
+html[data-theme="light"] .crm-section h2 { color: #1456a0; border-bottom-color: #cbd5e1; }
+html[data-theme="light"] .crm-grid a,
+html[data-theme="light"] .crm-grid span { background: #f1f5f9; border-color: #cbd5e1; color: #172b42; }
+html[data-theme="light"] .crm-grid a:hover { background: #e2e8f0; border-color: #1456a0; }
+html[data-theme="light"] .crm-grid .highlight { color: #9a3412 !important; border-color: #d97706; }
+html[data-theme="light"] .crm-list li { color: #172b42; }
+html[data-theme="light"] .crm-table th { background: #e5edf8; color: #173c67; }
+html[data-theme="light"] .crm-table th,
+html[data-theme="light"] .crm-table td { border-color: #cbd5e1; color: #172b42; }
+html[data-theme="light"] .crm-table code { color: #0f766e; }
+
+/* Words.html */
+html[data-theme="light"] .header,
+html[data-theme="light"] .footer-note { color: #172b42; }
+html[data-theme="light"] .card-custom,
+html[data-theme="light"] .skill-section { background: #fff; color: #172b42; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08); }
+html[data-theme="light"] .skill-section h2 { color: #1d4ed8; }
+html[data-theme="light"] .description { color: #475569; }
+html[data-theme="light"] .reflection-prompt { background: #f1f5f9; color: #334155; }
+
+/* Prompts pages (prompts.html, backend.html, mscrm.html, QualityTester.html) */
+html[data-theme="light"] .nav-cards a { background: #fff; border: 1px solid #d5deea; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06); }
+html[data-theme="light"] .nav-cards a:hover { background: #eef3f9; }
+html[data-theme="light"] .summary-card { background: #fff; color: #172b42; border: 1px solid #d5deea; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06); }
+html[data-theme="light"] .summary-card h2 { color: #9d174d; }
+html[data-theme="light"] .summary-card h3 { color: #1456a0; }
+html[data-theme="light"] .summary-card strong { color: #0f766e; }
+html[data-theme="light"] .summary-card code { background: #eef3f9; color: #9a3412; }
+html[data-theme="light"] .summary-card .callout { background: #f8fafc; border-left-color: #9d174d; }
+html[data-theme="light"] .copy-btn { background: #eef3f9; color: #1456a0; border-color: #cbd5e1; }
+html[data-theme="light"] .copy-btn:hover { background: #e2e8f0; }
+html[data-theme="light"] .qa-toc,
+html[data-theme="light"] .qa-card { background: #fff; color: #172b42; border: 1px solid #d5deea; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06); }
+html[data-theme="light"] .qa-toc h4,
+html[data-theme="light"] .qa-hero h2,
+html[data-theme="light"] .qa-card h1,
+html[data-theme="light"] .qa-card h2 { color: #9d174d; border-bottom-color: #d5deea; }
+html[data-theme="light"] .qa-toc a { color: #334155 !important; }
+html[data-theme="light"] .qa-toc a:hover,
+html[data-theme="light"] .qa-toc a.active { background: #eef3f9; color: #1456a0 !important; border-left-color: #1456a0; }
+html[data-theme="light"] .qa-hero { background: linear-gradient(135deg, #eef3f9, #fff); border: 1px solid #d5deea; }
+html[data-theme="light"] .qa-hero p { color: #52657a; }
+html[data-theme="light"] .qa-search { background: #f8fafc; color: #172b42; border-color: #cbd5e1; }
+html[data-theme="light"] .qa-btn { background: #1456a0; color: #fff; }
+html[data-theme="light"] .qa-card h3 { color: #0f766e; }
+html[data-theme="light"] .qa-card h4 { color: #1456a0; }
+html[data-theme="light"] .qa-card strong { color: #9a3412; }
+html[data-theme="light"] .qa-card code { background: #eef3f9; color: #0f766e; }
+html[data-theme="light"] .qa-card th { background: #e5edf8; color: #173c67; }
+html[data-theme="light"] .qa-card tr:nth-child(even) td { background: #f8fafc; }

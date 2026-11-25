@@ -283,9 +283,12 @@ $('download').onclick=()=>{
     themeScript.dataset.exportTheme='';
     themeScript.textContent=`(() => {
         const button=document.querySelector('.theme-toggle');
+        const media=window.matchMedia?window.matchMedia('(prefers-color-scheme: light)'):null;
+        const sys=()=>media&&media.matches?'light':'dark';
         const update=()=>{const light=document.documentElement.dataset.theme==='light';button.textContent=light?'☾ Dark mode':'☀ Light mode';button.setAttribute('aria-label','Switch to '+(light?'dark':'light')+' mode');button.setAttribute('aria-pressed',String(light));};
-        try{const saved=localStorage.getItem('quickaccess-theme');if(saved==='light'||saved==='dark')document.documentElement.dataset.theme=saved;}catch{}
-        button.onclick=()=>{const theme=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=theme;try{localStorage.setItem('quickaccess-theme',theme);}catch{}update();};
+        document.documentElement.dataset.theme=sys();
+        if(media){const onChg=()=>{document.documentElement.dataset.theme=sys();update();};if(media.addEventListener)media.addEventListener('change',onChg);else if(media.addListener)media.addListener(onChg);}
+        button.onclick=()=>{const theme=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=theme;update();};
         update();
     })();`;
     clone.querySelector('body').append(themeScript);
